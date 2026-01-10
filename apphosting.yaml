@@ -1,17 +1,15 @@
-# Settings for Backend (on Cloud Run).
-# See https://firebase.google.com/docs/app-hosting/configure#cloud-run
+# Settings for Cloud Run backend
 runConfig:
   minInstances: 0
   cpu: 1
   memoryMiB: 2048
   maxInstances: 100
 
-# Environment variables and secrets.
-# See https://firebase.google.com/docs/app-hosting/configure#user-defined-environment
+# Environment variables
+# Public Firebase config (these are client-side, not secrets)
 env:
-  # Firebase config (public, available at build and runtime)
   - variable: NEXT_PUBLIC_FIREBASE_API_KEY
-    secret: NEXT_PUBLIC_FIREBASE_API_KEY
+    value: AIzaSyDibdtqeea1yHqi4ddlZCmAhuq269iK06c
     availability:
       - BUILD
       - RUNTIME
@@ -35,13 +33,13 @@ env:
       - RUNTIME
 
   - variable: NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
-    secret: NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
+    value: "719807847926"
     availability:
       - BUILD
       - RUNTIME
 
   - variable: NEXT_PUBLIC_FIREBASE_APP_ID
-    secret: NEXT_PUBLIC_FIREBASE_APP_ID
+    value: "1:719807847926:web:849e8024234baba825fbd77"
     availability:
       - BUILD
       - RUNTIME
@@ -52,7 +50,13 @@ env:
       - BUILD
       - RUNTIME
 
-  # Gemini API key for AI features (server-side only)
+  - variable: NEXT_PUBLIC_READ_BRIIzOS
+    value: "true"
+    availability:
+      - BUILD
+      - RUNTIME
+
+  # Gemini API key - stored as secret in Secret Manager
   - variable: GEMINI_API_KEY
     secret: GEMINI_API_KEY
     availability:
