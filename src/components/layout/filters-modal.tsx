@@ -28,18 +28,18 @@ export const defaultFilters: FilterSettings = {
   hueRotate: 0,
   sepia: 0,
   invert: false,
-  backgroundPanel: 'none',
+  backgroundPanel: 'none'
 };
 
 const backgroundOptions = [
-  { value: 'none', label: 'None' },
-  { value: 'stars', label: 'Stars' },
-  { value: 'grid', label: 'Grid' },
-  { value: 'dots', label: 'Dots' },
-  { value: 'waves', label: 'Waves' },
-];
+{ value: 'none', label: 'None' },
+{ value: 'stars', label: 'Stars' },
+{ value: 'grid', label: 'Grid' },
+{ value: 'dots', label: 'Dots' },
+{ value: 'waves', label: 'Waves' }];
 
-export function FiltersModal({ open, onOpenChange }: { open: boolean; onOpenChange: (v: boolean) => void }) {
+
+export function FiltersModal({ open, onOpenChange }: {open: boolean;onOpenChange: (v: boolean) => void;}) {
   const { settings, updateSettings, isReady } = useSettings();
 
   // Local state for live preview
@@ -76,141 +76,141 @@ export function FiltersModal({ open, onOpenChange }: { open: boolean; onOpenChan
   };
 
   return (
-    <Dialog open={open} onOpenChange={(v) => {
-      if (!v) handleCancel();
-      else onOpenChange(v);
+    <Dialog data-style-id="stylo-425" open={open} onOpenChange={(v) => {
+      if (!v) handleCancel();else
+      onOpenChange(v);
     }}>
-      <DialogPortal>
+      <DialogPortal data-style-id="stylo-426">
         {/* Transparent overlay - allows seeing filter effects */}
-        <DialogOverlay className="bg-transparent" />
+        <DialogOverlay data-style-id="stylo-427" className="bg-transparent" />
 
         {/* Modal with strong shadow instead of overlay */}
-        <DialogPrimitive.Content
-          className="fixed left-[50%] top-[50%] z-50 grid w-full max-w-xl translate-x-[-50%] translate-y-[-50%] gap-4 border border-primary/50 bg-background p-6 duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 sm:rounded-lg shadow-[0_0_60px_20px_rgba(0,0,0,0.8),0_0_100px_40px_rgba(0,0,0,0.6)] border-t-2 border-t-primary"
-        >
-          <h2 className="font-headline text-2xl text-primary lowercase tracking-wide">filters</h2>
+        <DialogPrimitive.Content data-style-id="stylo-428"
+        className="fixed left-[50%] top-[50%] z-50 grid w-full max-w-xl translate-x-[-50%] translate-y-[-50%] gap-4 border border-primary/50 bg-background p-6 duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 sm:rounded-lg shadow-[0_0_60px_20px_rgba(0,0,0,0.8),0_0_100px_40px_rgba(0,0,0,0.6)] border-t-2 border-t-primary">
 
-          <div className="space-y-6 py-4">
+          <h2 data-style-id="stylo-429" id="el-363" className="font-headline text-2xl text-primary lowercase tracking-wide">filters</h2>
+
+          <div data-style-id="stylo-430" id="el-364" className="space-y-6 py-4">
             {/* Brightness */}
-            <div className="flex items-center justify-between gap-8">
-              <Label className="text-base font-medium min-w-[140px]">
+            <div data-style-id="stylo-431" id="el-365" className="flex items-center justify-between gap-8">
+              <Label data-style-id="stylo-432" className="text-base font-medium min-w-[140px]">
                 Brightness {filters.brightness}%
               </Label>
-              <Slider
-                value={[filters.brightness]}
-                onValueChange={([v]) => setFilters({ ...filters, brightness: v })}
-                min={0}
-                max={200}
-                step={1}
-                className="flex-1"
-              />
+              <Slider data-style-id="stylo-433"
+              value={[filters.brightness]}
+              onValueChange={([v]) => setFilters({ ...filters, brightness: v })}
+              min={0}
+              max={200}
+              step={1}
+              className="flex-1" />
+
             </div>
 
             {/* Contrast */}
-            <div className="flex items-center justify-between gap-8">
-              <Label className="text-base font-medium min-w-[140px]">
+            <div data-style-id="stylo-434" id="el-366" className="flex items-center justify-between gap-8">
+              <Label data-style-id="stylo-435" className="text-base font-medium min-w-[140px]">
                 Contrast {filters.contrast}%
               </Label>
-              <Slider
-                value={[filters.contrast]}
-                onValueChange={([v]) => setFilters({ ...filters, contrast: v })}
-                min={0}
-                max={200}
-                step={1}
-                className="flex-1"
-              />
+              <Slider data-style-id="stylo-436"
+              value={[filters.contrast]}
+              onValueChange={([v]) => setFilters({ ...filters, contrast: v })}
+              min={0}
+              max={200}
+              step={1}
+              className="flex-1" />
+
             </div>
 
             {/* Saturate */}
-            <div className="flex items-center justify-between gap-8">
-              <Label className="text-base font-medium min-w-[140px]">
+            <div data-style-id="stylo-437" id="el-367" className="flex items-center justify-between gap-8">
+              <Label data-style-id="stylo-438" className="text-base font-medium min-w-[140px]">
                 Saturate {filters.saturate}%
               </Label>
-              <Slider
-                value={[filters.saturate]}
-                onValueChange={([v]) => setFilters({ ...filters, saturate: v })}
-                min={0}
-                max={200}
-                step={1}
-                className="flex-1"
-              />
+              <Slider data-style-id="stylo-439"
+              value={[filters.saturate]}
+              onValueChange={([v]) => setFilters({ ...filters, saturate: v })}
+              min={0}
+              max={200}
+              step={1}
+              className="flex-1" />
+
             </div>
 
             {/* Hue Rotate */}
-            <div className="flex items-center justify-between gap-8">
-              <Label className="text-base font-medium min-w-[140px]">
+            <div data-style-id="stylo-440" id="el-368" className="flex items-center justify-between gap-8">
+              <Label data-style-id="stylo-441" className="text-base font-medium min-w-[140px]">
                 Hue Rotate {filters.hueRotate}°
               </Label>
-              <Slider
-                value={[filters.hueRotate]}
-                onValueChange={([v]) => setFilters({ ...filters, hueRotate: v })}
-                min={0}
-                max={360}
-                step={1}
-                className="flex-1"
-              />
+              <Slider data-style-id="stylo-442"
+              value={[filters.hueRotate]}
+              onValueChange={([v]) => setFilters({ ...filters, hueRotate: v })}
+              min={0}
+              max={360}
+              step={1}
+              className="flex-1" />
+
             </div>
 
             {/* Sepia */}
-            <div className="flex items-center justify-between gap-8">
-              <Label className="text-base font-medium min-w-[140px]">
+            <div data-style-id="stylo-443" id="el-369" className="flex items-center justify-between gap-8">
+              <Label data-style-id="stylo-444" className="text-base font-medium min-w-[140px]">
                 Sepia {filters.sepia}%
               </Label>
-              <Slider
-                value={[filters.sepia]}
-                onValueChange={([v]) => setFilters({ ...filters, sepia: v })}
-                min={0}
-                max={100}
-                step={1}
-                className="flex-1"
-              />
+              <Slider data-style-id="stylo-445"
+              value={[filters.sepia]}
+              onValueChange={([v]) => setFilters({ ...filters, sepia: v })}
+              min={0}
+              max={100}
+              step={1}
+              className="flex-1" />
+
             </div>
 
             {/* Invert */}
-            <div className="flex items-center justify-between gap-8">
-              <Label className="text-base font-medium min-w-[140px]">Invert</Label>
-              <Checkbox
-                checked={filters.invert}
-                onCheckedChange={(checked) => setFilters({ ...filters, invert: !!checked })}
-                className="h-5 w-5"
-              />
+            <div data-style-id="stylo-446" id="el-370" className="flex items-center justify-between gap-8">
+              <Label data-style-id="stylo-447" className="text-base font-medium min-w-[140px]">Invert</Label>
+              <Checkbox data-style-id="stylo-448"
+              checked={filters.invert}
+              onCheckedChange={(checked) => setFilters({ ...filters, invert: !!checked })}
+              className="h-5 w-5" />
+
             </div>
 
             {/* Background Panel */}
-            <div className="flex items-center justify-between gap-8">
-              <Label className="text-base font-medium min-w-[140px]">Background Panel</Label>
-              <Select
-                value={filters.backgroundPanel}
-                onValueChange={(v) => setFilters({ ...filters, backgroundPanel: v })}
-              >
-                <SelectTrigger className="w-[200px]">
-                  <SelectValue placeholder="Select background" />
+            <div data-style-id="stylo-449" id="el-371" className="flex items-center justify-between gap-8">
+              <Label data-style-id="stylo-450" className="text-base font-medium min-w-[140px]">Background Panel</Label>
+              <Select data-style-id="stylo-451"
+              value={filters.backgroundPanel}
+              onValueChange={(v) => setFilters({ ...filters, backgroundPanel: v })}>
+
+                <SelectTrigger data-style-id="stylo-452" className="w-[200px]">
+                  <SelectValue data-style-id="stylo-453" placeholder="Select background" />
                 </SelectTrigger>
-                <SelectContent>
-                  {backgroundOptions.map((opt) => (
-                    <SelectItem key={opt.value} value={opt.value}>
+                <SelectContent data-style-id="stylo-454">
+                  {backgroundOptions.map((opt) =>
+                  <SelectItem data-style-id="stylo-455" key={opt.value} value={opt.value}>
                       {opt.label}
                     </SelectItem>
-                  ))}
+                  )}
                 </SelectContent>
               </Select>
             </div>
           </div>
 
-          <DialogFooter>
-            <Button variant="outline" onClick={handleReset}>Reset</Button>
-            <Button onClick={handleDone}>Done</Button>
+          <DialogFooter data-style-id="stylo-456">
+            <Button data-style-id="stylo-457" variant="outline" onClick={handleReset}>Reset</Button>
+            <Button data-style-id="stylo-458" onClick={handleDone}>Done</Button>
           </DialogFooter>
 
           {/* Close button */}
-          <DialogPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
-            <X className="h-4 w-4" />
-            <span className="sr-only">Close</span>
+          <DialogPrimitive.Close data-style-id="stylo-459" className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
+            <X data-style-id="stylo-460" className="h-4 w-4" />
+            <span data-style-id="stylo-461" id="el-372" className="sr-only">Close</span>
           </DialogPrimitive.Close>
         </DialogPrimitive.Content>
       </DialogPortal>
-    </Dialog>
-  );
+    </Dialog>);
+
 }
 
 // Helper to apply CSS filters to the main app container
@@ -219,13 +219,13 @@ export function applyFiltersToDocument(filters: FilterSettings) {
   if (!appContainer) return;
 
   const filterString = [
-    `brightness(${filters.brightness}%)`,
-    `contrast(${filters.contrast}%)`,
-    `saturate(${filters.saturate}%)`,
-    `hue-rotate(${filters.hueRotate}deg)`,
-    `sepia(${filters.sepia}%)`,
-    filters.invert ? 'invert(1)' : '',
-  ].filter(Boolean).join(' ');
+  `brightness(${filters.brightness}%)`,
+  `contrast(${filters.contrast}%)`,
+  `saturate(${filters.saturate}%)`,
+  `hue-rotate(${filters.hueRotate}deg)`,
+  `sepia(${filters.sepia}%)`,
+  filters.invert ? 'invert(1)' : ''].
+  filter(Boolean).join(' ');
 
   appContainer.style.filter = filterString;
 

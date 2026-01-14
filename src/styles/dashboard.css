@@ -8,9 +8,6 @@
   box-shadow: 0 0 10px hsla(165, 100%, 45%, 0.35);
   border: 1px solid hsla(165, 70%, 35%, 0.4);
 }
-
-button {border:.5px solid gray;}
-
 .dashboard-header {
   color: hsl(170 60% 80%);
 }

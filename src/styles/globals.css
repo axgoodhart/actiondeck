@@ -182,3 +182,7 @@ header, body > div.flex.min-h-screen.w-full.flex-col > div > header {
     @apply mb-2;
   }
 }
+
+[data-style-id="stylo-524"] {
+    height:40px !important;
+  }

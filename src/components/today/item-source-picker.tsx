@@ -39,7 +39,7 @@ export function ItemSourcePicker({ open, onOpenChange }: ItemSourcePickerProps) 
             ...task,
             projectId: project.id,
             projectName: project.name,
-            sourceType: 'project',
+            sourceType: 'project'
           });
         }
       }
@@ -53,7 +53,7 @@ export function ItemSourcePicker({ open, onOpenChange }: ItemSourcePickerProps) 
     const lower = search.toLowerCase();
     return projectTasks.filter(
       (t) => t.title.toLowerCase().includes(lower) ||
-             t.projectName?.toLowerCase().includes(lower)
+      t.projectName?.toLowerCase().includes(lower)
     );
   }, [projectTasks, search]);
 
@@ -93,10 +93,10 @@ export function ItemSourcePicker({ open, onOpenChange }: ItemSourcePickerProps) 
           title: task.title,
           startMinute,
           durationMinutes: 60, // Default 1 hour
-          source: task.sourceType === 'project'
-            ? { type: 'project', projectId: task.projectId!, taskId: task.id }
-            : { type: 'casual', taskId: task.id },
-          completed: false,
+          source: task.sourceType === 'project' ?
+          { type: 'project', projectId: task.projectId!, taskId: task.id } :
+          { type: 'casual', taskId: task.id },
+          completed: false
         });
         startMinute += 60; // Stack items
       }
@@ -108,81 +108,81 @@ export function ItemSourcePicker({ open, onOpenChange }: ItemSourcePickerProps) 
   };
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-lg">
-        <DialogHeader>
-          <DialogTitle>Add from Existing Tasks</DialogTitle>
+    <Dialog data-style-id="stylo-757" open={open} onOpenChange={onOpenChange}>
+      <DialogContent data-style-id="stylo-758" className="sm:max-w-lg">
+        <DialogHeader data-style-id="stylo-759">
+          <DialogTitle data-style-id="stylo-760">Add from Existing Tasks</DialogTitle>
         </DialogHeader>
 
         {/* Search */}
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-          <Input
-            placeholder="Search tasks..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="pl-9"
-          />
+        <div data-style-id="stylo-761" id="el-407" className="relative">
+          <Search data-style-id="stylo-762" className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <Input data-style-id="stylo-763"
+          placeholder="Search tasks..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="pl-9" />
+
         </div>
 
-        <Tabs defaultValue="projects" className="flex-1">
-          <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="projects">From Projects</TabsTrigger>
-            <TabsTrigger value="casual" disabled>Casual Tasks</TabsTrigger>
+        <Tabs data-style-id="stylo-764" defaultValue="projects" className="flex-1">
+          <TabsList data-style-id="stylo-765" className="grid w-full grid-cols-2">
+            <TabsTrigger data-style-id="stylo-766" value="projects">From Projects</TabsTrigger>
+            <TabsTrigger data-style-id="stylo-767" value="casual" disabled>Casual Tasks</TabsTrigger>
           </TabsList>
 
-          <TabsContent value="projects" className="mt-4">
-            <ScrollArea className="h-[300px] pr-4">
-              {filteredProjectTasks.length === 0 ? (
-                <p className="text-center text-muted-foreground py-8">
+          <TabsContent data-style-id="stylo-768" value="projects" className="mt-4">
+            <ScrollArea data-style-id="stylo-769" className="h-[300px] pr-4">
+              {filteredProjectTasks.length === 0 ?
+              <p data-style-id="stylo-770" id="el-408" className="text-center text-muted-foreground py-8">
                   No uncompleted tasks found
-                </p>
-              ) : (
-                <div className="space-y-2">
-                  {filteredProjectTasks.map((task) => (
-                    <div
-                      key={task.id}
-                      className="flex items-center gap-3 p-3 rounded-lg border hover:bg-muted/50 transition-colors cursor-pointer"
-                      onClick={() => toggleSelection(task.id)}
-                    >
-                      <Checkbox
-                        checked={selectedIds.has(task.id)}
-                        onCheckedChange={() => toggleSelection(task.id)}
-                      />
-                      <div className="flex-1 min-w-0">
-                        <div className="font-medium text-sm truncate">
+                </p> :
+
+              <div data-style-id="stylo-771" id="el-409" className="space-y-2">
+                  {filteredProjectTasks.map((task) =>
+                <div data-style-id="stylo-772" id="el-410"
+                key={task.id}
+                className="flex items-center gap-3 p-3 rounded-lg border hover:bg-muted/50 transition-colors cursor-pointer"
+                onClick={() => toggleSelection(task.id)}>
+
+                      <Checkbox data-style-id="stylo-773"
+                  checked={selectedIds.has(task.id)}
+                  onCheckedChange={() => toggleSelection(task.id)} />
+
+                      <div data-style-id="stylo-774" id="el-411" className="flex-1 min-w-0">
+                        <div data-style-id="stylo-775" id="el-412" className="font-medium text-sm truncate">
                           {task.title}
                         </div>
-                        <div className="text-xs text-muted-foreground">
+                        <div data-style-id="stylo-776" id="el-413" className="text-xs text-muted-foreground">
                           {task.projectName}
                         </div>
                       </div>
                     </div>
-                  ))}
+                )}
                 </div>
-              )}
+              }
             </ScrollArea>
           </TabsContent>
 
-          <TabsContent value="casual">
-            <p className="text-center text-muted-foreground py-8">
+          <TabsContent data-style-id="stylo-777" value="casual">
+            <p data-style-id="stylo-778" id="el-414" className="text-center text-muted-foreground py-8">
               Casual task import coming soon
             </p>
           </TabsContent>
         </Tabs>
 
-        <DialogFooter>
-          <Button variant="outline" onClick={() => onOpenChange(false)}>
+        <DialogFooter data-style-id="stylo-779">
+          <Button data-style-id="stylo-780" variant="outline" onClick={() => onOpenChange(false)}>
             Cancel
           </Button>
-          <Button
-            onClick={handleAddSelected}
-            disabled={selectedIds.size === 0}
-          >
+          <Button data-style-id="stylo-781"
+          onClick={handleAddSelected}
+          disabled={selectedIds.size === 0}>
+
             Add {selectedIds.size > 0 ? `(${selectedIds.size})` : ''}
           </Button>
         </DialogFooter>
       </DialogContent>
-    </Dialog>
-  );
+    </Dialog>);
+
 }

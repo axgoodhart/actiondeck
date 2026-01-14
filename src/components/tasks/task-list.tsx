@@ -294,79 +294,79 @@ export function TaskList() {
   });
 
   return (
-    <Card id="tasks-card" className="task-card">
-            <CardHeader>
-                <CardTitle>Casual Task List</CardTitle>
-                <CardDescription>A simple place for your day-to-day tasks. Use the magic wand to break a larger goal into a collapsible task deck.</CardDescription>
+    <Card data-style-id="stylo-633" id="tasks-card" className="task-card">
+            <CardHeader data-style-id="stylo-634">
+                <CardTitle data-style-id="stylo-635">Casual Task List</CardTitle>
+                <CardDescription data-style-id="stylo-636">A simple place for your day-to-day tasks. Use the magic wand to break a larger goal into a collapsible task deck.</CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent data-style-id="stylo-637">
                 {clarifyingQuestion ?
-        <div id="el-189" className="mb-6 space-y-4 animate-in fade-in-50">
-                        <Alert id="tasks-clarification-alert">
-                            <Bot className="h-4 w-4" />
-                            <AlertTitle>The AI needs more information:</AlertTitle>
-                            <AlertDescription>{clarifyingQuestion}</AlertDescription>
+        <div data-style-id="stylo-638" id="el-189" className="mb-6 space-y-4 animate-in fade-in-50">
+                        <Alert data-style-id="stylo-639" id="tasks-clarification-alert">
+                            <Bot data-style-id="stylo-640" className="h-4 w-4" />
+                            <AlertTitle data-style-id="stylo-641">The AI needs more information:</AlertTitle>
+                            <AlertDescription data-style-id="stylo-642">{clarifyingQuestion}</AlertDescription>
                         </Alert>
-                        <form id="el-190" onSubmit={handleClarificationSubmit} className="task-input-row">
-                             <Input
-              className="dashboard-input"
-              placeholder="Your answer..."
-              value={context}
-              onChange={(e) => setContext(e.target.value)}
-              disabled={isBreakingDown}
-              autoFocus />
+                        <form data-style-id="stylo-643" id="el-190" onSubmit={handleClarificationSubmit} className="task-input-row">
+                             <Input data-style-id="stylo-644"
+            className="dashboard-input"
+            placeholder="Your answer..."
+            value={context}
+            onChange={(e) => setContext(e.target.value)}
+            disabled={isBreakingDown}
+            autoFocus />
 
-                            <Button type="submit" disabled={isBreakingDown} className="dashboard-button-primary">
-                                {isBreakingDown ? <Loader2 className="h-4 w-4 animate-spin" /> : "Submit"}
+                            <Button data-style-id="stylo-645" type="submit" disabled={isBreakingDown} className="dashboard-button-primary">
+                                {isBreakingDown ? <Loader2 data-style-id="stylo-646" className="h-4 w-4 animate-spin" /> : "Submit"}
                             </Button>
-                            <Button type="button" variant="ghost" onClick={resetAiState} disabled={isBreakingDown} className="btn-outline-glass">
+                            <Button data-style-id="stylo-647" type="button" variant="ghost" onClick={resetAiState} disabled={isBreakingDown} className="btn-outline-glass">
                                 Cancel
                             </Button>
                         </form>
                     </div> :
 
-        <form id="tasks-input-form" onSubmit={handleAddItem} className="task-input-row">
-                        <Input
-            id="tasks-input-field"
-            className="dashboard-input"
-            placeholder="Add a task or use AI to create a task deck..."
-            value={newItemTitle}
-            onChange={(e) => setNewItemTitle(e.target.value)}
-            disabled={isBreakingDown} />
+        <form data-style-id="stylo-648" id="tasks-input-form" onSubmit={handleAddItem} className="task-input-row">
+                        <Input data-style-id="stylo-649"
+          id="tasks-input-field"
+          className="dashboard-input"
+          placeholder="Add a task or use AI to create a task deck..."
+          value={newItemTitle}
+          onChange={(e) => setNewItemTitle(e.target.value)}
+          disabled={isBreakingDown} />
 
-                        <Button id="tasks-add-btn" type="submit" size="icon" aria-label="Add Task" disabled={isBreakingDown} className="dashboard-button-primary">
-                            <Plus className="h-4 w-4" />
+                        <Button data-style-id="stylo-650" id="tasks-add-btn" type="submit" size="icon" aria-label="Add Task" disabled={isBreakingDown} className="dashboard-button-primary">
+                            <Plus data-style-id="stylo-651" className="h-4 w-4" />
                         </Button>
-                        <Button id="tasks-ai-breakdown-btn" type="button" size="icon" variant="outline" aria-label="Breakdown with AI" onClick={handleAiBreakdown} disabled={isBreakingDown} className="btn-outline-glass">
-                            {isBreakingDown ? <Loader2 className="h-4 w-4 animate-spin" /> : <Bot className="h-4 w-4" />}
+                        <Button data-style-id="stylo-652" id="tasks-ai-breakdown-btn" type="button" size="icon" variant="outline" aria-label="Breakdown with AI" onClick={handleAiBreakdown} disabled={isBreakingDown} className="btn-outline-glass">
+                            {isBreakingDown ? <Loader2 data-style-id="stylo-653" className="h-4 w-4 animate-spin" /> : <Bot data-style-id="stylo-654" className="h-4 w-4" />}
                         </Button>
                     </form>
         }
 
 
-                <div id="el-191" className="space-y-4">
-                    <div id="tasks-pending-section" className="relative space-y-2">
+                <div data-style-id="stylo-655" id="el-191" className="space-y-4">
+                    <div data-style-id="stylo-656" id="tasks-pending-section" className="relative space-y-2">
                         {pendingTasks.length > 0 ?
             pendingTasks.map((item) =>
             'isDeck' in item ?
-            <TaskDeckComponent key={item.id} deck={item} onToggleTask={toggleTask} onDeleteTask={deleteTask} /> :
-            <TaskItem key={item.id} task={item} onToggle={() => toggleTask(item.id)} onDelete={() => deleteTask(item.id)} />
+            <TaskDeckComponent data-style-id="stylo-657" key={item.id} deck={item} onToggleTask={toggleTask} onDeleteTask={deleteTask} /> :
+            <TaskItem data-style-id="stylo-658" key={item.id} task={item} onToggle={() => toggleTask(item.id)} onDelete={() => deleteTask(item.id)} />
             ) :
 
-            <p id="el-192" className="text-sm text-muted-foreground py-4 text-center">All done for now! 🎉</p>
+            <p data-style-id="stylo-659" id="el-192" className="text-sm text-muted-foreground py-4 text-center">All done for now! 🎉</p>
 
             }
                     </div>
 
                     {completedTasks.length > 0 &&
-          <div id="tasks-completed-section">
-                            <Separator className="my-4" />
-                            <h3 id="el-193" className="text-sm font-medium mb-2 text-muted-foreground">Completed</h3>
-                            <div id="el-194" className="space-y-2">
+          <div data-style-id="stylo-660" id="tasks-completed-section">
+                            <Separator data-style-id="stylo-661" className="my-4" />
+                            <h3 data-style-id="stylo-662" id="el-193" className="text-sm font-medium mb-2 text-muted-foreground">Completed</h3>
+                            <div data-style-id="stylo-663" id="el-194" className="space-y-2">
                                 {completedTasks.map((item) =>
               'isDeck' in item ?
-              <TaskDeckComponent key={item.id} deck={item} onToggleTask={toggleTask} onDeleteTask={deleteTask} /> :
-              <TaskItem key={item.id} task={item} onToggle={() => toggleTask(item.id)} onDelete={() => deleteTask(item.id)} />
+              <TaskDeckComponent data-style-id="stylo-664" key={item.id} deck={item} onToggleTask={toggleTask} onDeleteTask={deleteTask} /> :
+              <TaskItem data-style-id="stylo-665" key={item.id} task={item} onToggle={() => toggleTask(item.id)} onDelete={() => deleteTask(item.id)} />
               )}
                             </div>
                         </div>

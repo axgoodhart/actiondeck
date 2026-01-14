@@ -44,35 +44,35 @@ export default function LoginPage() {
   }
 
   return (
-    <div id="el-352" className="flex items-center justify-center min-h-[60vh] p-4">
-      <Card className="w-full max-w-md">
-        <CardHeader>
-          <CardTitle>{user ? 'Account' : mode === 'login' ? 'Log in' : 'Create account'}</CardTitle>
-          <CardDescription>
+    <div data-style-id="stylo-1152" id="el-352" className="flex items-center justify-center min-h-[60vh] p-4">
+      <Card data-style-id="stylo-1153" className="w-full max-w-md">
+        <CardHeader data-style-id="stylo-1154">
+          <CardTitle data-style-id="stylo-1155">{user ? 'Account' : mode === 'login' ? 'Log in' : 'Create account'}</CardTitle>
+          <CardDescription data-style-id="stylo-1156">
             {user ? 'You are signed in. Use the app routes now.' : 'Use email + password to authenticate.'}
           </CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent data-style-id="stylo-1157">
           {user ?
-          <div id="el-353" className="space-y-4">
-              <div id="el-354" className="text-sm text-muted-foreground">UID: {user.uid}</div>
-              <div id="el-355" className="text-sm text-muted-foreground">Email: {user.email || '—'}</div>
-              <Button onClick={() => signOut(auth)}>Sign out</Button>
+          <div data-style-id="stylo-1158" id="el-353" className="space-y-4">
+              <div data-style-id="stylo-1159" id="el-354" className="text-sm text-muted-foreground">UID: {user.uid}</div>
+              <div data-style-id="stylo-1160" id="el-355" className="text-sm text-muted-foreground">Email: {user.email || '—'}</div>
+              <Button data-style-id="stylo-1161" onClick={() => signOut(auth)}>Sign out</Button>
             </div> :
 
-          <form id="el-356" onSubmit={handleSubmit} className="space-y-4">
-              <div id="el-357" className="grid gap-2">
-                <label id="el-358" className="text-sm">Email</label>
-                <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          <form data-style-id="stylo-1162" id="el-356" onSubmit={handleSubmit} className="space-y-4">
+              <div data-style-id="stylo-1163" id="el-357" className="grid gap-2">
+                <label data-style-id="stylo-1164" id="el-358" className="text-sm">Email</label>
+                <Input data-style-id="stylo-1165" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
               </div>
-              <div id="el-359" className="grid gap-2">
-                <label id="el-360" className="text-sm">Password</label>
-                <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+              <div data-style-id="stylo-1166" id="el-359" className="grid gap-2">
+                <label data-style-id="stylo-1167" id="el-360" className="text-sm">Password</label>
+                <Input data-style-id="stylo-1168" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
               </div>
-              {error && <div id="el-361" className="text-sm text-destructive">{error}</div>}
-              <div id="el-362" className="flex items-center gap-2">
-                <Button type="submit" disabled={loading}>{loading ? 'Please wait…' : mode === 'login' ? 'Log in' : 'Sign up'}</Button>
-                <Button type="button" variant="outline" onClick={() => setMode(mode === 'login' ? 'signup' : 'login')}>
+              {error && <div data-style-id="stylo-1169" id="el-361" className="text-sm text-destructive">{error}</div>}
+              <div data-style-id="stylo-1170" id="el-362" className="flex items-center gap-2">
+                <Button data-style-id="stylo-1171" type="submit" disabled={loading}>{loading ? 'Please wait…' : mode === 'login' ? 'Log in' : 'Sign up'}</Button>
+                <Button data-style-id="stylo-1172" type="button" variant="outline" onClick={() => setMode(mode === 'login' ? 'signup' : 'login')}>
                   {mode === 'login' ? 'Need an account?' : 'Have an account?'}
                 </Button>
               </div>

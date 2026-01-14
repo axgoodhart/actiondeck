@@ -23,14 +23,14 @@ export function ProgressRing({
   const offset = circumference - normalizedProgress / 100 * circumference;
 
   return (
-    <div id="el-39" className={`relative inline-flex items-center justify-center ${className}`}>
-      <svg id="el-40"
+    <div data-style-id="stylo-100" id="el-39" className={`relative inline-flex items-center justify-center ${className}`}>
+      <svg data-style-id="stylo-101" id="el-40"
       width={size}
       height={size}
       className="transform -rotate-90">
 
         {/* Background circle */}
-        <circle id="el-41"
+        <circle data-style-id="stylo-102" id="el-41"
         cx={size / 2}
         cy={size / 2}
         r={radius}
@@ -39,7 +39,7 @@ export function ProgressRing({
         strokeWidth={strokeWidth} />
 
         {/* Progress circle */}
-        <circle id="el-42"
+        <circle data-style-id="stylo-103" id="el-42"
         cx={size / 2}
         cy={size / 2}
         r={radius}
@@ -56,7 +56,7 @@ export function ProgressRing({
 
       </svg>
       {showLabel &&
-      <span id="el-43"
+      <span data-style-id="stylo-104" id="el-43"
       className="absolute text-xs font-medium"
       style={{ color: 'hsl(165, 100%, 75%)' }}>
 
@@ -86,14 +86,14 @@ export function DomainProgressRing({
   const offset = circumference - normalizedProgress / 100 * circumference;
 
   return (
-    <div id="el-44" className={`relative inline-flex items-center justify-center ${className}`}>
-      <svg id="el-45"
+    <div data-style-id="stylo-105" id="el-44" className={`relative inline-flex items-center justify-center ${className}`}>
+      <svg data-style-id="stylo-106" id="el-45"
       width={size}
       height={size}
       className="transform -rotate-90">
 
         {/* Background circle */}
-        <circle id="el-46"
+        <circle data-style-id="stylo-107" id="el-46"
         cx={size / 2}
         cy={size / 2}
         r={radius}
@@ -102,7 +102,7 @@ export function DomainProgressRing({
         strokeWidth={strokeWidth} />
 
         {/* Progress circle */}
-        <circle id="el-47"
+        <circle data-style-id="stylo-108" id="el-47"
         cx={size / 2}
         cy={size / 2}
         r={radius}
@@ -119,7 +119,7 @@ export function DomainProgressRing({
 
       </svg>
       {showLabel &&
-      <span id="el-48"
+      <span data-style-id="stylo-109" id="el-48"
       className="absolute text-xs font-bold"
       style={{ color }}>
 

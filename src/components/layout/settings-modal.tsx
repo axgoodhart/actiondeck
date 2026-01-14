@@ -106,74 +106,74 @@ export function SettingsModal({ open, onOpenChange }: {open: boolean;onOpenChang
   }
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-2xl">
-        <DialogHeader>
-          <DialogTitle>Settings</DialogTitle>
-          <DialogDescription>Manage account, and import/export your Action Deck data.</DialogDescription>
+    <Dialog data-style-id="stylo-494" open={open} onOpenChange={onOpenChange}>
+      <DialogContent data-style-id="stylo-495" className="sm:max-w-2xl">
+        <DialogHeader data-style-id="stylo-496">
+          <DialogTitle data-style-id="stylo-497">Settings</DialogTitle>
+          <DialogDescription data-style-id="stylo-498">Manage account, and import/export your Action Deck data.</DialogDescription>
         </DialogHeader>
 
-        <div id="el-136" className="grid md:grid-cols-2 gap-6">
-          <div id="el-137" className="space-y-3">
-            <div id="el-138" className="text-sm font-medium">Account</div>
+        <div data-style-id="stylo-499" id="el-136" className="grid md:grid-cols-2 gap-6">
+          <div data-style-id="stylo-500" id="el-137" className="space-y-3">
+            <div data-style-id="stylo-501" id="el-138" className="text-sm font-medium">Account</div>
             {uid ?
-            <div id="el-139" className="space-y-2">
-                <div id="el-140" className="text-sm text-muted-foreground">Signed in as: {uid}</div>
-                <Button variant="secondary" onClick={() => signOut(auth)}>Log out</Button>
+            <div data-style-id="stylo-502" id="el-139" className="space-y-2">
+                <div data-style-id="stylo-503" id="el-140" className="text-sm text-muted-foreground">Signed in as: {uid}</div>
+                <Button data-style-id="stylo-504" variant="secondary" onClick={() => signOut(auth)}>Log out</Button>
               </div> :
 
-            <form id="el-141" onSubmit={handleAuthSubmit} className="space-y-2">
-                <Input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-                <Input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-                {error && <div id="el-142" className="text-sm text-destructive">{error}</div>}
-                <div id="el-143" className="flex gap-2">
-                  <Button type="submit" disabled={busy}>{mode === 'login' ? 'Log in' : 'Sign up'}</Button>
-                  <Button type="button" variant="outline" onClick={() => setMode(mode === 'login' ? 'signup' : 'login')}>
+            <form data-style-id="stylo-505" id="el-141" onSubmit={handleAuthSubmit} className="space-y-2">
+                <Input data-style-id="stylo-506" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                <Input data-style-id="stylo-507" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                {error && <div data-style-id="stylo-508" id="el-142" className="text-sm text-destructive">{error}</div>}
+                <div data-style-id="stylo-509" id="el-143" className="flex gap-2">
+                  <Button data-style-id="stylo-510" type="submit" disabled={busy}>{mode === 'login' ? 'Log in' : 'Sign up'}</Button>
+                  <Button data-style-id="stylo-511" type="button" variant="outline" onClick={() => setMode(mode === 'login' ? 'signup' : 'login')}>
                     {mode === 'login' ? 'Need an account?' : 'Have an account?'}
                   </Button>
                 </div>
               </form>
             }
 
-            <div id="el-144" className="space-y-4 pt-4">
-              <div id="el-145" className="text-sm font-medium">Behavior</div>
-              <div id="el-146" className="flex items-start justify-between gap-4">
-                <div id="el-147" className="text-sm">
-                  <Label htmlFor="cloud">Save to cloud</Label>
-                  <p id="el-148" className="text-muted-foreground">When off, the app is read-only. Any changes you make will not be saved and are lost on reload or page change unless you Export first.</p>
+            <div data-style-id="stylo-512" id="el-144" className="space-y-4 pt-4">
+              <div data-style-id="stylo-513" id="el-145" className="text-sm font-medium">Behavior</div>
+              <div data-style-id="stylo-514" id="el-146" className="flex items-start justify-between gap-4">
+                <div data-style-id="stylo-515" id="el-147" className="text-sm">
+                  <Label data-style-id="stylo-516" htmlFor="cloud">Save to cloud</Label>
+                  <p data-style-id="stylo-517" id="el-148" className="text-muted-foreground">When off, the app is read-only. Any changes you make will not be saved and are lost on reload or page change unless you Export first.</p>
                 </div>
-                <Switch id="cloud" checked={!!settings.enableSync} disabled={!uid || !isReady} onCheckedChange={(v) => updateSettings({ enableSync: !!v })} />
+                <Switch data-style-id="stylo-518" id="cloud" checked={!!settings.enableSync} disabled={!uid || !isReady} onCheckedChange={(v) => updateSettings({ enableSync: !!v })} />
               </div>
-              <div id="el-149" className="flex items-start justify-between gap-4">
-                <div id="el-150" className="text-sm">
-                  <Label htmlFor="briizos">Import from briizOS</Label>
-                  <p id="el-151" className="text-muted-foreground">When on, the Casual Task List shows briizOS organizer items (read-only). Import happens each time you open or refocus the Tasks page.</p>
+              <div data-style-id="stylo-519" id="el-149" className="flex items-start justify-between gap-4">
+                <div data-style-id="stylo-520" id="el-150" className="text-sm">
+                  <Label data-style-id="stylo-521" htmlFor="briizos">Import from briizOS</Label>
+                  <p data-style-id="stylo-522" id="el-151" className="text-muted-foreground">When on, the Casual Task List shows briizOS organizer items (read-only). Import happens each time you open or refocus the Tasks page.</p>
                 </div>
-                <Switch id="briizos" checked={!!settings.importBriizOS} disabled={!uid || !isReady} onCheckedChange={(v) => updateSettings({ importBriizOS: !!v })} />
+                <Switch data-style-id="stylo-523" id="briizos" checked={!!settings.importBriizOS} disabled={!uid || !isReady} onCheckedChange={(v) => updateSettings({ importBriizOS: !!v })} />
               </div>
             </div>
           </div>
 
-          <div id="el-152" className="space-y-3">
-            <div id="el-153" className="flex items-center justify-between">
-              <div id="el-154" className="text-sm font-medium">Export</div>
-              <Button size="sm" onClick={handleExport} disabled={busy}>Export now</Button>
+          <div data-style-id="stylo-524" id="el-152" className="space-y-3">
+            <div data-style-id="stylo-525" id="el-153" className="flex items-center justify-between">
+              <div data-style-id="stylo-526" id="el-154" className="text-sm font-medium">Export</div>
+              <Button data-style-id="stylo-527" size="sm" onClick={handleExport} disabled={busy}>Export now</Button>
             </div>
-            <Textarea value={exportData} readOnly rows={10} placeholder="Click Export to generate JSON" />
+            <Textarea data-style-id="stylo-528" value={exportData} readOnly rows={10} placeholder="Click Export to generate JSON" />
           </div>
         </div>
 
-        <div id="el-155" className="space-y-2 mt-6">
-          <div id="el-156" className="text-sm font-medium">Import</div>
-          <Textarea rows={8} value={importText} onChange={(e) => setImportText(e.target.value)} placeholder={example} />
-          <div id="el-157" className="flex gap-2 justify-end">
-            <Button variant="outline" onClick={() => setImportText(example)}>Load example</Button>
-            <Button onClick={handleImport} disabled={busy || !uid}>Import</Button>
+        <div data-style-id="stylo-529" id="el-155" className="space-y-2 mt-6">
+          <div data-style-id="stylo-530" id="el-156" className="text-sm font-medium">Import</div>
+          <Textarea data-style-id="stylo-531" rows={8} value={importText} onChange={(e) => setImportText(e.target.value)} placeholder={example} />
+          <div data-style-id="stylo-532" id="el-157" className="flex gap-2 justify-end">
+            <Button data-style-id="stylo-533" variant="outline" onClick={() => setImportText(example)}>Load example</Button>
+            <Button data-style-id="stylo-534" onClick={handleImport} disabled={busy || !uid}>Import</Button>
           </div>
         </div>
 
-        <DialogFooter>
-          <Button variant="secondary" onClick={() => onOpenChange(false)}>Close</Button>
+        <DialogFooter data-style-id="stylo-535">
+          <Button data-style-id="stylo-536" variant="secondary" onClick={() => onOpenChange(false)}>Close</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>);

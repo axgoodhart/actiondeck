@@ -19,11 +19,11 @@ export function DomainFilterBar({
   className
 }: DomainFilterBarProps) {
   return (
-    <div id="el-19" className={cn('w-full', className)}>
-      <ScrollArea className="w-full whitespace-nowrap">
-        <div id="el-20" className="flex gap-2 pb-3 px-1">
+    <div data-style-id="stylo-55" id="el-19" className={cn('w-full', className)}>
+      <ScrollArea data-style-id="stylo-56" className="w-full whitespace-nowrap">
+        <div data-style-id="stylo-57" id="el-20" className="flex gap-2 pb-3 px-1">
           {/* All domains button */}
-          <button id="el-21"
+          <button data-style-id="stylo-58" id="el-21"
           onClick={() => onDomainChange(null)}
           className={cn(
             'inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200',
@@ -33,7 +33,7 @@ export function DomainFilterBar({
             'bg-black/30 border-white/10 text-white/70 hover:border-white/30 hover:text-white'
           )}>
 
-            <LayoutGrid className="h-4 w-4" />
+            <LayoutGrid data-style-id="stylo-59" className="h-4 w-4" />
             All
           </button>
 
@@ -43,7 +43,7 @@ export function DomainFilterBar({
             const isSelected = selectedDomain === domain.value;
 
             return (
-              <button id="el-22"
+              <button data-style-id="stylo-60" id="el-22"
               key={domain.value}
               onClick={() => onDomainChange(domain.value)}
               className={cn(
@@ -62,13 +62,13 @@ export function DomainFilterBar({
               undefined
               }>
 
-                <Icon className="h-4 w-4" />
+                <Icon data-style-id="stylo-61" className="h-4 w-4" />
                 {domain.label}
               </button>);
 
           })}
         </div>
-        <ScrollBar orientation="horizontal" className="h-2" />
+        <ScrollBar data-style-id="stylo-62" orientation="horizontal" className="h-2" />
       </ScrollArea>
     </div>);
 
@@ -81,13 +81,13 @@ export function DomainIconBar({
   className
 }: DomainFilterBarProps) {
   return (
-    <div id="el-23" className={cn('flex flex-wrap gap-1', className)}>
+    <div data-style-id="stylo-63" id="el-23" className={cn('flex flex-wrap gap-1', className)}>
       {DOMAIN_LIST.map((domain) => {
         const Icon = domain.icon;
         const isSelected = selectedDomain === domain.value;
 
         return (
-          <button id="el-24"
+          <button data-style-id="stylo-64" id="el-24"
           key={domain.value}
           onClick={() => onDomainChange(isSelected ? null : domain.value)}
           title={domain.label}
@@ -106,7 +106,7 @@ export function DomainIconBar({
           undefined
           }>
 
-            <Icon className="h-4 w-4" />
+            <Icon data-style-id="stylo-65" className="h-4 w-4" />
           </button>);
 
       })}
@@ -130,7 +130,7 @@ export function DomainBadge({
   const Icon = config.icon;
 
   return (
-    <div id="el-25"
+    <div data-style-id="stylo-66" id="el-25"
     className={cn(
       'inline-flex items-center gap-1.5 rounded-full text-white font-medium',
       size === 'small' ? 'px-2 py-0.5 text-xs' : 'px-3 py-1 text-sm',
@@ -141,7 +141,7 @@ export function DomainBadge({
       boxShadow: `0 2px 8px ${config.color}30`
     }}>
 
-      <Icon className={size === 'small' ? 'h-3 w-3' : 'h-4 w-4'} />
+      <Icon data-style-id="stylo-67" className={size === 'small' ? 'h-3 w-3' : 'h-4 w-4'} />
       {config.label}
     </div>);
 

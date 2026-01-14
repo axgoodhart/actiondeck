@@ -46,22 +46,22 @@ export function SearchBar({
   }, [onChange]);
 
   return (
-    <div id={id} className={cn('relative', className)}>
-      <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
-      <Input
-        type="text"
-        value={localValue}
-        onChange={(e) => setLocalValue(e.target.value)}
-        placeholder={placeholder}
-        className="pl-9 pr-9 dashboard-input" />
+    <div data-style-id="stylo-355" id={id} className={cn('relative', className)}>
+      <Search data-style-id="stylo-356" className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+      <Input data-style-id="stylo-357"
+      type="text"
+      value={localValue}
+      onChange={(e) => setLocalValue(e.target.value)}
+      placeholder={placeholder}
+      className="pl-9 pr-9 dashboard-input" />
 
       {localValue &&
-      <button id="el-104"
+      <button data-style-id="stylo-358" id="el-104"
       onClick={handleClear}
       className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground hover:text-foreground transition-colors"
       aria-label="Clear search">
 
-          <X className="h-4 w-4" />
+          <X data-style-id="stylo-359" className="h-4 w-4" />
         </button>
       }
     </div>);

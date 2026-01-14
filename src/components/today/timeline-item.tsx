@@ -25,7 +25,7 @@ export function TimelineItem({ item }: TimelineItemProps) {
   const [resizeState, setResizeState] = useState({ startY: 0, startDuration: 0 });
 
   const top = minuteToPixel(item.startMinute);
-  const height = (item.durationMinutes / 60) * PIXELS_PER_HOUR;
+  const height = item.durationMinutes / 60 * PIXELS_PER_HOUR;
 
   // Format time for display
   const formatTime = (minute: number) => {
@@ -48,7 +48,7 @@ export function TimelineItem({ item }: TimelineItemProps) {
     setIsDragging(true);
     setDragState({
       startY: e.clientY,
-      startMinute: item.startMinute,
+      startMinute: item.startMinute
     });
   }, [item.startMinute, isResizing]);
 
@@ -57,7 +57,7 @@ export function TimelineItem({ item }: TimelineItemProps) {
     e.preventDefault();
 
     const deltaY = e.clientY - dragState.startY;
-    const deltaMinutes = Math.round((deltaY / PIXELS_PER_HOUR) * 60 / 15) * 15;
+    const deltaMinutes = Math.round(deltaY / PIXELS_PER_HOUR * 60 / 15) * 15;
     const newStartMinute = Math.max(0, Math.min(1440 - item.durationMinutes, dragState.startMinute + deltaMinutes));
 
     if (newStartMinute !== item.startMinute) {
@@ -79,7 +79,7 @@ export function TimelineItem({ item }: TimelineItemProps) {
     setIsResizing(true);
     setResizeState({
       startY: e.clientY,
-      startDuration: item.durationMinutes,
+      startDuration: item.durationMinutes
     });
   }, [item.durationMinutes]);
 
@@ -88,7 +88,7 @@ export function TimelineItem({ item }: TimelineItemProps) {
     e.preventDefault();
 
     const deltaY = e.clientY - resizeState.startY;
-    const deltaMinutes = Math.round((deltaY / PIXELS_PER_HOUR) * 60 / 15) * 15;
+    const deltaMinutes = Math.round(deltaY / PIXELS_PER_HOUR * 60 / 15) * 15;
     const newDuration = Math.max(MIN_DURATION, resizeState.startDuration + deltaMinutes);
 
     if (newDuration !== item.durationMinutes) {
@@ -106,82 +106,82 @@ export function TimelineItem({ item }: TimelineItemProps) {
   const getSourceColor = () => {
     if (item.color) return item.color;
     switch (item.source.type) {
-      case 'project': return 'hsl(var(--primary))';
-      case 'casual': return 'hsl(var(--secondary))';
-      default: return 'hsl(var(--muted-foreground))';
+      case 'project':return 'hsl(var(--primary))';
+      case 'casual':return 'hsl(var(--secondary))';
+      default:return 'hsl(var(--muted-foreground))';
     }
   };
 
   return (
-    <div
-      ref={itemRef}
-      className={cn(
-        'today-time-block absolute left-0 right-0 rounded-lg border p-2 group transition-shadow',
-        isDragging && 'shadow-xl z-30 opacity-90',
-        isResizing && 'z-30',
-        item.completed && 'opacity-50'
-      )}
-      style={{
-        top,
-        height: Math.max(height, 24),
-        borderLeftWidth: 3,
-        borderLeftColor: getSourceColor(),
-        background: item.completed
-          ? 'linear-gradient(to bottom, hsla(210, 20%, 25%, 0.3), hsla(210, 20%, 20%, 0.2))'
-          : 'linear-gradient(to bottom, hsla(165, 100%, 45%, 0.15), hsla(165, 100%, 35%, 0.08))',
-      }}
-    >
+    <div data-style-id="stylo-803" id="el-416"
+    ref={itemRef}
+    className={cn(
+      'today-time-block absolute left-0 right-0 rounded-lg border p-2 group transition-shadow',
+      isDragging && 'shadow-xl z-30 opacity-90',
+      isResizing && 'z-30',
+      item.completed && 'opacity-50'
+    )}
+    style={{
+      top,
+      height: Math.max(height, 24),
+      borderLeftWidth: 3,
+      borderLeftColor: getSourceColor(),
+      background: item.completed ?
+      'linear-gradient(to bottom, hsla(210, 20%, 25%, 0.3), hsla(210, 20%, 20%, 0.2))' :
+      'linear-gradient(to bottom, hsla(165, 100%, 45%, 0.15), hsla(165, 100%, 35%, 0.08))'
+    }}>
+
       {/* Drag handle */}
-      <div
-        className="absolute left-0 top-0 bottom-0 w-6 cursor-grab active:cursor-grabbing flex items-center justify-center opacity-0 group-hover:opacity-50 transition-opacity"
-        onPointerDown={handleDragStart}
-        onPointerMove={handleDragMove}
-        onPointerUp={handleDragEnd}
-        onPointerCancel={handleDragEnd}
-      >
-        <GripVertical className="h-4 w-4" />
+      <div data-style-id="stylo-804" id="el-417"
+      className="absolute left-0 top-0 bottom-0 w-6 cursor-grab active:cursor-grabbing flex items-center justify-center opacity-0 group-hover:opacity-50 transition-opacity"
+      onPointerDown={handleDragStart}
+      onPointerMove={handleDragMove}
+      onPointerUp={handleDragEnd}
+      onPointerCancel={handleDragEnd}>
+
+        <GripVertical data-style-id="stylo-805" className="h-4 w-4" />
       </div>
 
       {/* Content */}
-      <div className="flex items-start gap-2 pl-5 pr-8">
-        <Checkbox
-          checked={item.completed}
-          onCheckedChange={() => toggleItemComplete(item.id)}
-          className="mt-0.5"
-        />
-        <div className="flex-1 min-w-0">
-          <div className={cn(
+      <div data-style-id="stylo-806" id="el-418" className="flex items-start gap-2 pl-5 pr-8">
+        <Checkbox data-style-id="stylo-807"
+        checked={item.completed}
+        onCheckedChange={() => toggleItemComplete(item.id)}
+        className="mt-0.5" />
+
+        <div data-style-id="stylo-808" id="el-419" className="flex-1 min-w-0">
+          <div data-style-id="stylo-809" id="el-420" className={cn(
             'font-medium text-sm truncate',
             item.completed && 'line-through text-muted-foreground'
           )}>
             {item.title}
           </div>
-          <div className="text-xs text-muted-foreground">
+          <div data-style-id="stylo-810" id="el-421" className="text-xs text-muted-foreground">
             {startTime} - {endTime}
           </div>
         </div>
       </div>
 
       {/* Delete button */}
-      <Button
-        variant="ghost"
-        size="icon"
-        className="absolute right-1 top-1 h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity text-muted-foreground hover:text-destructive"
-        onClick={() => deleteItem(item.id)}
-      >
-        <Trash2 className="h-3 w-3" />
+      <Button data-style-id="stylo-811"
+      variant="ghost"
+      size="icon"
+      className="absolute right-1 top-1 h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity text-muted-foreground hover:text-destructive"
+      onClick={() => deleteItem(item.id)}>
+
+        <Trash2 data-style-id="stylo-812" className="h-3 w-3" />
       </Button>
 
       {/* Resize handle (bottom) */}
-      <div
-        className="absolute left-2 right-2 bottom-0 h-2 cursor-ns-resize opacity-0 group-hover:opacity-100 transition-opacity"
-        onPointerDown={handleResizeStart}
-        onPointerMove={handleResizeMove}
-        onPointerUp={handleResizeEnd}
-        onPointerCancel={handleResizeEnd}
-      >
-        <div className="w-8 h-1 bg-muted-foreground/50 rounded mx-auto mt-0.5" />
+      <div data-style-id="stylo-813" id="el-422"
+      className="absolute left-2 right-2 bottom-0 h-2 cursor-ns-resize opacity-0 group-hover:opacity-100 transition-opacity"
+      onPointerDown={handleResizeStart}
+      onPointerMove={handleResizeMove}
+      onPointerUp={handleResizeEnd}
+      onPointerCancel={handleResizeEnd}>
+
+        <div data-style-id="stylo-814" id="el-423" className="w-8 h-1 bg-muted-foreground/50 rounded mx-auto mt-0.5" />
       </div>
-    </div>
-  );
+    </div>);
+
 }

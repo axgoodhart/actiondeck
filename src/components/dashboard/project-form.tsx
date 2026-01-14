@@ -139,292 +139,292 @@ export function ProjectForm({ isOpen, onOpenChange, projectToEdit }: ProjectForm
   };
 
   return (
-    <Dialog open={isOpen} onOpenChange={onOpenChange}>
-            <DialogContent className="sm:max-w-[500px] max-h-[90vh] overflow-y-auto">
-                <DialogHeader>
-                    <DialogTitle>{isEditMode ? 'Edit Project' : 'Create Project'}</DialogTitle>
-                    <DialogDescription>
+    <Dialog data-style-id="stylo-134" open={isOpen} onOpenChange={onOpenChange}>
+            <DialogContent data-style-id="stylo-135" className="sm:max-w-[500px] max-h-[90vh] overflow-y-auto">
+                <DialogHeader data-style-id="stylo-136">
+                    <DialogTitle data-style-id="stylo-137">{isEditMode ? 'Edit Project' : 'Create Project'}</DialogTitle>
+                    <DialogDescription data-style-id="stylo-138">
                         {isEditMode ? "Update the details of your project." : "Add a new project to your dashboard."}
                     </DialogDescription>
                 </DialogHeader>
-                <Form {...form}>
-                    <form id="el-61" onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 py-4">
-                        <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) =>
-              <FormItem>
-                                    <FormLabel>Project Name</FormLabel>
-                                    <FormControl>
-                                        <Input placeholder="e.g., My Awesome Project" {...field} />
+                <Form data-style-id="stylo-139" {...form}>
+                    <form data-style-id="stylo-140" id="el-61" onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 py-4">
+                        <FormField data-style-id="stylo-141"
+            control={form.control}
+            name="name"
+            render={({ field }) =>
+            <FormItem data-style-id="stylo-142">
+                                    <FormLabel data-style-id="stylo-143">Project Name</FormLabel>
+                                    <FormControl data-style-id="stylo-144">
+                                        <Input data-style-id="stylo-145" placeholder="e.g., My Awesome Project" {...field} />
                                     </FormControl>
-                                    <FormMessage />
+                                    <FormMessage data-style-id="stylo-146" />
                                 </FormItem>
-              } />
+            } />
 
 
-                        <div id="el-62" className="grid grid-cols-2 gap-4">
-                            <FormField
-                control={form.control}
-                name="domain"
-                render={({ field }) =>
-                <FormItem>
-                                        <FormLabel>Domain</FormLabel>
-                                        <Select onValueChange={field.onChange} value={field.value}>
-                                            <FormControl>
-                                                <SelectTrigger>
-                                                    <SelectValue placeholder="Select domain" />
+                        <div data-style-id="stylo-147" id="el-62" className="grid grid-cols-2 gap-4">
+                            <FormField data-style-id="stylo-148"
+              control={form.control}
+              name="domain"
+              render={({ field }) =>
+              <FormItem data-style-id="stylo-149">
+                                        <FormLabel data-style-id="stylo-150">Domain</FormLabel>
+                                        <Select data-style-id="stylo-151" onValueChange={field.onChange} value={field.value}>
+                                            <FormControl data-style-id="stylo-152">
+                                                <SelectTrigger data-style-id="stylo-153">
+                                                    <SelectValue data-style-id="stylo-154" placeholder="Select domain" />
                                                 </SelectTrigger>
                                             </FormControl>
-                                            <SelectContent>
+                                            <SelectContent data-style-id="stylo-155">
                                                 {DOMAIN_LIST.map((domain) => {
-                        const Icon = domain.icon;
-                        return (
-                          <SelectItem key={domain.value} value={domain.value}>
-                                                            <div id="el-63" className="flex items-center gap-2">
-                                                                <Icon className="h-4 w-4" style={{ color: domain.color }} />
+                      const Icon = domain.icon;
+                      return (
+                        <SelectItem data-style-id="stylo-156" key={domain.value} value={domain.value}>
+                                                            <div data-style-id="stylo-157" id="el-63" className="flex items-center gap-2">
+                                                                <Icon data-style-id="stylo-158" className="h-4 w-4" style={{ color: domain.color }} />
                                                                 {domain.label}
                                                             </div>
                                                         </SelectItem>);
 
-                      })}
+                    })}
                                             </SelectContent>
                                         </Select>
-                                        <FormMessage />
+                                        <FormMessage data-style-id="stylo-159" />
                                     </FormItem>
-                } />
+              } />
 
 
-                            <FormField
-                control={form.control}
-                name="status"
-                render={({ field }) =>
-                <FormItem>
-                                        <FormLabel>Status</FormLabel>
-                                        <Select onValueChange={field.onChange} value={field.value}>
-                                            <FormControl>
-                                                <SelectTrigger>
-                                                    <SelectValue placeholder="Select status" />
+                            <FormField data-style-id="stylo-160"
+              control={form.control}
+              name="status"
+              render={({ field }) =>
+              <FormItem data-style-id="stylo-161">
+                                        <FormLabel data-style-id="stylo-162">Status</FormLabel>
+                                        <Select data-style-id="stylo-163" onValueChange={field.onChange} value={field.value}>
+                                            <FormControl data-style-id="stylo-164">
+                                                <SelectTrigger data-style-id="stylo-165">
+                                                    <SelectValue data-style-id="stylo-166" placeholder="Select status" />
                                                 </SelectTrigger>
                                             </FormControl>
-                                            <SelectContent>
+                                            <SelectContent data-style-id="stylo-167">
                                                 {Object.entries(STATUS_CONFIG).map(([key, config]) =>
-                      <SelectItem key={key} value={key}>
-                                                        <div id="el-64" className="flex items-center gap-2">
-                                                            <div id="el-65"
-                          className="h-2 w-2 rounded-full"
-                          style={{ backgroundColor: config.color }} />
+                    <SelectItem data-style-id="stylo-168" key={key} value={key}>
+                                                        <div data-style-id="stylo-169" id="el-64" className="flex items-center gap-2">
+                                                            <div data-style-id="stylo-170" id="el-65"
+                        className="h-2 w-2 rounded-full"
+                        style={{ backgroundColor: config.color }} />
 
                                                             {config.label}
                                                         </div>
                                                     </SelectItem>
-                      )}
+                    )}
                                             </SelectContent>
                                         </Select>
-                                        <FormMessage />
+                                        <FormMessage data-style-id="stylo-171" />
                                     </FormItem>
-                } />
+              } />
 
                         </div>
 
-                        <FormField
-              control={form.control}
-              name="coverImage"
-              render={({ field }) =>
-              <FormItem>
-                                    <FormLabel>Cover Image URL</FormLabel>
-                                    <FormControl>
-                                        <Input placeholder="https://images.unsplash.com/..." {...field} />
+                        <FormField data-style-id="stylo-172"
+            control={form.control}
+            name="coverImage"
+            render={({ field }) =>
+            <FormItem data-style-id="stylo-173">
+                                    <FormLabel data-style-id="stylo-174">Cover Image URL</FormLabel>
+                                    <FormControl data-style-id="stylo-175">
+                                        <Input data-style-id="stylo-176" placeholder="https://images.unsplash.com/..." {...field} />
                                     </FormControl>
-                                    <FormMessage />
+                                    <FormMessage data-style-id="stylo-177" />
                                 </FormItem>
-              } />
+            } />
 
 
-                        <FormField
-              control={form.control}
-              name="description"
-              render={({ field }) =>
-              <FormItem>
-                                    <FormLabel>Description</FormLabel>
-                                    <FormControl>
-                                        <Textarea placeholder="What is this project about?" {...field} />
+                        <FormField data-style-id="stylo-178"
+            control={form.control}
+            name="description"
+            render={({ field }) =>
+            <FormItem data-style-id="stylo-179">
+                                    <FormLabel data-style-id="stylo-180">Description</FormLabel>
+                                    <FormControl data-style-id="stylo-181">
+                                        <Textarea data-style-id="stylo-182" placeholder="What is this project about?" {...field} />
                                     </FormControl>
-                                    <FormMessage />
+                                    <FormMessage data-style-id="stylo-183" />
                                 </FormItem>
-              } />
+            } />
 
 
-                        <FormField
-              control={form.control}
-              name="tags"
-              render={({ field }) =>
-              <FormItem>
-                                    <FormLabel>Tags</FormLabel>
-                                    <FormControl>
-                                        <Input placeholder="e.g., frontend, urgent, v2" {...field} />
+                        <FormField data-style-id="stylo-184"
+            control={form.control}
+            name="tags"
+            render={({ field }) =>
+            <FormItem data-style-id="stylo-185">
+                                    <FormLabel data-style-id="stylo-186">Tags</FormLabel>
+                                    <FormControl data-style-id="stylo-187">
+                                        <Input data-style-id="stylo-188" placeholder="e.g., frontend, urgent, v2" {...field} />
                                     </FormControl>
-                                    <FormDescription>Comma-separated tags for filtering</FormDescription>
-                                    <FormMessage />
+                                    <FormDescription data-style-id="stylo-189">Comma-separated tags for filtering</FormDescription>
+                                    <FormMessage data-style-id="stylo-190" />
                                 </FormItem>
-              } />
+            } />
 
 
-                        <FormField
-              control={form.control}
-              name="deadline"
-              render={({ field }) =>
-              <FormItem className="flex flex-col">
-                                    <FormLabel>Deadline</FormLabel>
-                                    <Popover>
-                                        <PopoverTrigger asChild>
-                                            <FormControl>
-                                                <Button
-                        variant={"outline"}
-                        className={cn(
-                          "w-full pl-3 text-left font-normal",
-                          !field.value && "text-muted-foreground"
-                        )}>
+                        <FormField data-style-id="stylo-191"
+            control={form.control}
+            name="deadline"
+            render={({ field }) =>
+            <FormItem data-style-id="stylo-192" className="flex flex-col">
+                                    <FormLabel data-style-id="stylo-193">Deadline</FormLabel>
+                                    <Popover data-style-id="stylo-194">
+                                        <PopoverTrigger data-style-id="stylo-195" asChild>
+                                            <FormControl data-style-id="stylo-196">
+                                                <Button data-style-id="stylo-197"
+                    variant={"outline"}
+                    className={cn(
+                      "w-full pl-3 text-left font-normal",
+                      !field.value && "text-muted-foreground"
+                    )}>
 
                                                     {field.value ?
-                        format(field.value, "PPP") :
+                      format(field.value, "PPP") :
 
-                        <span id="el-66">Pick a date</span>
-                        }
-                                                    <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                      <span data-style-id="stylo-198" id="el-66">Pick a date</span>
+                      }
+                                                    <CalendarIcon data-style-id="stylo-199" className="ml-auto h-4 w-4 opacity-50" />
                                                 </Button>
                                             </FormControl>
                                         </PopoverTrigger>
-                                        <PopoverContent className="w-auto p-0" align="start">
-                                            <Calendar
-                      mode="single"
-                      selected={field.value}
-                      onSelect={field.onChange}
-                      disabled={(date) =>
-                      date < new Date("1900-01-01")
-                      }
-                      initialFocus />
+                                        <PopoverContent data-style-id="stylo-200" className="w-auto p-0" align="start">
+                                            <Calendar data-style-id="stylo-201"
+                  mode="single"
+                  selected={field.value}
+                  onSelect={field.onChange}
+                  disabled={(date) =>
+                  date < new Date("1900-01-01")
+                  }
+                  initialFocus />
 
                                         </PopoverContent>
                                     </Popover>
-                                    <FormMessage />
+                                    <FormMessage data-style-id="stylo-202" />
                                 </FormItem>
+            } />
+
+
+                        <div data-style-id="stylo-203" id="el-67" className="grid grid-cols-2 gap-4">
+                            <FormField data-style-id="stylo-204"
+              control={form.control}
+              name="importance"
+              render={({ field }) =>
+              <FormItem data-style-id="stylo-205">
+                                        <FormLabel data-style-id="stylo-206">Importance (1-10)</FormLabel>
+                                        <FormControl data-style-id="stylo-207">
+                                            <Input data-style-id="stylo-208" type="number" min="1" max="10" {...field} />
+                                        </FormControl>
+                                        <FormMessage data-style-id="stylo-209" />
+                                    </FormItem>
               } />
 
-
-                        <div id="el-67" className="grid grid-cols-2 gap-4">
-                            <FormField
-                control={form.control}
-                name="importance"
-                render={({ field }) =>
-                <FormItem>
-                                        <FormLabel>Importance (1-10)</FormLabel>
-                                        <FormControl>
-                                            <Input type="number" min="1" max="10" {...field} />
+                            <FormField data-style-id="stylo-210"
+              control={form.control}
+              name="size"
+              render={({ field }) =>
+              <FormItem data-style-id="stylo-211">
+                                        <FormLabel data-style-id="stylo-212">Size (hours)</FormLabel>
+                                        <FormControl data-style-id="stylo-213">
+                                            <Input data-style-id="stylo-214" type="number" min="0" {...field} />
                                         </FormControl>
-                                        <FormMessage />
+                                        <FormMessage data-style-id="stylo-215" />
                                     </FormItem>
-                } />
-
-                            <FormField
-                control={form.control}
-                name="size"
-                render={({ field }) =>
-                <FormItem>
-                                        <FormLabel>Size (hours)</FormLabel>
-                                        <FormControl>
-                                            <Input type="number" min="0" {...field} />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                } />
+              } />
 
                         </div>
 
-                        <FormField
-              control={form.control}
-              name="relevance"
-              render={({ field }) =>
-              <FormItem>
-                                    <FormLabel>Relevance</FormLabel>
-                                    <FormControl>
-                                        <Input placeholder="e.g., Career goals" {...field} />
+                        <FormField data-style-id="stylo-216"
+            control={form.control}
+            name="relevance"
+            render={({ field }) =>
+            <FormItem data-style-id="stylo-217">
+                                    <FormLabel data-style-id="stylo-218">Relevance</FormLabel>
+                                    <FormControl data-style-id="stylo-219">
+                                        <Input data-style-id="stylo-220" placeholder="e.g., Career goals" {...field} />
                                     </FormControl>
-                                    <FormMessage />
+                                    <FormMessage data-style-id="stylo-221" />
                                 </FormItem>
-              } />
+            } />
 
 
-                        <FormField
-              control={form.control}
-              name="notes"
-              render={({ field }) =>
-              <FormItem>
-                                    <FormLabel>Notes</FormLabel>
-                                    <FormControl>
-                                        <Textarea
-                    placeholder="Freeform notes about this project..."
-                    className="min-h-[80px]"
-                    {...field} />
+                        <FormField data-style-id="stylo-222"
+            control={form.control}
+            name="notes"
+            render={({ field }) =>
+            <FormItem data-style-id="stylo-223">
+                                    <FormLabel data-style-id="stylo-224">Notes</FormLabel>
+                                    <FormControl data-style-id="stylo-225">
+                                        <Textarea data-style-id="stylo-226"
+                placeholder="Freeform notes about this project..."
+                className="min-h-[80px]"
+                {...field} />
 
                                     </FormControl>
-                                    <FormDescription>Additional notes separate from description</FormDescription>
-                                    <FormMessage />
+                                    <FormDescription data-style-id="stylo-227">Additional notes separate from description</FormDescription>
+                                    <FormMessage data-style-id="stylo-228" />
                                 </FormItem>
-              } />
+            } />
 
 
-                        <div id="el-68" className="space-y-4 p-4 rounded-lg border border-border/50 bg-muted/20">
-                            <FormField
-                control={form.control}
-                name="useManualProgress"
-                render={({ field }) =>
-                <FormItem className="flex flex-row items-center justify-between">
-                                        <div id="el-69" className="space-y-0.5">
-                                            <FormLabel>Manual Progress Override</FormLabel>
-                                            <FormDescription>
+                        <div data-style-id="stylo-229" id="el-68" className="space-y-4 p-4 rounded-lg border border-border/50 bg-muted/20">
+                            <FormField data-style-id="stylo-230"
+              control={form.control}
+              name="useManualProgress"
+              render={({ field }) =>
+              <FormItem data-style-id="stylo-231" className="flex flex-row items-center justify-between">
+                                        <div data-style-id="stylo-232" id="el-69" className="space-y-0.5">
+                                            <FormLabel data-style-id="stylo-233">Manual Progress Override</FormLabel>
+                                            <FormDescription data-style-id="stylo-234">
                                                 Set progress manually instead of auto-calculating from tasks
                                             </FormDescription>
                                         </div>
-                                        <FormControl>
-                                            <Switch
-                      checked={field.value}
-                      onCheckedChange={field.onChange} />
+                                        <FormControl data-style-id="stylo-235">
+                                            <Switch data-style-id="stylo-236"
+                  checked={field.value}
+                  onCheckedChange={field.onChange} />
 
                                         </FormControl>
                                     </FormItem>
-                } />
+              } />
 
 
                             {useManualProgress &&
-              <FormField
-                control={form.control}
-                name="manualProgress"
-                render={({ field }) =>
-                <FormItem>
-                                            <div id="el-70" className="flex justify-between items-center">
-                                                <FormLabel>Progress: {field.value}%</FormLabel>
+              <FormField data-style-id="stylo-237"
+              control={form.control}
+              name="manualProgress"
+              render={({ field }) =>
+              <FormItem data-style-id="stylo-238">
+                                            <div data-style-id="stylo-239" id="el-70" className="flex justify-between items-center">
+                                                <FormLabel data-style-id="stylo-240">Progress: {field.value}%</FormLabel>
                                             </div>
-                                            <FormControl>
-                                                <Slider
-                      value={[field.value || 0]}
-                      onValueChange={(values) => field.onChange(values[0])}
-                      min={0}
-                      max={100}
-                      step={1}
-                      className="w-full" />
+                                            <FormControl data-style-id="stylo-241">
+                                                <Slider data-style-id="stylo-242"
+                  value={[field.value || 0]}
+                  onValueChange={(values) => field.onChange(values[0])}
+                  min={0}
+                  max={100}
+                  step={1}
+                  className="w-full" />
 
                                             </FormControl>
-                                            <FormMessage />
+                                            <FormMessage data-style-id="stylo-243" />
                                         </FormItem>
-                } />
+              } />
 
               }
                         </div>
 
-                        <DialogFooter>
-                            <Button type="button" variant="ghost" onClick={() => onOpenChange(false)}>Cancel</Button>
-                            <Button type="submit">{isEditMode ? 'Save Changes' : 'Create Project'}</Button>
+                        <DialogFooter data-style-id="stylo-244">
+                            <Button data-style-id="stylo-245" type="button" variant="ghost" onClick={() => onOpenChange(false)}>Cancel</Button>
+                            <Button data-style-id="stylo-246" type="submit">{isEditMode ? 'Save Changes' : 'Create Project'}</Button>
                         </DialogFooter>
                     </form>
                 </Form>

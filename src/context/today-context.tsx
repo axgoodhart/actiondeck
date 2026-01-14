@@ -1,7 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect, useCallback, useMemo } from 'react';
-import type { TodayItem, DailySchedule, ChatMessage } from '@/lib/types';
+import type { TodayItem, DailySchedule, ChatMessage, AITaskItem, TodayItemSource } from '@/lib/types';
 import { subscribeDailySchedule, upsertDailySchedule } from '@/lib/persistence';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { useSettings } from '@/context/settings-context';
@@ -41,6 +41,12 @@ interface TodayContextType {
   chatHistory: ChatMessage[];
   addChatMessage: (message: Omit<ChatMessage, 'id' | 'timestamp'>) => void;
   clearChatHistory: () => void;
+
+  // AI Task List - tasks user wants AI help scheduling
+  aiTaskList: AITaskItem[];
+  addAITask: (title: string, source: TodayItemSource) => void;
+  removeAITask: (taskId: string) => void;
+  clearAITaskList: () => void;
 
   // UI state
   isChatOpen: boolean;
@@ -242,8 +248,55 @@ export function TodayProvider({ children }: { children: React.ReactNode }) {
     persistSchedule(updatedSchedule);
   }, [schedule, persistSchedule]);
 
+  const addAITask = useCallback((title: string, source: TodayItemSource) => {
+    if (!schedule) return;
+
+    const now = Date.now();
+    const newTask: AITaskItem = {
+      id: `ai-task-${now}`,
+      title,
+      source,
+      addedAt: now,
+    };
+
+    const updatedSchedule: DailySchedule = {
+      ...schedule,
+      aiTaskList: [...(schedule.aiTaskList || []), newTask],
+      updatedAt: now,
+    };
+
+    persistSchedule(updatedSchedule);
+  }, [schedule, persistSchedule]);
+
+  const removeAITask = useCallback((taskId: string) => {
+    if (!schedule) return;
+
+    const now = Date.now();
+    const updatedSchedule: DailySchedule = {
+      ...schedule,
+      aiTaskList: (schedule.aiTaskList || []).filter((t) => t.id !== taskId),
+      updatedAt: now,
+    };
+
+    persistSchedule(updatedSchedule);
+  }, [schedule, persistSchedule]);
+
+  const clearAITaskList = useCallback(() => {
+    if (!schedule) return;
+
+    const now = Date.now();
+    const updatedSchedule: DailySchedule = {
+      ...schedule,
+      aiTaskList: [],
+      updatedAt: now,
+    };
+
+    persistSchedule(updatedSchedule);
+  }, [schedule, persistSchedule]);
+
   const items = schedule?.items || [];
   const chatHistory = schedule?.chatHistory || [];
+  const aiTaskList = schedule?.aiTaskList || [];
 
   const value = useMemo<TodayContextType>(() => ({
     currentDate,
@@ -260,12 +313,17 @@ export function TodayProvider({ children }: { children: React.ReactNode }) {
     chatHistory,
     addChatMessage,
     clearChatHistory,
+    aiTaskList,
+    addAITask,
+    removeAITask,
+    clearAITaskList,
     isChatOpen,
     setChatOpen,
   }), [
     currentDate, setCurrentDate, goToToday, isToday, schedule, items, isLoading,
     addItem, updateItem, deleteItem, toggleItemComplete,
-    chatHistory, addChatMessage, clearChatHistory, isChatOpen
+    chatHistory, addChatMessage, clearChatHistory,
+    aiTaskList, addAITask, removeAITask, clearAITaskList, isChatOpen
   ]);
 
   return (

@@ -110,136 +110,136 @@ export function ProjectModal({ project, isOpen, onOpenChange }: {project: Projec
 
   return (
     <>
-      <Sheet open={isOpen} onOpenChange={onOpenChange}>
-        <SheetContent className="sm:max-w-xl w-full p-0 flex flex-col modal-panel">
-          <SheetHeader className="p-6 pb-2 modal-header">
+      <Sheet data-style-id="stylo-285" open={isOpen} onOpenChange={onOpenChange}>
+        <SheetContent data-style-id="stylo-286" className="sm:max-w-xl w-full p-0 flex flex-col modal-panel">
+          <SheetHeader data-style-id="stylo-287" className="p-6 pb-2 modal-header">
             {/* Domain and Status Row */}
-            <div id="el-86" className="flex items-center gap-2 mb-2">
+            <div data-style-id="stylo-288" id="el-86" className="flex items-center gap-2 mb-2">
               {project.domain &&
-              <DomainBadge domain={project.domain} size="small" />
+              <DomainBadge data-style-id="stylo-289" domain={project.domain} size="small" />
               }
             </div>
 
-            <SheetTitle className="font-headline text-3xl text-primary">{project.name}</SheetTitle>
-            <SheetDescription>{project.description}</SheetDescription>
+            <SheetTitle data-style-id="stylo-290" className="font-headline text-3xl text-primary">{project.name}</SheetTitle>
+            <SheetDescription data-style-id="stylo-291">{project.description}</SheetDescription>
 
             {/* Metadata badges */}
-            <div id="el-87" className="flex flex-wrap gap-2 pt-2">
-              <Badge variant="outline">Due: {formattedDate}</Badge>
-              <Badge variant="outline">Importance: {project.importance}/10</Badge>
-              <Badge variant="outline">Size: {project.size} hrs</Badge>
+            <div data-style-id="stylo-292" id="el-87" className="flex flex-wrap gap-2 pt-2">
+              <Badge data-style-id="stylo-293" variant="outline">Due: {formattedDate}</Badge>
+              <Badge data-style-id="stylo-294" variant="outline">Importance: {project.importance}/10</Badge>
+              <Badge data-style-id="stylo-295" variant="outline">Size: {project.size} hrs</Badge>
               {lastUpdated &&
-              <Badge variant="outline" className="flex items-center gap-1">
-                  <Clock className="h-3 w-3" />
+              <Badge data-style-id="stylo-296" variant="outline" className="flex items-center gap-1">
+                  <Clock data-style-id="stylo-297" className="h-3 w-3" />
                   {lastUpdated}
                 </Badge>
               }
             </div>
 
             {/* Status quick-change */}
-            <div id="el-88" className="pt-3">
-              <Label className="text-sm font-medium mb-2 block">Status</Label>
-              <StatusButtons
-                value={project.status}
-                onChange={handleStatusChange} />
+            <div data-style-id="stylo-298" id="el-88" className="pt-3">
+              <Label data-style-id="stylo-299" className="text-sm font-medium mb-2 block">Status</Label>
+              <StatusButtons data-style-id="stylo-300"
+              value={project.status}
+              onChange={handleStatusChange} />
 
             </div>
           </SheetHeader>
 
-          <div id="el-89" className="flex-grow overflow-y-auto p-6 space-y-6">
+          <div data-style-id="stylo-301" id="el-89" className="flex-grow overflow-y-auto p-6 space-y-6">
             {/* Progress Overview */}
-            <div id="el-90" className="flex items-center justify-between">
-              <div id="el-91">
-                <div id="el-92" className="flex justify-between items-center text-sm text-muted-foreground mb-2">
-                  <h3 id="el-93" className="text-lg font-medium text-foreground">Progress</h3>
+            <div data-style-id="stylo-302" id="el-90" className="flex items-center justify-between">
+              <div data-style-id="stylo-303" id="el-91">
+                <div data-style-id="stylo-304" id="el-92" className="flex justify-between items-center text-sm text-muted-foreground mb-2">
+                  <h3 data-style-id="stylo-305" id="el-93" className="text-lg font-medium text-foreground">Progress</h3>
                 </div>
                 {project.manualProgress !== undefined ?
-                <span id="el-94" className="text-sm text-muted-foreground">Manual: {Math.round(progress)}%</span> :
+                <span data-style-id="stylo-306" id="el-94" className="text-sm text-muted-foreground">Manual: {Math.round(progress)}%</span> :
 
-                <span id="el-95" className="text-sm text-muted-foreground">Tasks: {completedTasks}/{totalTasks}</span>
+                <span data-style-id="stylo-307" id="el-95" className="text-sm text-muted-foreground">Tasks: {completedTasks}/{totalTasks}</span>
                 }
               </div>
-              <DomainProgressRing
-                progress={progress}
-                size={72}
-                strokeWidth={6}
-                color={progressColor}
-                showLabel={true} />
+              <DomainProgressRing data-style-id="stylo-308"
+              progress={progress}
+              size={72}
+              strokeWidth={6}
+              color={progressColor}
+              showLabel={true} />
 
             </div>
 
             {/* Manual Progress Override */}
             {project.manualProgress !== undefined &&
-            <div id="el-96" className="space-y-2">
-                <Label className="text-sm">Adjust Manual Progress</Label>
-                <Slider
-                value={[project.manualProgress]}
-                onValueChange={handleManualProgressChange}
-                min={0}
-                max={100}
-                step={1} />
+            <div data-style-id="stylo-309" id="el-96" className="space-y-2">
+                <Label data-style-id="stylo-310" className="text-sm">Adjust Manual Progress</Label>
+                <Slider data-style-id="stylo-311"
+              value={[project.manualProgress]}
+              onValueChange={handleManualProgressChange}
+              min={0}
+              max={100}
+              step={1} />
 
               </div>
             }
 
-            <Separator />
+            <Separator data-style-id="stylo-312" />
 
             {/* Tags */}
-            <div id="el-97">
-              <Label className="text-sm font-medium mb-2 block">Tags</Label>
-              <TagsInput
-                tags={project.tags}
-                onChange={handleTagsChange} />
+            <div data-style-id="stylo-313" id="el-97">
+              <Label data-style-id="stylo-314" className="text-sm font-medium mb-2 block">Tags</Label>
+              <TagsInput data-style-id="stylo-315"
+              tags={project.tags}
+              onChange={handleTagsChange} />
 
             </div>
 
-            <Separator />
+            <Separator data-style-id="stylo-316" />
 
             {/* Accordion for organized sections */}
-            <Accordion type="multiple" defaultValue={['milestones', 'tasks']} className="w-full">
+            <Accordion data-style-id="stylo-317" type="multiple" defaultValue={['milestones', 'tasks']} className="w-full">
               {/* Milestones Section */}
-              <AccordionItem value="milestones">
-                <AccordionTrigger>
+              <AccordionItem data-style-id="stylo-318" value="milestones">
+                <AccordionTrigger data-style-id="stylo-319">
                   Milestones ({project.milestones.filter((m) => m.completed).length}/{project.milestones.length})
                 </AccordionTrigger>
-                <AccordionContent>
-                  <MilestoneList
-                    milestones={project.milestones}
-                    onChange={handleMilestonesChange} />
+                <AccordionContent data-style-id="stylo-320">
+                  <MilestoneList data-style-id="stylo-321"
+                  milestones={project.milestones}
+                  onChange={handleMilestonesChange} />
 
                 </AccordionContent>
               </AccordionItem>
 
               {/* Tasks Section */}
-              <AccordionItem value="tasks">
-                <AccordionTrigger>
+              <AccordionItem data-style-id="stylo-322" value="tasks">
+                <AccordionTrigger data-style-id="stylo-323">
                   Tasks ({completedTasks}/{totalTasks})
                 </AccordionTrigger>
-                <AccordionContent>
-                  <form id="el-98" onSubmit={handleAddTask} className="flex gap-2 mb-3">
-                    <Input
-                      placeholder="Add task to this project..."
-                      value={newTaskTitle}
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewTaskTitle(e.target.value)} />
+                <AccordionContent data-style-id="stylo-324">
+                  <form data-style-id="stylo-325" id="el-98" onSubmit={handleAddTask} className="flex gap-2 mb-3">
+                    <Input data-style-id="stylo-326"
+                    placeholder="Add task to this project..."
+                    value={newTaskTitle}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewTaskTitle(e.target.value)} />
 
-                    <Button type="submit" variant="secondary">Add</Button>
+                    <Button data-style-id="stylo-327" type="submit" variant="secondary">Add</Button>
                   </form>
-                  <div id="el-99" className="space-y-2 max-h-[300px] overflow-y-auto">
+                  <div data-style-id="stylo-328" id="el-99" className="space-y-2 max-h-[300px] overflow-y-auto">
                     {project.tasks.length === 0 ?
-                    <p id="el-100" className="text-sm text-muted-foreground text-center py-4">
+                    <p data-style-id="stylo-329" id="el-100" className="text-sm text-muted-foreground text-center py-4">
                         No tasks yet. Add your first task above.
                       </p> :
 
                     project.tasks.map((task) =>
-                    <div id="el-101" key={task.id} className="flex items-center space-x-3 p-2 rounded-md hover:bg-muted/50">
-                          <Checkbox
-                        id={`modal-task-${task.id}`}
-                        checked={task.completed}
-                        onCheckedChange={() => handleToggleTask(task.id)} />
+                    <div data-style-id="stylo-330" id="el-101" key={task.id} className="flex items-center space-x-3 p-2 rounded-md hover:bg-muted/50">
+                          <Checkbox data-style-id="stylo-331"
+                      id={`modal-task-${task.id}`}
+                      checked={task.completed}
+                      onCheckedChange={() => handleToggleTask(task.id)} />
 
-                          <Label
-                        htmlFor={`modal-task-${task.id}`}
-                        className={`flex-1 cursor-pointer ${task.completed ? 'line-through text-muted-foreground' : ''}`}>
+                          <Label data-style-id="stylo-332"
+                      htmlFor={`modal-task-${task.id}`}
+                      className={`flex-1 cursor-pointer ${task.completed ? 'line-through text-muted-foreground' : ''}`}>
 
                             {task.title}
                           </Label>
@@ -251,26 +251,26 @@ export function ProjectModal({ project, isOpen, onOpenChange }: {project: Projec
               </AccordionItem>
 
               {/* Notes Section */}
-              <AccordionItem value="notes">
-                <AccordionTrigger>
-                  <div id="el-102" className="flex items-center gap-2">
-                    <StickyNote className="h-4 w-4" />
+              <AccordionItem data-style-id="stylo-333" value="notes">
+                <AccordionTrigger data-style-id="stylo-334">
+                  <div data-style-id="stylo-335" id="el-102" className="flex items-center gap-2">
+                    <StickyNote data-style-id="stylo-336" className="h-4 w-4" />
                     Notes
                   </div>
                 </AccordionTrigger>
-                <AccordionContent>
-                  <Textarea
-                    placeholder="Add freeform notes here..."
-                    value={localNotes}
-                    onChange={(e) => {
-                      setLocalNotes(e.target.value);
-                      setNotesChanged(true);
-                    }}
-                    onBlur={handleNotesBlur}
-                    className="min-h-[120px]" />
+                <AccordionContent data-style-id="stylo-337">
+                  <Textarea data-style-id="stylo-338"
+                  placeholder="Add freeform notes here..."
+                  value={localNotes}
+                  onChange={(e) => {
+                    setLocalNotes(e.target.value);
+                    setNotesChanged(true);
+                  }}
+                  onBlur={handleNotesBlur}
+                  className="min-h-[120px]" />
 
                   {notesChanged &&
-                  <p id="el-103" className="text-xs text-muted-foreground mt-1">
+                  <p data-style-id="stylo-339" id="el-103" className="text-xs text-muted-foreground mt-1">
                       Notes will save when you click away
                     </p>
                   }
@@ -279,25 +279,25 @@ export function ProjectModal({ project, isOpen, onOpenChange }: {project: Projec
             </Accordion>
           </div>
 
-          <SheetFooter className='p-6 pt-0 grid grid-cols-2 gap-2 modal-footer'>
-            <AlertDialog>
-              <AlertDialogTrigger asChild>
-                <Button variant="destructive" className="w-full">
-                  <Trash2 className="mr-2 h-4 w-4" />
+          <SheetFooter data-style-id="stylo-340" className='p-6 pt-0 grid grid-cols-2 gap-2 modal-footer'>
+            <AlertDialog data-style-id="stylo-341">
+              <AlertDialogTrigger data-style-id="stylo-342" asChild>
+                <Button data-style-id="stylo-343" variant="destructive" className="w-full">
+                  <Trash2 data-style-id="stylo-344" className="mr-2 h-4 w-4" />
                   Delete
                 </Button>
               </AlertDialogTrigger>
-              <AlertDialogContent>
-                <AlertDialogHeader>
-                  <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                  <AlertDialogDescription>
+              <AlertDialogContent data-style-id="stylo-345">
+                <AlertDialogHeader data-style-id="stylo-346">
+                  <AlertDialogTitle data-style-id="stylo-347">Are you absolutely sure?</AlertDialogTitle>
+                  <AlertDialogDescription data-style-id="stylo-348">
                     This action cannot be undone. This will permanently delete your
                     project and all of its tasks and milestones.
                   </AlertDialogDescription>
                 </AlertDialogHeader>
-                <AlertDialogFooter>
-                  <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  <AlertDialogAction onClick={() => {
+                <AlertDialogFooter data-style-id="stylo-349">
+                  <AlertDialogCancel data-style-id="stylo-350">Cancel</AlertDialogCancel>
+                  <AlertDialogAction data-style-id="stylo-351" onClick={() => {
                     deleteProject(project.id);
                     onOpenChange(false);
                   }}>
@@ -307,17 +307,17 @@ export function ProjectModal({ project, isOpen, onOpenChange }: {project: Projec
               </AlertDialogContent>
             </AlertDialog>
 
-            <Button variant="outline" className="w-full btn-outline-glass" onClick={() => setIsFormOpen(true)}>
-              <PenSquare className="mr-2 h-4 w-4" />
+            <Button data-style-id="stylo-352" variant="outline" className="w-full btn-outline-glass" onClick={() => setIsFormOpen(true)}>
+              <PenSquare data-style-id="stylo-353" className="mr-2 h-4 w-4" />
               Edit Project
             </Button>
           </SheetFooter>
         </SheetContent>
       </Sheet>
-      <ProjectForm
-        isOpen={isFormOpen}
-        onOpenChange={setIsFormOpen}
-        projectToEdit={project} />
+      <ProjectForm data-style-id="stylo-354"
+      isOpen={isFormOpen}
+      onOpenChange={setIsFormOpen}
+      projectToEdit={project} />
 
     </>);
 

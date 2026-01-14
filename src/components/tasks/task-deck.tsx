@@ -21,20 +21,20 @@ export function TaskDeck({ deck, onToggleTask, onDeleteTask }: TaskDeckProps) {
   const toggleExpansion = () => setIsExpanded(!isExpanded);
 
   return (
-    <div id="el-180" className={cn("tasks-deck group py-2", allTasksCompleted && 'opacity-50')}>
-      <div id="el-181" className="tasks-deck-header flex items-center gap-2 mb-2">
-         <Button
-          variant="ghost"
-          size="icon"
-          onClick={toggleExpansion}
-          className="h-7 w-7">
+    <div data-style-id="stylo-615" id="el-180" className={cn("tasks-deck group py-2", allTasksCompleted && 'opacity-50')}>
+      <div data-style-id="stylo-616" id="el-181" className="tasks-deck-header flex items-center gap-2 mb-2">
+         <Button data-style-id="stylo-617"
+        variant="ghost"
+        size="icon"
+        onClick={toggleExpansion}
+        className="h-7 w-7">
 
-          <Plus className={cn("h-4 w-4 transition-transform", isExpanded && "rotate-45")} />
-           <span id="el-182" className="sr-only">{isExpanded ? 'Collapse' : 'Expand'} deck</span>
+          <Plus data-style-id="stylo-618" className={cn("h-4 w-4 transition-transform", isExpanded && "rotate-45")} />
+           <span data-style-id="stylo-619" id="el-182" className="sr-only">{isExpanded ? 'Collapse' : 'Expand'} deck</span>
         </Button>
 
-        <div id="el-183" className="flex-grow cursor-pointer" onClick={toggleExpansion}>
-          <h3 id="el-184"
+        <div data-style-id="stylo-620" id="el-183" className="flex-grow cursor-pointer" onClick={toggleExpansion}>
+          <h3 data-style-id="stylo-621" id="el-184"
           className={cn(
             "tasks-deck-title font-semibold transition-all text-base",
             allTasksCompleted && 'line-through',
@@ -45,31 +45,31 @@ export function TaskDeck({ deck, onToggleTask, onDeleteTask }: TaskDeckProps) {
           </h3>
         </div>
 
-        <p id="el-185" className="tasks-deck-progress text-xs text-muted-foreground">
+        <p data-style-id="stylo-622" id="el-185" className="tasks-deck-progress text-xs text-muted-foreground">
             {completedTasks} / {deck.tasks.length}
         </p>
 
-        {onDeleteTask && (
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => onDeleteTask(deck.id)}
-            className="h-7 w-7 opacity-0 group-hover:opacity-100 transition-opacity text-muted-foreground hover:text-destructive"
-            aria-label="Delete deck">
-            <Trash2 className="h-4 w-4" />
+        {onDeleteTask &&
+        <Button data-style-id="stylo-623"
+        variant="ghost"
+        size="icon"
+        onClick={() => onDeleteTask(deck.id)}
+        className="h-7 w-7 opacity-0 group-hover:opacity-100 transition-opacity text-muted-foreground hover:text-destructive"
+        aria-label="Delete deck">
+            <Trash2 data-style-id="stylo-624" className="h-4 w-4" />
           </Button>
-        )}
+        }
 
       </div>
 
-      <div id="el-186" className={cn("tasks-deck-content task-deck pl-9")} data-state={isExpanded ? 'expanded' : 'collapsed'}>
+      <div data-style-id="stylo-625" id="el-186" className={cn("tasks-deck-content task-deck pl-9")} data-state={isExpanded ? 'expanded' : 'collapsed'}>
         {deck.tasks.map((task, index) =>
-        <div id="el-187" key={task.id} className="task-deck-item">
-            <TaskDeckItem
-            task={task}
-            onToggle={() => onToggleTask(task.id, deck.id)}
-            onDelete={onDeleteTask ? () => onDeleteTask(task.id, deck.id) : undefined}
-            index={index + 1} />
+        <div data-style-id="stylo-626" id="el-187" key={task.id} className="task-deck-item">
+            <TaskDeckItem data-style-id="stylo-627"
+          task={task}
+          onToggle={() => onToggleTask(task.id, deck.id)}
+          onDelete={onDeleteTask ? () => onDeleteTask(task.id, deck.id) : undefined}
+          index={index + 1} />
 
           </div>
         )}

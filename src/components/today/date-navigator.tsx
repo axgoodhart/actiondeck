@@ -17,40 +17,40 @@ export function DateNavigator() {
   };
 
   return (
-    <div className="flex items-center gap-2">
-      <Button
-        variant="ghost"
-        size="icon"
-        onClick={() => navigateDay(-1)}
-        title="Previous day"
-      >
-        <ChevronLeft className="h-4 w-4" />
+    <div data-style-id="stylo-748" id="el-404" className="flex items-center gap-2">
+      <Button data-style-id="stylo-749"
+      variant="ghost"
+      size="icon"
+      onClick={() => navigateDay(-1)}
+      title="Previous day">
+
+        <ChevronLeft data-style-id="stylo-750" className="h-4 w-4" />
       </Button>
 
-      <div className="flex items-center gap-2 min-w-[200px] justify-center">
-        <Calendar className="h-4 w-4 text-muted-foreground" />
-        <span className="text-sm font-medium">{displayDate}</span>
+      <div data-style-id="stylo-751" id="el-405" className="flex items-center gap-2 min-w-[200px] justify-center">
+        <Calendar data-style-id="stylo-752" className="h-4 w-4 text-muted-foreground" />
+        <span data-style-id="stylo-753" id="el-406" className="text-sm font-medium">{displayDate}</span>
       </div>
 
-      <Button
-        variant="ghost"
-        size="icon"
-        onClick={() => navigateDay(1)}
-        title="Next day"
-      >
-        <ChevronRight className="h-4 w-4" />
+      <Button data-style-id="stylo-754"
+      variant="ghost"
+      size="icon"
+      onClick={() => navigateDay(1)}
+      title="Next day">
+
+        <ChevronRight data-style-id="stylo-755" className="h-4 w-4" />
       </Button>
 
-      {!isToday && (
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={goToToday}
-          className="ml-2"
-        >
+      {!isToday &&
+      <Button data-style-id="stylo-756"
+      variant="outline"
+      size="sm"
+      onClick={goToToday}
+      className="ml-2">
+
           Today
         </Button>
-      )}
-    </div>
-  );
+      }
+    </div>);
+
 }

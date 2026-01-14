@@ -73,23 +73,23 @@ export function TagsInput({
   }, []);
 
   return (
-    <div id="el-112" ref={containerRef} className={cn('space-y-2', className)}>
+    <div data-style-id="stylo-376" id="el-112" ref={containerRef} className={cn('space-y-2', className)}>
       {/* Tags display */}
-      <div id="el-113" className="flex flex-wrap gap-2">
+      <div data-style-id="stylo-377" id="el-113" className="flex flex-wrap gap-2">
         {tags.map((tag) =>
-        <Badge
-          key={tag}
-          variant="secondary"
-          className="px-2 py-1 text-xs flex items-center gap-1">
+        <Badge data-style-id="stylo-378"
+        key={tag}
+        variant="secondary"
+        className="px-2 py-1 text-xs flex items-center gap-1">
 
             #{tag}
             {!readOnly &&
-          <button id="el-114"
+          <button data-style-id="stylo-379" id="el-114"
           type="button"
           onClick={() => handleRemoveTag(tag)}
           className="ml-1 hover:text-destructive transition-colors">
 
-                <X className="h-3 w-3" />
+                <X data-style-id="stylo-380" className="h-3 w-3" />
               </button>
           }
           </Badge>
@@ -98,32 +98,32 @@ export function TagsInput({
 
       {/* Input for adding new tags */}
       {!readOnly &&
-      <div id="el-115" className="relative">
-          <Input
-          ref={inputRef}
-          type="text"
-          value={inputValue}
-          onChange={(e) => {
-            setInputValue(e.target.value);
-            setShowSuggestions(true);
-          }}
-          onFocus={() => setShowSuggestions(true)}
-          onKeyDown={handleKeyDown}
-          placeholder={placeholder}
-          className="text-sm" />
+      <div data-style-id="stylo-381" id="el-115" className="relative">
+          <Input data-style-id="stylo-382"
+        ref={inputRef}
+        type="text"
+        value={inputValue}
+        onChange={(e) => {
+          setInputValue(e.target.value);
+          setShowSuggestions(true);
+        }}
+        onFocus={() => setShowSuggestions(true)}
+        onKeyDown={handleKeyDown}
+        placeholder={placeholder}
+        className="text-sm" />
 
 
           {/* Suggestions dropdown */}
           {showSuggestions && filteredSuggestions.length > 0 &&
-        <div id="el-116" className="absolute z-10 w-full mt-1 bg-popover border border-border rounded-md shadow-lg max-h-40 overflow-auto">
+        <div data-style-id="stylo-383" id="el-116" className="absolute z-10 w-full mt-1 bg-popover border border-border rounded-md shadow-lg max-h-40 overflow-auto">
               {filteredSuggestions.map((suggestion) =>
-          <button id="el-117"
+          <button data-style-id="stylo-384" id="el-117"
           key={suggestion}
           type="button"
           onClick={() => handleAddTag(suggestion)}
           className="w-full px-3 py-2 text-left text-sm hover:bg-muted transition-colors flex items-center gap-2">
 
-                  <Plus className="h-3 w-3" />
+                  <Plus data-style-id="stylo-385" className="h-3 w-3" />
                   {suggestion}
                 </button>
           )}
@@ -133,7 +133,7 @@ export function TagsInput({
       }
 
       {!readOnly &&
-      <p id="el-118" className="text-xs text-muted-foreground">
+      <p data-style-id="stylo-386" id="el-118" className="text-xs text-muted-foreground">
           Press Enter or comma to add a tag
         </p>
       }
@@ -155,9 +155,9 @@ export function TagBadges({
   const remaining = tags.length - max;
 
   return (
-    <div id="el-119" className={cn('flex flex-wrap gap-1', className)}>
+    <div data-style-id="stylo-387" id="el-119" className={cn('flex flex-wrap gap-1', className)}>
       {displayTags.map((tag) =>
-      <span id="el-120"
+      <span data-style-id="stylo-388" id="el-120"
       key={tag}
       className="px-2 py-0.5 text-xs rounded-full bg-muted/50 text-muted-foreground border border-border/50">
 
@@ -165,7 +165,7 @@ export function TagBadges({
         </span>
       )}
       {remaining > 0 &&
-      <span id="el-121" className="px-2 py-0.5 text-xs rounded-full bg-muted/30 text-muted-foreground">
+      <span data-style-id="stylo-389" id="el-121" className="px-2 py-0.5 text-xs rounded-full bg-muted/30 text-muted-foreground">
           +{remaining}
         </span>
       }

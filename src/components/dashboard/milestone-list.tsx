@@ -80,40 +80,40 @@ export function MilestoneList({ milestones, onChange, readOnly = false }: Milest
   const completedCount = milestones.filter((m) => m.completed).length;
 
   return (
-    <div id="el-26" className="space-y-4">
-      <div id="el-27" className="flex items-center justify-between">
-        <div id="el-28" className="flex items-center gap-2">
-          <MilestoneIcon className="h-5 w-5 text-primary" />
-          <h3 id="el-29" className="text-lg font-medium">Milestones</h3>
+    <div data-style-id="stylo-68" id="el-26" className="space-y-4">
+      <div data-style-id="stylo-69" id="el-27" className="flex items-center justify-between">
+        <div data-style-id="stylo-70" id="el-28" className="flex items-center gap-2">
+          <MilestoneIcon data-style-id="stylo-71" className="h-5 w-5 text-primary" />
+          <h3 data-style-id="stylo-72" id="el-29" className="text-lg font-medium">Milestones</h3>
         </div>
-        <span id="el-30" className="text-sm text-muted-foreground">
+        <span data-style-id="stylo-73" id="el-30" className="text-sm text-muted-foreground">
           {completedCount}/{milestones.length} complete
         </span>
       </div>
 
       {!readOnly &&
-      <form id="el-31" onSubmit={handleAddMilestone} className="flex gap-2">
-          <Input
-          placeholder="Add a milestone..."
-          value={newMilestoneName}
-          onChange={(e) => setNewMilestoneName(e.target.value)}
-          className="flex-1" />
+      <form data-style-id="stylo-74" id="el-31" onSubmit={handleAddMilestone} className="flex gap-2">
+          <Input data-style-id="stylo-75"
+        placeholder="Add a milestone..."
+        value={newMilestoneName}
+        onChange={(e) => setNewMilestoneName(e.target.value)}
+        className="flex-1" />
 
-          <Button type="submit" variant="secondary" size="sm">
-            <Plus className="h-4 w-4 mr-1" />
+          <Button data-style-id="stylo-76" type="submit" variant="secondary" size="sm">
+            <Plus data-style-id="stylo-77" className="h-4 w-4 mr-1" />
             Add
           </Button>
         </form>
       }
 
-      <div id="el-32" className="space-y-2">
+      <div data-style-id="stylo-78" id="el-32" className="space-y-2">
         {sortedMilestones.length === 0 ?
-        <p id="el-33" className="text-sm text-muted-foreground text-center py-4">
+        <p data-style-id="stylo-79" id="el-33" className="text-sm text-muted-foreground text-center py-4">
             No milestones yet. Add your first project phase above.
           </p> :
 
         sortedMilestones.map((milestone, index) =>
-        <div id="el-34"
+        <div data-style-id="stylo-80" id="el-34"
         key={milestone.id}
         className={cn(
           'flex items-center gap-3 p-3 rounded-lg border transition-colors',
@@ -122,55 +122,55 @@ export function MilestoneList({ milestones, onChange, readOnly = false }: Milest
           'bg-muted/30 border-border/50 hover:border-border'
         )}>
 
-              <Checkbox
-            id={`milestone-${milestone.id}`}
-            checked={milestone.completed}
-            onCheckedChange={() => !readOnly && handleToggle(milestone.id)}
-            disabled={readOnly} />
+              <Checkbox data-style-id="stylo-81"
+          id={`milestone-${milestone.id}`}
+          checked={milestone.completed}
+          onCheckedChange={() => !readOnly && handleToggle(milestone.id)}
+          disabled={readOnly} />
 
-              <Label
-            htmlFor={`milestone-${milestone.id}`}
-            className={cn(
-              'flex-1 cursor-pointer font-medium',
-              milestone.completed && 'line-through text-muted-foreground'
-            )}>
+              <Label data-style-id="stylo-82"
+          htmlFor={`milestone-${milestone.id}`}
+          className={cn(
+            'flex-1 cursor-pointer font-medium',
+            milestone.completed && 'line-through text-muted-foreground'
+          )}>
 
-                <span id="el-35" className="text-xs text-muted-foreground mr-2">
+                <span data-style-id="stylo-83" id="el-35" className="text-xs text-muted-foreground mr-2">
                   Phase {index + 1}:
                 </span>
                 {milestone.name}
               </Label>
 
               {!readOnly &&
-          <div id="el-36" className="flex items-center gap-1">
-                  <Button
-              type="button"
-              variant="ghost"
-              size="sm"
-              onClick={() => handleMoveUp(milestone.id)}
-              disabled={index === 0}
-              className="h-7 w-7 p-0">
+          <div data-style-id="stylo-84" id="el-36" className="flex items-center gap-1">
+                  <Button data-style-id="stylo-85"
+            type="button"
+            variant="ghost"
+            size="sm"
+            onClick={() => handleMoveUp(milestone.id)}
+            disabled={index === 0}
+            className="h-7 w-7 p-0">
 
-                    <ChevronUp className="h-4 w-4" />
+                    <ChevronUp data-style-id="stylo-86" className="h-4 w-4" />
                   </Button>
-                  <Button
-              type="button"
-              variant="ghost"
-              size="sm"
-              onClick={() => handleMoveDown(milestone.id)}
-              disabled={index === sortedMilestones.length - 1}
-              className="h-7 w-7 p-0">
+                  <Button data-style-id="stylo-87"
+            type="button"
+            variant="ghost"
+            size="sm"
+            onClick={() => handleMoveDown(milestone.id)}
+            disabled={index === sortedMilestones.length - 1}
+            className="h-7 w-7 p-0">
 
-                    <ChevronDown className="h-4 w-4" />
+                    <ChevronDown data-style-id="stylo-88" className="h-4 w-4" />
                   </Button>
-                  <Button
-              type="button"
-              variant="ghost"
-              size="sm"
-              onClick={() => handleDelete(milestone.id)}
-              className="h-7 w-7 p-0 text-destructive hover:text-destructive">
+                  <Button data-style-id="stylo-89"
+            type="button"
+            variant="ghost"
+            size="sm"
+            onClick={() => handleDelete(milestone.id)}
+            className="h-7 w-7 p-0 text-destructive hover:text-destructive">
 
-                    <Trash2 className="h-4 w-4" />
+                    <Trash2 data-style-id="stylo-90" className="h-4 w-4" />
                   </Button>
                 </div>
           }

@@ -26,6 +26,10 @@ const RecommendTodayInputSchema = z.object({
   })),
   currentTimeMinute: z.number(),
   userContext: z.string().optional(),
+  // Tasks the user specifically wants help scheduling (highest priority)
+  aiTaskList: z.array(z.object({
+    title: z.string(),
+  })).optional(),
 });
 
 // Output schema
@@ -82,12 +86,19 @@ export const recommendTodayFlow = ai.defineFlow(
       .map((t) => `- ${t.title}`)
       .join('\n') || 'None';
 
+    // Build AI task list context (tasks user wants help scheduling - highest priority)
+    const aiTaskListContext = input.aiTaskList && input.aiTaskList.length > 0
+      ? input.aiTaskList.map((t) => `- ${t.title}`).join('\n')
+      : '';
+
     const prompt = `You are a productivity assistant helping plan someone's day.
 
 Current time: ${currentTime}
 
 CURRENT SCHEDULE:
 ${scheduleContext}
+
+${aiTaskListContext ? `PRIORITY TASKS (user wants these scheduled):\n${aiTaskListContext}\n` : ''}
 
 AVAILABLE PROJECT TASKS:
 ${projectTasksContext || 'No project tasks available.'}
@@ -98,7 +109,7 @@ ${casualTasksContext}
 ${input.userContext ? `USER CONTEXT: ${input.userContext}` : ''}
 
 Based on the current time and what's already scheduled, recommend 2-4 tasks that the user should consider adding to their schedule. For each recommendation:
-1. Choose from available project tasks or casual tasks (prefer tasks from high-importance projects with upcoming deadlines)
+1. ${aiTaskListContext ? 'PRIORITIZE tasks from the "PRIORITY TASKS" list first, then ' : ''}Choose from available project tasks or casual tasks (prefer tasks from high-importance projects with upcoming deadlines)
 2. Suggest a specific start time that doesn't conflict with existing schedule
 3. Suggest an appropriate duration (30-120 minutes)
 4. Provide brief reasoning
@@ -109,7 +120,7 @@ IMPORTANT:
 - Don't recommend completed tasks
 - Don't overlap with existing scheduled items
 - Consider the current time (don't suggest past times)
-- Prioritize based on deadlines and importance`;
+- ${aiTaskListContext ? 'Always include tasks from PRIORITY TASKS list in recommendations\n- ' : ''}Prioritize based on deadlines and importance`;
 
     const { output } = await ai.generate({
       model: 'googleai/gemini-2.5-flash',

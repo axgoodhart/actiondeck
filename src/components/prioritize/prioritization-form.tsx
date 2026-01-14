@@ -62,93 +62,93 @@ export function PrioritizationForm() {
   }
 
   return (
-    <div id="el-158" className="grid md:grid-cols-2 gap-8 items-start">
-            <Card id="prioritize-form-card">
-                <CardHeader>
-                    <CardTitle>Create Prioritization Request</CardTitle>
-                    <CardDescription>Fill out the details below to get an AI-powered recommendation.</CardDescription>
+    <div data-style-id="stylo-537" id="el-158" className="grid md:grid-cols-2 gap-8 items-start">
+            <Card data-style-id="stylo-538" id="prioritize-form-card">
+                <CardHeader data-style-id="stylo-539">
+                    <CardTitle data-style-id="stylo-540">Create Prioritization Request</CardTitle>
+                    <CardDescription data-style-id="stylo-541">Fill out the details below to get an AI-powered recommendation.</CardDescription>
                 </CardHeader>
-                <CardContent>
-                    <Form {...form}>
-                        <form id="prioritize-form" onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                            <FormField
-                control={form.control}
-                name="projectIds"
-                render={() =>
-                <FormItem>
-                                        <div id="el-159" className="mb-4">
-                                            <FormLabel className="text-base">Projects to Prioritize</FormLabel>
-                                            <FormDescription>Select which of your projects to include in the analysis.</FormDescription>
+                <CardContent data-style-id="stylo-542">
+                    <Form data-style-id="stylo-543" {...form}>
+                        <form data-style-id="stylo-544" id="prioritize-form" onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                            <FormField data-style-id="stylo-545"
+              control={form.control}
+              name="projectIds"
+              render={() =>
+              <FormItem data-style-id="stylo-546">
+                                        <div data-style-id="stylo-547" id="el-159" className="mb-4">
+                                            <FormLabel data-style-id="stylo-548" className="text-base">Projects to Prioritize</FormLabel>
+                                            <FormDescription data-style-id="stylo-549">Select which of your projects to include in the analysis.</FormDescription>
                                         </div>
-                                        <div id="prioritize-project-checkboxes" className="space-y-2">
+                                        <div data-style-id="stylo-550" id="prioritize-project-checkboxes" className="space-y-2">
                                             {projects.map((project) =>
-                    <FormField
+                  <FormField data-style-id="stylo-551"
+                  key={project.id}
+                  control={form.control}
+                  name="projectIds"
+                  render={({ field }) => {
+                    return (
+                      <FormItem data-style-id="stylo-552"
                       key={project.id}
-                      control={form.control}
-                      name="projectIds"
-                      render={({ field }) => {
-                        return (
-                          <FormItem
-                            key={project.id}
-                            className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-3">
+                      className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-3">
 
-                                                                <FormControl>
-                                                                    <Checkbox
-                                checked={field.value?.includes(project.id)}
-                                onCheckedChange={(checked) => {
-                                  return checked ?
-                                  field.onChange([...(field.value || []), project.id]) :
-                                  field.onChange(
-                                    field.value?.filter(
-                                      (value) => value !== project.id
-                                    ) || []
-                                  );
-                                }} />
+                                                                <FormControl data-style-id="stylo-553">
+                                                                    <Checkbox data-style-id="stylo-554"
+                          checked={field.value?.includes(project.id)}
+                          onCheckedChange={(checked) => {
+                            return checked ?
+                            field.onChange([...(field.value || []), project.id]) :
+                            field.onChange(
+                              field.value?.filter(
+                                (value) => value !== project.id
+                              ) || []
+                            );
+                          }} />
 
                                                                 </FormControl>
-                                                                <FormLabel className="font-normal">
+                                                                <FormLabel data-style-id="stylo-555" className="font-normal">
                                                                     {project.name}
                                                                 </FormLabel>
                                                             </FormItem>);
 
-                      }} />
+                  }} />
 
-                    )}
+                  )}
                                         </div>
-                                        <FormMessage />
+                                        <FormMessage data-style-id="stylo-556" />
                                     </FormItem>
-                } />
+              } />
 
-                            <FormField
-                control={form.control}
-                name="userGoals"
-                render={({ field }) =>
-                <FormItem>
-                                        <FormLabel>Your Goals</FormLabel>
-                                        <FormControl>
-                                            <Textarea id="prioritize-goals-input" placeholder="e.g., Learn a new skill for career growth, improve my health..." {...field} />
+                            <FormField data-style-id="stylo-557"
+              control={form.control}
+              name="userGoals"
+              render={({ field }) =>
+              <FormItem data-style-id="stylo-558">
+                                        <FormLabel data-style-id="stylo-559">Your Goals</FormLabel>
+                                        <FormControl data-style-id="stylo-560">
+                                            <Textarea data-style-id="stylo-561" id="prioritize-goals-input" placeholder="e.g., Learn a new skill for career growth, improve my health..." {...field} />
                                         </FormControl>
-                                        <FormDescription>What are you trying to achieve right now?</FormDescription>
-                                        <FormMessage />
+                                        <FormDescription data-style-id="stylo-562">What are you trying to achieve right now?</FormDescription>
+                                        <FormMessage data-style-id="stylo-563" />
                                     </FormItem>
-                } />
+              } />
 
-                            <FormField
-                control={form.control}
-                name="timing"
-                render={({ field }) =>
-                <FormItem>
-                                        <FormLabel>Timing / Context</FormLabel>
-                                        <FormControl>
-                                            <Textarea id="prioritize-timing-input" placeholder="e.g., Planning for the next month, have extra free time on weekends..." {...field} />
+                            <FormField data-style-id="stylo-564"
+              control={form.control}
+              name="timing"
+              render={({ field }) =>
+              <FormItem data-style-id="stylo-565">
+                                        <FormLabel data-style-id="stylo-566">Timing / Context</FormLabel>
+                                        <FormControl data-style-id="stylo-567">
+                                            <Textarea data-style-id="stylo-568" id="prioritize-timing-input" placeholder="e.g., Planning for the next month, have extra free time on weekends..." {...field} />
                                         </FormControl>
-                                        <FormDescription>Any relevant context about your current situation.</FormDescription>
-                                        <FormMessage />
+                                        <FormDescription data-style-id="stylo-569">Any relevant context about your current situation.</FormDescription>
+                                        <FormMessage data-style-id="stylo-570" />
                                     </FormItem>
-                } />
+              } />
 
-                            <Button id="prioritize-submit-btn" type="submit" disabled={isLoading} className="w-full">
-                                {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                            <Button data-style-id="stylo-571" id="prioritize-submit-btn" type="submit" disabled={isLoading} className="w-full">
+                                {isLoading && <Loader2 data-style-id="stylo-572" className="mr-2 h-4 w-4 animate-spin" />}
                                 Prioritize My Projects
                             </Button>
                         </form>
@@ -156,7 +156,7 @@ export function PrioritizationForm() {
                 </CardContent>
             </Card>
 
-            <PrioritizationResult result={result} isLoading={isLoading} error={error} />
+            <PrioritizationResult data-style-id="stylo-573" result={result} isLoading={isLoading} error={error} />
         </div>);
 
 }

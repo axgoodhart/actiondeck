@@ -99,12 +99,21 @@ export type ChatMessage = {
   timestamp: number;
 };
 
+// Task added to AI task list for scheduling assistance
+export type AITaskItem = {
+  id: string;
+  title: string;
+  source: TodayItemSource;
+  addedAt: number;
+};
+
 // A saved daily schedule
 export type DailySchedule = {
   id: string;               // Format: YYYY-MM-DD
   date: string;             // ISO date string YYYY-MM-DD
   items: TodayItem[];
   chatHistory?: ChatMessage[];
+  aiTaskList?: AITaskItem[]; // Tasks user wants AI help scheduling
   createdAt: number;
   updatedAt: number;
 };

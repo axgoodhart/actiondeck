@@ -31,24 +31,24 @@ export function StatusSelect({ value, onChange, className }: StatusSelectProps) 
   const Icon = STATUS_ICONS[value];
 
   return (
-    <Select value={value} onValueChange={(v) => onChange(v as ProjectStatus)}>
-      <SelectTrigger className={cn('w-[140px]', className)}>
-        <SelectValue>
-          <div id="el-105" className="flex items-center gap-2" style={{ color: config.color }}>
-            <Icon className="h-4 w-4" />
-            <span id="el-106">{config.label}</span>
+    <Select data-style-id="stylo-360" value={value} onValueChange={(v) => onChange(v as ProjectStatus)}>
+      <SelectTrigger data-style-id="stylo-361" className={cn('w-[140px]', className)}>
+        <SelectValue data-style-id="stylo-362">
+          <div data-style-id="stylo-363" id="el-105" className="flex items-center gap-2" style={{ color: config.color }}>
+            <Icon data-style-id="stylo-364" className="h-4 w-4" />
+            <span data-style-id="stylo-365" id="el-106">{config.label}</span>
           </div>
         </SelectValue>
       </SelectTrigger>
-      <SelectContent>
+      <SelectContent data-style-id="stylo-366">
         {(Object.keys(STATUS_CONFIG) as ProjectStatus[]).map((status) => {
           const statusConfig = STATUS_CONFIG[status];
           const StatusIcon = STATUS_ICONS[status];
           return (
-            <SelectItem key={status} value={status}>
-              <div id="el-107" className="flex items-center gap-2" style={{ color: statusConfig.color }}>
-                <StatusIcon className="h-4 w-4" />
-                <span id="el-108">{statusConfig.label}</span>
+            <SelectItem data-style-id="stylo-367" key={status} value={status}>
+              <div data-style-id="stylo-368" id="el-107" className="flex items-center gap-2" style={{ color: statusConfig.color }}>
+                <StatusIcon data-style-id="stylo-369" className="h-4 w-4" />
+                <span data-style-id="stylo-370" id="el-108">{statusConfig.label}</span>
               </div>
             </SelectItem>);
 
@@ -72,7 +72,7 @@ export function StatusBadge({
   const Icon = STATUS_ICONS[status];
 
   return (
-    <div id="el-109"
+    <div data-style-id="stylo-371" id="el-109"
     className={cn(
       'inline-flex items-center gap-1.5 rounded-full font-medium',
       size === 'small' ? 'px-2 py-0.5 text-xs' : 'px-3 py-1 text-sm',
@@ -83,7 +83,7 @@ export function StatusBadge({
       color: config.color
     }}>
 
-      <Icon className={size === 'small' ? 'h-3 w-3' : 'h-4 w-4'} />
+      <Icon data-style-id="stylo-372" className={size === 'small' ? 'h-3 w-3' : 'h-4 w-4'} />
       {config.label}
     </div>);
 
@@ -96,14 +96,14 @@ export function StatusButtons({
   className
 }: StatusSelectProps) {
   return (
-    <div id="el-110" className={cn('flex gap-2 flex-wrap', className)}>
+    <div data-style-id="stylo-373" id="el-110" className={cn('flex gap-2 flex-wrap', className)}>
       {(Object.keys(STATUS_CONFIG) as ProjectStatus[]).map((status) => {
         const config = STATUS_CONFIG[status];
         const Icon = STATUS_ICONS[status];
         const isActive = value === status;
 
         return (
-          <button id="el-111"
+          <button data-style-id="stylo-374" id="el-111"
           key={status}
           type="button"
           onClick={() => onChange(status)}
@@ -124,7 +124,7 @@ export function StatusButtons({
           undefined
           }>
 
-            <Icon className="h-4 w-4" />
+            <Icon data-style-id="stylo-375" className="h-4 w-4" />
             {config.label}
           </button>);
 
