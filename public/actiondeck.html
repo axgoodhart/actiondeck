@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ActionDeck - Task management and project tracking">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: 'unsafe-inline' 'unsafe-eval'; script-src 'self' https: 'unsafe-inline' 'unsafe-eval'; style-src 'self' https: 'unsafe-inline';">
+
+  <title>ActionDeck</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* CSS Variables - Neon teal cyber theme */
+    :root {
+      --background: 210 30% 15%;
+      --card: 210 30% 5%;
+      --card-foreground: 180 15% 92%;
+      --popover: 210 30% 5%;
+      --popover-foreground: 180 15% 92%;
+      --primary: 165 100% 45%;
+      --primary-foreground: 210 30% 6%;
+      --secondary: 200 70% 45%;
+      --secondary-foreground: 180 15% 92%;
+      --muted: 210 20% 14%;
+      --muted-foreground: 190 10% 70%;
+      --accent: 315 85% 55%;
+      --accent-foreground: 180 15% 92%;
+      --destructive: 0 84% 60%;
+      --destructive-foreground: 180 15% 92%;
+      --border: 165 70% 30%;
+      --input: 210 20% 18%;
+      --ring: 165 100% 45%;
+      --radius: 1.2rem;
+      --chart-1: 165 100% 45%;
+      --chart-2: 200 70% 45%;
+      --chart-3: 315 85% 55%;
+      --chart-4: 180 5% 96%;
+      --chart-5: 210 20% 14%;
+    }
+
+    .dark {
+      --background: 210 30% 2.5%;
+      --foreground: 180 15% 92%;
+      --card: 210 30% 5%;
+      --card-foreground: 180 15% 92%;
+      --popover: 210 30% 5%;
+      --popover-foreground: 180 15% 92%;
+      --primary: 165 80% 45%;
+      --primary-foreground: 210 30% 6%;
+      --secondary: 200 70% 45%;
+      --secondary-foreground: 180 15% 92%;
+      --muted: 210 20% 14%;
+      --muted-foreground: 190 10% 70%;
+      --accent: 315 85% 39%;
+      --accent-foreground: 180 15% 92%;
+      --destructive: 0 62% 35%;
+      --destructive-foreground: 180 15% 92%;
+      --border: 165 70% 22%;
+      --input: 210 20% 18%;
+      --ring: 165 100% 45%;
+      --chart-1: 165 100% 45%;
+      --chart-2: 210 20% 14%;
+      --chart-3: 315 85% 55%;
+      --chart-4: 180 15% 92%;
+      --chart-5: 210 30% 5%;
+    }
+
+    * {
+      border-color: hsl(var(--border));
+    }
+
+    body {
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
+      font-family: 'Jost', sans-serif;
+    }
+
+    /* Global skin */
+    .browzr-skin {
+      background: linear-gradient(to bottom, hsl(180 100% 25%), hsl(210 30% 2.5%) 8%, hsl(210 30% 2.5%));
+      box-shadow: inset 0 0 30px hsla(165, 100%, 35%, 0.4);
+      min-height: 100vh;
+      overflow-y: scroll;
+    }
+
+    /* Neon surfaces */
+    .neon-surface {
+      background: linear-gradient(
+        to bottom,
+        hsla(180, 100%, 25%, 0.2),
+        hsla(210, 30%, 2%, 0.9)
+      );
+      border: 1px solid hsla(165, 70%, 40%, 0.35);
+      border-radius: 16px;
+      box-shadow: 0 0 8px hsla(165, 100%, 45%, 0.25) inset;
+    }
+
+    .neon-input {
+      background: linear-gradient(to bottom, hsla(180, 100%, 25%, 0.35), hsl(210 30% 2.5%) 36%, hsl(210 30% 2.5%));
+      border: 1px solid hsla(165, 70%, 40%, 0.55);
+      color: hsl(165 100% 75%);
+      padding: 0.75rem;
+      border-radius: 8px;
+      font-family: inherit;
+    }
+
+    .neon-input::placeholder {
+      color: hsla(190, 90%, 70%, 0.7);
+    }
+
+    .neon-button {
+      background: linear-gradient(
+        to bottom,
+        hsla(165, 100%, 45%, 0.25),
+        hsla(165, 100%, 35%, 0.12)
+      );
+      border: 1px solid hsla(165, 90%, 55%, 0.45);
+      color: hsl(165 100% 80%);
+      border-radius: 10px;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      backdrop-filter: saturate(140%) blur(2px);
+      -webkit-backdrop-filter: saturate(140%) blur(2px);
+      box-shadow: 0 0 8px hsla(165, 100%, 45%, 0.35), inset 0 0 8px hsla(165, 100%, 35%, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .neon-button:hover {
+      background: linear-gradient(
+        to bottom,
+        hsla(165, 100%, 55%, 0.35),
+        hsla(165, 100%, 35%, 0.2)
+      );
+      box-shadow: 0 0 10px hsla(165, 100%, 45%, 0.5), inset 0 0 10px hsla(165, 100%, 35%, 0.25);
+    }
+
+    .neon-glow {
+      box-shadow: 0 0 8px hsla(165, 100%, 45%, 0.6), 0 0 16px hsla(190, 90%, 60%, 0.25);
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(to top, black, rgba(0, 0, 0, 0.743), rgba(0, 128, 128, 0.275));
+      z-index: 100000;
+      position: fixed;
+      top: 0;
+      left: 10%;
+      right: 10%;
+      padding: 10px 10px 4px 10px;
+      box-shadow: -50vw 0 40px black, 50vw 0 40px black;
+      border-radius: 0 0 30px 30px;
+      backdrop-filter: blur(5px);
+    }
+
+    main {
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+
+    /* Tab Navigation */
+    .nav-tabs {
+      display: flex;
+      gap: 1rem;
+      border-bottom: 1px solid hsla(165, 70%, 40%, 0.35);
+      padding: 1rem 0;
+      overflow-x: auto;
+    }
+
+    .nav-tab {
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: hsl(var(--foreground));
+      border-bottom: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .nav-tab.active {
+      color: hsl(var(--primary));
+      border-bottom-color: hsl(var(--primary));
+    }
+
+    .nav-tab:hover {
+      color: hsl(165 100% 55%);
+    }
+
+    /* View containers */
+    .view {
+      display: none;
+    }
+
+    .view.active {
+      display: block;
+    }
+
+    /* Card styling */
+    .card {
+      background: linear-gradient(to bottom, hsl(180 100% 20%), hsl(210 30% 6%) 40%, hsl(210 30% 3%));
+      border: 1px solid hsla(165, 70%, 35%, 0.4);
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 0 10px hsla(165, 100%, 45%, 0.35);
+    }
+
+    /* Login overlay */
+    #login-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+    }
+
+    .login-form {
+      max-width: 400px;
+      width: 90%;
+    }
+
+    .login-form .card {
+      padding: 2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    /* Toast notifications */
+    #toast-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .toast {
+      background: hsla(210, 30%, 5%, 0.95);
+      border: 1px solid hsla(165, 70%, 40%, 0.4);
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      color: hsl(var(--foreground));
+      animation: slideIn 0.3s ease;
+    }
+
+    .toast.success {
+      border-color: hsla(165, 100%, 45%, 0.6);
+      background: linear-gradient(to right, hsla(165, 100%, 45%, 0.15), hsla(210, 30%, 5%, 0.95));
+    }
+
+    .toast.error {
+      border-color: hsla(0, 84%, 60%, 0.6);
+      background: linear-gradient(to right, hsla(0, 84%, 60%, 0.15), hsla(210, 30%, 5%, 0.95));
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(400px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    /* Loading spinner */
+    .spinner {
+      border: 3px solid hsla(165, 70%, 40%, 0.2);
+      border-top-color: hsl(var(--primary));
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Text utilities */
+    .text-sm { font-size: 0.875rem; }
+    .text-base { font-size: 1rem; }
+    .text-lg { font-size: 1.125rem; }
+    .text-xl { font-size: 1.25rem; }
+    .text-2xl { font-size: 1.5rem; }
+
+    .font-medium { font-weight: 500; }
+    .font-semibold { font-weight: 600; }
+    .font-bold { font-weight: 700; }
+
+    .gap-1 { gap: 0.25rem; }
+    .gap-2 { gap: 0.5rem; }
+    .gap-3 { gap: 0.75rem; }
+    .gap-4 { gap: 1rem; }
+
+    .p-1 { padding: 0.25rem; }
+    .p-2 { padding: 0.5rem; }
+    .p-3 { padding: 0.75rem; }
+    .p-4 { padding: 1rem; }
+
+    .mb-2 { margin-bottom: 0.5rem; }
+    .mb-4 { margin-bottom: 1rem; }
+    .mb-6 { margin-bottom: 1.5rem; }
+
+    .flex { display: flex; }
+    .flex-col { flex-direction: column; }
+    .items-center { align-items: center; }
+    .justify-between { justify-content: space-between; }
+
+    .w-full { width: 100%; }
+    .max-w-2xl { max-width: 42rem; }
+    .max-w-4xl { max-width: 56rem; }
+
+    .rounded-lg { border-radius: 0.5rem; }
+    .rounded-2xl { border-radius: 1rem; }
+
+    /* Status filter buttons */
+    .status-filter-btn {
+      padding: 0.5rem 1rem;
+      border: 1px solid hsla(165, 70%, 40%, 0.35);
+      border-radius: 6px;
+      background: transparent;
+      color: hsl(var(--foreground));
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .status-filter-btn:hover {
+      border-color: hsla(165, 70%, 40%, 0.55);
+      background: hsla(165, 70%, 40%, 0.1);
+    }
+
+    .status-filter-btn.active {
+      background: linear-gradient(
+        to bottom,
+        hsla(165, 100%, 45%, 0.25),
+        hsla(165, 100%, 35%, 0.12)
+      );
+      border-color: hsla(165, 90%, 55%, 0.45);
+      color: hsl(165 100% 80%);
+    }
+
+    /* Grid for projects */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1rem;
+    }
+
+    .project-card-item {
+      background: linear-gradient(to bottom, rgba(0, 128, 128, 0.12), rgba(0,0,0,0.6));
+      border: 1px solid hsla(165, 70%, 40%, 0.35);
+      border-radius: 12px;
+      padding: 1.25rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .project-card-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      border-color: hsla(165, 90%, 55%, 0.45);
+    }
+  </style>
+</head>
+
+<body class="dark browzr-skin">
+  <!-- Login Overlay -->
+  <div id="login-overlay">
+    <div class="login-form">
+      <div class="card">
+        <h1 class="text-2xl font-bold mb-6">ActionDeck</h1>
+        <form id="login-form">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              placeholder="your@email.com"
+              class="neon-input w-full"
+              required
+            >
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              id="password"
+              type="password"
+              placeholder="Password"
+              class="neon-input w-full"
+              required
+            >
+          </div>
+          <button type="submit" class="neon-button w-full font-semibold">
+            Sign In
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="flex justify-between items-center">
+      <div class="flex items-center gap-4">
+        <h1 class="text-2xl font-bold">ActionDeck</h1>
+        <span id="user-email" class="text-sm text-muted-foreground"></span>
+      </div>
+      <button id="logout-btn" class="neon-button text-sm" style="display: none;">
+        Logout
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-6xl mx-auto px-4">
+    <!-- Navigation Tabs -->
+    <div class="nav-tabs">
+      <button class="nav-tab active" data-view="dashboard">Dashboard</button>
+      <button class="nav-tab" data-view="tasks">Tasks</button>
+      <button class="nav-tab" data-view="prioritize">Prioritize</button>
+      <button class="nav-tab" data-view="today">Today</button>
+      <button class="nav-tab" data-view="settings">Settings</button>
+    </div>
+
+    <!-- Dashboard View -->
+    <div id="dashboard" class="view active">
+      <div class="mb-6">
+        <h2 class="text-xl font-semibold mb-4">Dashboard</h2>
+        <div id="dashboard-summary" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <!-- Summary cards will be rendered here -->
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-lg font-semibold">Projects</h3>
+          <button class="neon-button text-sm" onclick="window.openProjectForm()">New Project</button>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="mb-4">
+          <input
+            type="text"
+            id="dashboard-search"
+            placeholder="Search projects..."
+            class="neon-input w-full"
+            onkeyup="window.filterProjects()"
+          >
+        </div>
+
+        <!-- Status Filters -->
+        <div class="flex gap-2 mb-6 overflow-x-auto pb-2">
+          <button class="status-filter-btn active" data-status="all" onclick="window.filterByStatus('all')">All</button>
+          <button class="status-filter-btn" data-status="active" onclick="window.filterByStatus('active')">Active</button>
+          <button class="status-filter-btn" data-status="paused" onclick="window.filterByStatus('paused')">Paused</button>
+          <button class="status-filter-btn" data-status="done" onclick="window.filterByStatus('done')">Done</button>
+          <button class="status-filter-btn" data-status="archived" onclick="window.filterByStatus('archived')">Archived</button>
+        </div>
+
+        <!-- Project List -->
+        <div id="project-list">
+          <!-- Projects will be rendered here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Tasks View -->
+    <div id="tasks" class="view">
+      <div class="card">
+        <h2 class="text-xl font-semibold mb-6">Casual Tasks</h2>
+
+        <!-- Task Input -->
+        <div class="flex gap-2 mb-6">
+          <input
+            type="text"
+            id="task-input"
+            placeholder="Add a new task..."
+            class="neon-input flex-1"
+            onkeypress="if(event.key==='Enter') window.addTask()"
+          >
+          <button class="neon-button" onclick="window.addTask()">Add</button>
+          <button class="neon-button" id="ai-breakdown-btn" onclick="window.breakdownTask()" title="AI Task Breakdown">✨ AI</button>
+        </div>
+
+        <!-- Task List -->
+        <div id="task-list">
+          <!-- Tasks will be rendered here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Prioritize View -->
+    <div id="prioritize" class="view">
+      <div class="card">
+        <h2 class="text-xl font-semibold mb-6">Intelligent Prioritization</h2>
+
+        <div id="prioritize-form-container">
+          <div class="form-group mb-4">
+            <label class="font-semibold mb-2">Select Projects to Prioritize</label>
+            <div id="prioritize-projects" class="space-y-2 mb-4">
+              <!-- Project checkboxes will be rendered here -->
+            </div>
+          </div>
+
+          <div class="form-group mb-4">
+            <label for="prioritize-goals">Your Goals</label>
+            <textarea
+              id="prioritize-goals"
+              placeholder="What are you trying to accomplish? (e.g., 'I have 2 weeks left and want to focus on finishing the most impactful projects')"
+              class="neon-input w-full"
+              rows="3"
+              style="resize: vertical;"
+            ></textarea>
+          </div>
+
+          <div class="form-group mb-6">
+            <label for="prioritize-context">Additional Context</label>
+            <textarea
+              id="prioritize-context"
+              placeholder="Any other constraints or context? (optional)"
+              class="neon-input w-full"
+              rows="2"
+              style="resize: vertical;"
+            ></textarea>
+          </div>
+
+          <button class="neon-button w-full font-semibold" id="prioritize-btn" onclick="window.prioritizeProjects()">
+            Prioritize with AI
+          </button>
+        </div>
+
+        <div id="prioritize-result-container" style="display: none; margin-top: 2rem;">
+          <button class="text-xs text-muted-foreground mb-4" onclick="window.resetPrioritization()">← Back</button>
+          <div id="prioritize-result" class="prose prose-invert max-w-none">
+            <!-- Prioritization result will be rendered here -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Today View -->
+    <div id="today" class="view">
+      <div class="card">
+        <h2 class="text-xl font-semibold mb-4">Today</h2>
+        <p class="text-muted-foreground">Daily schedule view coming soon...</p>
+      </div>
+    </div>
+
+    <!-- Settings View -->
+    <div id="settings" class="view">
+      <div class="card">
+        <h2 class="text-xl font-semibold mb-6">Settings</h2>
+
+        <!-- Sync Settings -->
+        <div class="mb-6">
+          <h3 class="text-lg font-semibold mb-3">Sync</h3>
+          <label class="flex items-center gap-3 cursor-pointer mb-3">
+            <input
+              type="checkbox"
+              id="enable-sync"
+              checked
+              onchange="window.toggleSync()"
+              style="width: 20px; height: 20px; cursor: pointer;"
+            >
+            <span>Enable Firestore Sync</span>
+          </label>
+        </div>
+
+        <!-- API Keys -->
+        <div class="mb-6">
+          <h3 class="text-lg font-semibold mb-3">API Keys</h3>
+          <div class="form-group">
+            <label for="gemini-key">Gemini API Key</label>
+            <input
+              id="gemini-key"
+              type="password"
+              placeholder="sk-..."
+              class="neon-input w-full"
+              onchange="window.saveGeminiKey()"
+            >
+            <p class="text-xs text-muted-foreground mt-1">Used for AI features (breakdown, prioritization)</p>
+          </div>
+        </div>
+
+        <!-- Data Management -->
+        <div class="mb-6">
+          <h3 class="text-lg font-semibold mb-3">Data</h3>
+          <div class="flex gap-2 flex-wrap">
+            <button class="neon-button" onclick="window.exportData()">📥 Export JSON</button>
+            <button class="neon-button" onclick="document.getElementById('import-file').click()">📤 Import JSON</button>
+            <input
+              id="import-file"
+              type="file"
+              accept=".json"
+              style="display: none;"
+              onchange="window.importData(event)"
+            >
+            <button class="neon-button" onclick="if(confirm('Clear all data?')) window.clearAllData()" style="border-color: hsla(0, 84%, 60%, 0.6);">🗑️ Clear All</button>
+          </div>
+        </div>
+
+        <!-- About -->
+        <div class="text-xs text-muted-foreground border-t border-border pt-6">
+          <p>ActionDeck v1.0 - Vanilla HTML Edition</p>
+          <p>Built with Firebase & Google Gemini API</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Toast Container -->
+  <div id="toast-container"></div>
+
+  <!-- Firebase SDK -->
+  <script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js';
+    import {
+      getAuth,
+      signInWithEmailAndPassword,
+      signOut,
+      onAuthStateChanged,
+      browserLocalPersistence,
+      setPersistence
+    } from 'https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js';
+    import {
+      getFirestore,
+      collection,
+      onSnapshot,
+      setDoc,
+      deleteDoc,
+      doc
+    } from 'https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js';
+
+    // Firebase Configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDibdtqeea1yHqi4ddlZCmAhuq269iK06c",
+      authDomain: "briizos.firebaseapp.com",
+      projectId: "briizos",
+      storageBucket: "briizos.firebasestorage.app",
+      messagingSenderId: "719807847926",
+      appId: "1:719807847926:web:849e8024234baba825fbd77",
+      measurementId: "G-WSV56T9VEK"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    // Set persistent auth
+    await setPersistence(auth, browserLocalPersistence);
+
+    console.log('Firebase initialized successfully');
+
+    // Global App State
+    function createEmptyState() {
+      return {
+        __ver: 1,
+        projects: [],
+        casualTasks: [],
+        dailySchedules: {},
+        settings: {
+          enableSync: true,
+          importBriizOS: false
+        },
+        clientTs: Date.now(),
+        uid: null
+      };
+    }
+
+    function normalizeStateShape(input) {
+      // Migration/compatibility function for state shape
+      const defaults = createEmptyState();
+      return {
+        ...defaults,
+        ...input,
+        settings: {
+          ...defaults.settings,
+          ...(input.settings || {})
+        }
+      };
+    }
+
+    let state = createEmptyState();
+    let saveTimeout = null;
+    let uid = null;
+    let projectSubscription = null;
+    let taskSubscription = null;
+
+    // State management functions
+    function markDirty() {
+      state.clientTs = Date.now();
+      scheduleCheckpoint();
+    }
+
+    function scheduleCheckpoint() {
+      if (saveTimeout) clearTimeout(saveTimeout);
+      saveTimeout = setTimeout(() => {
+        saveLocal();
+      }, 10000); // Save every 10 seconds
+    }
+
+    function saveLocal() {
+      try {
+        localStorage.setItem('actiondeck_state', JSON.stringify(state));
+        console.log('State saved to localStorage');
+      } catch (e) {
+        console.error('Failed to save to localStorage:', e);
+      }
+    }
+
+    function loadLocal() {
+      try {
+        const saved = localStorage.getItem('actiondeck_state');
+        if (saved) {
+          const loaded = JSON.parse(saved);
+          state = normalizeStateShape(loaded);
+          console.log('State loaded from localStorage');
+        }
+      } catch (e) {
+        console.error('Failed to load from localStorage:', e);
+      }
+    }
+
+    // Load persisted state
+    loadLocal();
+
+    // Auth event handler
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        uid = user.uid;
+        state.uid = uid;
+        document.getElementById('login-overlay').style.display = 'none';
+        document.getElementById('logout-btn').style.display = 'block';
+        document.getElementById('user-email').textContent = user.email;
+        document.getElementById('login-form').reset();
+        console.log('User signed in:', user.email);
+
+        // Subscribe to Firestore data
+        if (state.settings.enableSync) {
+          subscribeProjects();
+          subscribeCasualTasks();
+        }
+      } else {
+        uid = null;
+        state.uid = null;
+        document.getElementById('login-overlay').style.display = 'flex';
+        document.getElementById('logout-btn').style.display = 'none';
+        document.getElementById('user-email').textContent = '';
+        console.log('User signed out');
+      }
+    });
+
+    // Auth functions
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+
+      try {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Signing in...';
+
+        await signInWithEmailAndPassword(auth, email, password);
+
+        submitBtn.textContent = 'Sign In';
+        submitBtn.disabled = false;
+      } catch (error) {
+        submitBtn.textContent = 'Sign In';
+        submitBtn.disabled = false;
+        showToast('Login failed: ' + error.message, 'error');
+      }
+    });
+
+    document.getElementById('logout-btn').addEventListener('click', async () => {
+      try {
+        await signOut(auth);
+        showToast('Signed out', 'success');
+      } catch (error) {
+        showToast('Logout failed: ' + error.message, 'error');
+      }
+    });
+
+    // Firestore sync functions
+    function userPath(path) {
+      return `users/${uid}/apps/actionDeck/${path}`;
+    }
+
+    function subscribeProjects() {
+      if (!uid) return;
+      const ref = collection(db, userPath('projects'));
+      projectSubscription = onSnapshot(ref, (snapshot) => {
+        state.projects = snapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+        console.log('Projects synced:', state.projects.length);
+        markDirty();
+        renderProjects();
+      }, (error) => {
+        console.error('Projects subscription error:', error);
+        showToast('Failed to sync projects: ' + error.message, 'error');
+      });
+    }
+
+    function subscribeCasualTasks() {
+      if (!uid) return;
+      const ref = collection(db, userPath('casualTasks'));
+      taskSubscription = onSnapshot(ref, (snapshot) => {
+        state.casualTasks = snapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+        console.log('Tasks synced:', state.casualTasks.length);
+        markDirty();
+        renderTasks();
+      }, (error) => {
+        console.error('Tasks subscription error:', error);
+        showToast('Failed to sync tasks: ' + error.message, 'error');
+      });
+    }
+
+    async function upsertProject(project) {
+      if (!uid) return;
+      try {
+        const docRef = doc(db, userPath('projects'), project.id);
+        await setDoc(docRef, project, { merge: true });
+        showToast('Project saved', 'success');
+      } catch (error) {
+        showToast('Failed to save project: ' + error.message, 'error');
+        console.error('Project save error:', error);
+      }
+    }
+
+    async function removeProject(projectId) {
+      if (!uid) return;
+      try {
+        const docRef = doc(db, userPath('projects'), projectId);
+        await deleteDoc(docRef);
+        showToast('Project deleted', 'success');
+      } catch (error) {
+        showToast('Failed to delete project: ' + error.message, 'error');
+        console.error('Project delete error:', error);
+      }
+    }
+
+    async function upsertCasualItem(item) {
+      if (!uid) return;
+      try {
+        const docRef = doc(db, userPath('casualTasks'), item.id);
+        await setDoc(docRef, item, { merge: true });
+        showToast('Task saved', 'success');
+      } catch (error) {
+        showToast('Failed to save task: ' + error.message, 'error');
+        console.error('Task save error:', error);
+      }
+    }
+
+    async function removeCasualItem(itemId) {
+      if (!uid) return;
+      try {
+        const docRef = doc(db, userPath('casualTasks'), itemId);
+        await deleteDoc(docRef);
+        showToast('Task deleted', 'success');
+      } catch (error) {
+        showToast('Failed to delete task: ' + error.message, 'error');
+        console.error('Task delete error:', error);
+      }
+    }
+
+    // Toast notifications
+    function showToast(message, type = 'info') {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      toast.className = `toast ${type}`;
+      toast.textContent = message;
+      container.appendChild(toast);
+
+      setTimeout(() => {
+        toast.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => toast.remove(), 300);
+      }, 3000);
+    }
+
+    // View navigation
+    document.querySelectorAll('.nav-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+
+        tab.classList.add('active');
+        const viewId = tab.dataset.view;
+        document.getElementById(viewId).classList.add('active');
+      });
+    });
+
+    // Filter state
+    let filterStatus = 'all';
+    let filterSearch = '';
+
+    // Render functions
+    function renderProjects() {
+      const container = document.getElementById('project-list');
+
+      // Filter projects
+      let filtered = state.projects;
+      if (filterStatus !== 'all') {
+        filtered = filtered.filter(p => p.status === filterStatus);
+      }
+      if (filterSearch) {
+        const search = filterSearch.toLowerCase();
+        filtered = filtered.filter(p =>
+          (p.name && p.name.toLowerCase().includes(search)) ||
+          (p.description && p.description.toLowerCase().includes(search))
+        );
+      }
+
+      if (!filtered.length) {
+        container.innerHTML = '<p class="text-muted-foreground">No projects found.</p>';
+        return;
+      }
+
+      container.innerHTML = `<div class="project-grid">
+        ${filtered.map(project => `
+          <div class="project-card-item" onclick="window.openProjectModal('${project.id}')">
+            <div class="flex justify-between items-start mb-3">
+              <h4 class="text-base font-semibold flex-1">${project.name || 'Untitled'}</h4>
+              <span class="text-xs px-2 py-1 rounded ml-2 whitespace-nowrap" style="
+                background: ${getStatusColor(project.status)};
+                color: ${getStatusColorText(project.status)};
+              ">${project.status || 'active'}</span>
+            </div>
+            <p class="text-sm text-muted-foreground mb-3 line-clamp-2">${project.description || 'No description'}</p>
+            <div class="flex justify-between items-center text-xs text-muted-foreground mb-3">
+              <span>Importance: ${project.importance || 5}/10</span>
+              <span>${project.deadline || 'No deadline'}</span>
+            </div>
+            ${project.tasks ? `
+              <div class="text-xs pt-3 border-t border-border">
+                <span>${project.tasks.filter(t => t.completed).length}/${project.tasks.length} tasks</span>
+              </div>
+            ` : ''}
+          </div>
+        `).join('')}
+      </div>`;
+    }
+
+    function getStatusColor(status) {
+      const colors = {
+        'active': 'hsla(165, 100%, 45%, 0.15)',
+        'paused': 'hsla(45, 90%, 55%, 0.15)',
+        'done': 'hsla(210, 70%, 55%, 0.15)',
+        'archived': 'hsla(210, 10%, 50%, 0.15)'
+      };
+      return colors[status] || colors['active'];
+    }
+
+    function getStatusColorText(status) {
+      const colors = {
+        'active': 'hsl(165, 100%, 45%)',
+        'paused': 'hsl(45, 90%, 55%)',
+        'done': 'hsl(210, 70%, 55%)',
+        'archived': 'hsl(210, 10%, 50%)'
+      };
+      return colors[status] || colors['active'];
+    }
+
+    function renderTasks() {
+      const container = document.getElementById('task-list');
+      if (!state.casualTasks.length) {
+        container.innerHTML = '<p class="text-muted-foreground text-center py-8">No tasks yet. Add one to get started.</p>';
+        return;
+      }
+
+      const pending = state.casualTasks.filter(t => !t.completed && !t.isDeck);
+      const completed = state.casualTasks.filter(t => t.completed && !t.isDeck);
+      const decks = state.casualTasks.filter(t => t.isDeck);
+
+      let html = '';
+
+      // Task Decks (collapsed groups)
+      if (decks.length) {
+        html += '<div class="mb-6"><h3 class="font-semibold text-sm text-muted-foreground uppercase mb-3">Task Decks</h3>';
+        html += decks.map(deck => `
+          <div class="neon-surface p-3 mb-2 cursor-pointer" onclick="window.toggleDeck('${deck.id}')">
+            <div class="flex justify-between items-center">
+              <span class="font-semibold">${deck.title || 'Untitled Deck'}</span>
+              <span class="text-xs text-muted-foreground">${deck.tasks?.filter(t => t.completed).length || 0}/${deck.tasks?.length || 0}</span>
+            </div>
+            <div class="text-xs text-muted-foreground mt-1">${deck.tasks?.length || 0} tasks</div>
+          </div>
+        `).join('');
+        html += '</div>';
+      }
+
+      // Pending Tasks
+      if (pending.length) {
+        html += '<div class="mb-6"><h3 class="font-semibold text-sm text-muted-foreground uppercase mb-3">Pending</h3>';
+        html += pending.map(task => `
+          <div class="flex items-center gap-3 p-3 rounded-lg border border-border hover:bg-muted/30 mb-2 group">
+            <input type="checkbox" class="task-checkbox cursor-pointer" onchange="window.toggleTask('${task.id}')">
+            <span class="flex-1">${task.title || 'Untitled'}</span>
+            <button class="text-xs opacity-0 group-hover:opacity-100 text-destructive" onclick="window.deleteTask('${task.id}')">Delete</button>
+          </div>
+        `).join('');
+        html += '</div>';
+      }
+
+      // Completed Tasks
+      if (completed.length) {
+        html += '<div><h3 class="font-semibold text-sm text-muted-foreground uppercase mb-3">Completed</h3>';
+        html += completed.map(task => `
+          <div class="flex items-center gap-3 p-3 rounded-lg border border-border opacity-60 mb-2 group">
+            <input type="checkbox" class="task-checkbox cursor-pointer" checked onchange="window.toggleTask('${task.id}')">
+            <span class="flex-1 line-through">${task.title || 'Untitled'}</span>
+            <button class="text-xs opacity-0 group-hover:opacity-100 text-destructive" onclick="window.deleteTask('${task.id}')">Delete</button>
+          </div>
+        `).join('');
+        html += '</div>';
+      }
+
+      container.innerHTML = html;
+    }
+
+    function renderDashboardSummary() {
+      const container = document.getElementById('dashboard-summary');
+      const totalProjects = state.projects.length;
+      const activeProjects = state.projects.filter(p => p.status !== 'done' && p.status !== 'archived').length;
+      const completedTasks = state.casualTasks.filter(t => t.completed).length;
+      const totalTasks = state.casualTasks.length;
+      const completionPct = totalTasks ? Math.round((completedTasks / totalTasks) * 100) : 0;
+
+      container.innerHTML = `
+        <div class="card text-center">
+          <div class="text-3xl font-bold text-primary">${totalProjects}</div>
+          <div class="text-sm text-muted-foreground">Total Projects</div>
+        </div>
+        <div class="card text-center">
+          <div class="text-3xl font-bold text-secondary">${activeProjects}</div>
+          <div class="text-sm text-muted-foreground">Active</div>
+        </div>
+        <div class="card text-center">
+          <div class="text-3xl font-bold text-accent">${completionPct}%</div>
+          <div class="text-sm text-muted-foreground">Tasks Complete</div>
+        </div>
+      `;
+    }
+
+    // Helper functions for event handlers
+    window.openProjectModal = function(projectId) {
+      const project = state.projects.find(p => p.id === projectId);
+      if (project) {
+        showToast('Opening project: ' + project.name, 'info');
+        console.log('Project modal opened for:', project);
+      }
+    };
+
+    window.openProjectForm = function(projectId) {
+      if (projectId) {
+        const project = state.projects.find(p => p.id === projectId);
+        showToast('Editing project: ' + project.name, 'info');
+      } else {
+        showToast('Creating new project...', 'info');
+      }
+      console.log('Project form opened for:', projectId || 'new');
+    };
+
+    window.toggleTask = async function(taskId) {
+      const task = state.casualTasks.find(t => t.id === taskId);
+      if (task) {
+        task.completed = !task.completed;
+        await upsertCasualItem(task);
+        renderTasks();
+      }
+    };
+
+    window.filterByStatus = function(status) {
+      filterStatus = status;
+      // Update active button
+      document.querySelectorAll('.status-filter-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.status === status);
+      });
+      renderProjects();
+    };
+
+    window.filterProjects = function() {
+      filterSearch = document.getElementById('dashboard-search').value;
+      renderProjects();
+    };
+
+    window.addTask = async function() {
+      const input = document.getElementById('task-input');
+      const title = input.value.trim();
+      if (!title) return;
+
+      const task = {
+        id: 'task_' + Date.now(),
+        title,
+        completed: false,
+        createdAt: new Date().toISOString()
+      };
+
+      state.casualTasks.push(task);
+      await upsertCasualItem(task);
+      input.value = '';
+      renderTasks();
+    };
+
+    window.deleteTask = async function(taskId) {
+      if (confirm('Delete this task?')) {
+        state.casualTasks = state.casualTasks.filter(t => t.id !== taskId);
+        await removeCasualItem(taskId);
+        renderTasks();
+      }
+    };
+
+    window.toggleDeck = function(deckId) {
+      const deck = state.casualTasks.find(d => d.id === deckId);
+      if (deck) {
+        deck.expanded = !deck.expanded;
+        markDirty();
+        renderTasks();
+      }
+    };
+
+    // AI/Gemini API functions
+    const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
+
+    async function callGemini(prompt, systemPrompt) {
+      const apiKey = localStorage.getItem('gemini_api_key');
+      if (!apiKey) {
+        showToast('Please set your Gemini API key in Settings', 'error');
+        throw new Error('No API key configured');
+      }
+
+      try {
+        const requestBody = {
+          contents: [
+            {
+              parts: [
+                {
+                  text: (systemPrompt ? systemPrompt + '\n\n' : '') + prompt
+                }
+              ]
+            }
+          ],
+          generationConfig: {
+            temperature: 0.7,
+            topK: 40,
+            topP: 0.95,
+            maxOutputTokens: 2048
+          }
+        };
+
+        const response = await fetch(`${GEMINI_API_URL}?key=${apiKey}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(requestBody)
+        });
+
+        if (!response.ok) {
+          const error = await response.json();
+          throw new Error(error.error?.message || 'API call failed');
+        }
+
+        const data = await response.json();
+        return data.candidates?.[0]?.content?.parts?.[0]?.text || '';
+      } catch (error) {
+        console.error('Gemini API error:', error);
+        showToast('AI request failed: ' + error.message, 'error');
+        throw error;
+      }
+    }
+
+    // Task breakdown with AI
+    window.breakdownTask = async function() {
+      const input = document.getElementById('task-input');
+      const goal = input.value.trim();
+      if (!goal) {
+        showToast('Enter a goal to break down', 'error');
+        return;
+      }
+
+      const btn = document.getElementById('ai-breakdown-btn');
+      const originalText = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = '⏳ Analyzing...';
+
+      try {
+        const systemPrompt = `You are a task breakdown assistant. The user will give you a high-level goal.
+Break it down into 3-7 concrete, actionable subtasks.
+Format your response as a JSON object with:
+{
+  "title": "main goal title",
+  "tasks": [
+    {"title": "task 1", "completed": false},
+    ...
+  ]
+}
+Only output valid JSON, no other text.`;
+
+        const response = await callGemini(goal, systemPrompt);
+
+        // Parse JSON response
+        const jsonMatch = response.match(/\{[\s\S]*\}/);
+        if (!jsonMatch) throw new Error('Invalid response format');
+
+        const breakdown = JSON.parse(jsonMatch[0]);
+
+        // Create task deck
+        const deckId = 'deck_' + Date.now();
+        const deck = {
+          id: deckId,
+          title: breakdown.title,
+          isDeck: true,
+          tasks: breakdown.tasks || [],
+          expanded: true,
+          createdAt: new Date().toISOString()
+        };
+
+        state.casualTasks.push(deck);
+        await upsertCasualItem(deck);
+        input.value = '';
+        renderTasks();
+        showToast('Task breakdown created!', 'success');
+      } catch (error) {
+        console.error('Task breakdown error:', error);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = originalText;
+      }
+    };
+
+    // Settings functions
+    window.toggleSync = function() {
+      const enabled = document.getElementById('enable-sync').checked;
+      state.settings.enableSync = enabled;
+      markDirty();
+      if (enabled && uid) {
+        subscribeProjects();
+        subscribeCasualTasks();
+        showToast('Sync enabled', 'success');
+      } else {
+        showToast('Sync disabled - using local data only', 'info');
+      }
+    };
+
+    window.saveGeminiKey = function() {
+      const key = document.getElementById('gemini-key').value;
+      if (key) {
+        localStorage.setItem('gemini_api_key', key);
+        showToast('API key saved', 'success');
+      }
+    };
+
+    window.loadGeminiKey = function() {
+      const key = localStorage.getItem('gemini_api_key');
+      if (key) {
+        document.getElementById('gemini-key').value = key;
+      }
+    };
+
+    window.exportData = function() {
+      const data = {
+        projects: state.projects,
+        casualTasks: state.casualTasks,
+        exportedAt: new Date().toISOString()
+      };
+
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `actiondeck-export-${new Date().toISOString().split('T')[0]}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast('Data exported', 'success');
+    };
+
+    window.importData = async function(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      try {
+        const text = await file.text();
+        const data = JSON.parse(text);
+
+        if (!data.projects && !data.casualTasks) {
+          throw new Error('Invalid data format');
+        }
+
+        // Merge projects
+        if (data.projects && Array.isArray(data.projects)) {
+          for (const project of data.projects) {
+            const existing = state.projects.find(p => p.id === project.id);
+            if (existing) {
+              Object.assign(existing, project);
+            } else {
+              state.projects.push(project);
+            }
+            if (uid && state.settings.enableSync) {
+              await upsertProject(project);
+            }
+          }
+        }
+
+        // Merge tasks
+        if (data.casualTasks && Array.isArray(data.casualTasks)) {
+          for (const task of data.casualTasks) {
+            const existing = state.casualTasks.find(t => t.id === task.id);
+            if (existing) {
+              Object.assign(existing, task);
+            } else {
+              state.casualTasks.push(task);
+            }
+            if (uid && state.settings.enableSync) {
+              await upsertCasualItem(task);
+            }
+          }
+        }
+
+        markDirty();
+        renderAll();
+        document.getElementById('import-file').value = '';
+        showToast('Data imported successfully', 'success');
+      } catch (error) {
+        showToast('Import failed: ' + error.message, 'error');
+        console.error('Import error:', error);
+      }
+    };
+
+    window.clearAllData = function() {
+      state.projects = [];
+      state.casualTasks = [];
+      markDirty();
+      renderAll();
+      showToast('All data cleared', 'success');
+    };
+
+    // Prioritization functions
+    function renderPrioritizeForm() {
+      const container = document.getElementById('prioritize-projects');
+      if (!state.projects.length) {
+        container.innerHTML = '<p class="text-muted-foreground">No projects to prioritize. Create some projects first.</p>';
+        return;
+      }
+
+      container.innerHTML = state.projects.map(project => `
+        <label class="flex items-center gap-3 cursor-pointer p-2 rounded hover:bg-muted/50">
+          <input
+            type="checkbox"
+            class="prioritize-project-checkbox"
+            data-id="${project.id}"
+            data-name="${project.name}"
+            style="width: 18px; height: 18px; cursor: pointer;"
+          >
+          <span class="flex-1">${project.name}</span>
+          <span class="text-xs text-muted-foreground">Priority: ${project.importance || 5}/10</span>
+        </label>
+      `).join('');
+    }
+
+    window.prioritizeProjects = async function() {
+      const selected = Array.from(document.querySelectorAll('.prioritize-project-checkbox:checked'));
+      if (!selected.length) {
+        showToast('Select at least one project', 'error');
+        return;
+      }
+
+      const goals = document.getElementById('prioritize-goals').value.trim();
+      if (!goals) {
+        showToast('Enter your goals', 'error');
+        return;
+      }
+
+      const context = document.getElementById('prioritize-context').value.trim();
+      const btn = document.getElementById('prioritize-btn');
+      const originalText = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = '⏳ Analyzing...';
+
+      try {
+        // Build project descriptions
+        const projects = selected.map(checkbox => {
+          const projectId = checkbox.dataset.id;
+          const project = state.projects.find(p => p.id === projectId);
+          return `- ${project.name} (importance: ${project.importance || 5}/10, size: ${project.size || 'unknown'} hours, deadline: ${project.deadline || 'none'})`;
+        }).join('\n');
+
+        const systemPrompt = `You are an intelligent project prioritization assistant.
+Analyze the given projects and the user's goals, then provide a prioritized list with detailed reasoning.
+Format your response as markdown with:
+1. A prioritized numbered list of projects
+2. For each project, explain WHY it should be at that priority level
+3. At the end, provide overall strategic recommendations
+
+Use clear markdown formatting.`;
+
+        const prompt = `Projects to prioritize:
+${projects}
+
+User's goals:
+${goals}
+
+${context ? `Additional context:\n${context}` : ''}
+
+Please prioritize these projects based on impact, deadline urgency, and the user's stated goals.`;
+
+        const response = await callGemini(prompt, systemPrompt);
+
+        // Display result
+        document.getElementById('prioritize-form-container').style.display = 'none';
+        document.getElementById('prioritize-result-container').style.display = 'block';
+        document.getElementById('prioritize-result').innerHTML = `<div style="
+          background: linear-gradient(to bottom, rgba(0, 128, 128, 0.08), rgba(0,0,0,0.4));
+          border: 1px solid hsla(165, 70%, 40%, 0.25);
+          border-radius: 8px;
+          padding: 1.5rem;
+          line-height: 1.6;
+          color: hsl(var(--foreground));
+        ">${response.replace(/\n/g, '<br>')}</div>`;
+
+        showToast('Prioritization complete!', 'success');
+      } catch (error) {
+        console.error('Prioritization error:', error);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = originalText;
+      }
+    };
+
+    window.resetPrioritization = function() {
+      document.getElementById('prioritize-form-container').style.display = 'block';
+      document.getElementById('prioritize-result-container').style.display = 'none';
+      document.getElementById('prioritize-goals').value = '';
+      document.getElementById('prioritize-context').value = '';
+      document.querySelectorAll('.prioritize-project-checkbox').forEach(cb => cb.checked = false);
+    };
+
+    // Render prioritize form when view loads
+    const origRenderAll = window.renderAll;
+    window.renderAll = function() {
+      origRenderAll();
+      renderPrioritizeForm();
+    };
+
+    // Render on page load
+    function renderAll() {
+      renderDashboardSummary();
+      renderProjects();
+      renderTasks();
+    }
+
+    // Initialize on DOM ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        window.loadGeminiKey();
+        renderAll();
+        console.log('ActionDeck initialized');
+      });
+    } else {
+      window.loadGeminiKey();
+      renderAll();
+      console.log('ActionDeck initialized');
+    }
+
+    // Expose to window for debugging
+    window.appState = state;
+    window.showToast = showToast;
+    window.markDirty = markDirty;
+    window.renderAll = renderAll;
+  </script>
+</body>
+</html>
