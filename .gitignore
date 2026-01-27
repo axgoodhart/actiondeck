@@ -35,6 +35,10 @@ yarn-error.log*
 .env*.local
 .env
 
+# Service account keys (sensitive)
+serviceAccountKey.json
+*-serviceAccountKey.json
+
 # Typescript
 *.tsbuildinfo
 next-env.d.ts

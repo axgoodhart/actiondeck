@@ -117,3 +117,32 @@ export type DailySchedule = {
   createdAt: number;
   updatedAt: number;
 };
+
+// ============================================
+// CC Daily Inbox Types
+// ============================================
+
+// Raw email document from Firestore inboxDaily collection
+export type RawInboxEmail = {
+  messageId: string;
+  subject: string;
+  body: string;
+  receivedAt: { _seconds: number; _nanoseconds?: number } | number;
+};
+
+// Parsed task from CC "Top of Mind" section
+export type InboxTask = {
+  id: string;           // Generated from index
+  item: string;         // Task description text
+  hasDueDate: boolean;  // Whether a specific due date was found
+  dueDate: string | null; // Parsed due date string (e.g., "Monday, January 19th")
+};
+
+// Parsed daily inbox for a specific date
+export type ParsedDailyInbox = {
+  date: string;         // MM/DD/YYYY format (from email subject)
+  dateISO: string;      // YYYY-MM-DD for sorting/comparison
+  tasks: InboxTask[];
+  rawEmailId: string;   // Reference to original messageId
+  receivedAt: number;   // Timestamp in milliseconds
+};

@@ -115,6 +115,17 @@
       color: hsla(190, 90%, 70%, 0.7);
     }
 
+    select.neon-input {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23a5f5a5' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.75rem center;
+      padding-right: 2.5rem;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+
     .neon-button {
       background: linear-gradient(
         to bottom,
@@ -359,6 +370,34 @@
       color: hsl(165 100% 80%);
     }
 
+    /* Domain filter buttons */
+    .domain-filter-btn {
+      padding: 0.4rem 0.8rem;
+      border: 1px solid hsla(165, 70%, 40%, 0.35);
+      border-radius: 6px;
+      background: transparent;
+      color: hsl(var(--foreground));
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      font-size: 0.875rem;
+    }
+
+    .domain-filter-btn:hover {
+      border-color: hsla(165, 70%, 40%, 0.55);
+      background: hsla(165, 70%, 40%, 0.1);
+    }
+
+    .domain-filter-btn.active {
+      background: linear-gradient(
+        to bottom,
+        hsla(165, 100%, 45%, 0.25),
+        hsla(165, 100%, 35%, 0.12)
+      );
+      border-color: hsla(165, 90%, 55%, 0.45);
+      color: hsl(165 100% 80%);
+    }
+
     /* Grid for projects */
     .project-grid {
       display: grid;
@@ -480,6 +519,18 @@
         <!-- Project List -->
         <div id="project-list">
           <!-- Projects will be rendered here -->
+        </div>
+
+        <!-- Domain Filter Bar (Bottom) -->
+        <div class="mt-8 pt-6 border-t border-border">
+          <div class="text-xs text-muted-foreground mb-3">Filter by Domain:</div>
+          <div class="flex gap-2 overflow-x-auto pb-2">
+            <button class="domain-filter-btn active" data-domain="all" onclick="window.filterByDomain('all')">All</button>
+            <button class="domain-filter-btn" data-domain="work" onclick="window.filterByDomain('work')">Work</button>
+            <button class="domain-filter-btn" data-domain="personal" onclick="window.filterByDomain('personal')">Personal</button>
+            <button class="domain-filter-btn" data-domain="learning" onclick="window.filterByDomain('learning')">Learning</button>
+            <button class="domain-filter-btn" data-domain="health" onclick="window.filterByDomain('health')">Health</button>
+          </div>
         </div>
       </div>
     </div>
@@ -627,6 +678,86 @@
       </div>
     </div>
   </main>
+
+  <!-- Project Modal -->
+  <div id="project-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 40; overflow-y: auto;">
+    <div class="flex items-center justify-center min-h-screen p-4">
+      <div class="card max-w-2xl w-full" onclick="event.stopPropagation()">
+        <button onclick="window.closeProjectModal()" style="position: absolute; top: 10px; right: 10px; background: none; border: none; color: inherit; font-size: 24px; cursor: pointer;">✕</button>
+
+        <h2 class="text-2xl font-semibold mb-4" id="modal-title">Project Details</h2>
+
+        <!-- View Mode -->
+        <div id="modal-view-mode">
+          <div class="mb-4">
+            <h3 class="text-lg font-semibold" id="modal-name">Project Name</h3>
+            <p class="text-sm text-muted-foreground mt-2" id="modal-description">Description</p>
+          </div>
+          <div class="grid grid-cols-2 gap-4 mb-6">
+            <div>
+              <span class="text-xs text-muted-foreground">Importance</span>
+              <div class="text-xl font-semibold" id="modal-importance">5</div>
+            </div>
+            <div>
+              <span class="text-xs text-muted-foreground">Deadline</span>
+              <div class="text-xl font-semibold" id="modal-deadline">None</div>
+            </div>
+            <div>
+              <span class="text-xs text-muted-foreground">Size (hours)</span>
+              <div class="text-xl font-semibold" id="modal-size">Unknown</div>
+            </div>
+            <div>
+              <span class="text-xs text-muted-foreground">Status</span>
+              <div class="text-xl font-semibold" id="modal-status">Active</div>
+            </div>
+          </div>
+          <div class="flex gap-2">
+            <button class="neon-button flex-1" onclick="window.editProject()">Edit</button>
+            <button class="neon-button flex-1" onclick="if(confirm('Delete this project?')) window.deleteProject()" style="border-color: hsla(0, 84%, 60%, 0.6);">Delete</button>
+          </div>
+        </div>
+
+        <!-- Edit Mode -->
+        <form id="modal-edit-mode" style="display: none;" onsubmit="window.saveProject(event)">
+          <div class="form-group mb-4">
+            <label for="modal-edit-name">Project Name</label>
+            <input id="modal-edit-name" type="text" class="neon-input w-full" required>
+          </div>
+          <div class="form-group mb-4">
+            <label for="modal-edit-description">Description</label>
+            <textarea id="modal-edit-description" class="neon-input w-full" rows="2"></textarea>
+          </div>
+          <div class="grid grid-cols-2 gap-4 mb-4">
+            <div class="form-group">
+              <label for="modal-edit-importance">Importance (1-10)</label>
+              <input id="modal-edit-importance" type="number" class="neon-input w-full" min="1" max="10" value="5">
+            </div>
+            <div class="form-group">
+              <label for="modal-edit-deadline">Deadline</label>
+              <input id="modal-edit-deadline" type="date" class="neon-input w-full">
+            </div>
+            <div class="form-group">
+              <label for="modal-edit-size">Size (hours)</label>
+              <input id="modal-edit-size" type="number" class="neon-input w-full" min="0">
+            </div>
+            <div class="form-group">
+              <label for="modal-edit-status">Status</label>
+              <select id="modal-edit-status" class="neon-input w-full">
+                <option value="active">Active</option>
+                <option value="paused">Paused</option>
+                <option value="done">Done</option>
+                <option value="archived">Archived</option>
+              </select>
+            </div>
+          </div>
+          <div class="flex gap-2">
+            <button type="submit" class="neon-button flex-1">Save</button>
+            <button type="button" class="neon-button flex-1" onclick="window.cancelEdit()">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
   <!-- Toast Container -->
   <div id="toast-container"></div>
@@ -918,6 +1049,7 @@
     // Filter state
     let filterStatus = 'all';
     let filterSearch = '';
+    let filterDomain = 'all';
 
     // Render functions
     function renderProjects() {
@@ -927,6 +1059,9 @@
       let filtered = state.projects;
       if (filterStatus !== 'all') {
         filtered = filtered.filter(p => p.status === filterStatus);
+      }
+      if (filterDomain !== 'all') {
+        filtered = filtered.filter(p => p.domain === filterDomain);
       }
       if (filterSearch) {
         const search = filterSearch.toLowerCase();
@@ -1067,23 +1202,107 @@
       `;
     }
 
+    // Modal state
+    let currentProjectId = null;
+
     // Helper functions for event handlers
     window.openProjectModal = function(projectId) {
       const project = state.projects.find(p => p.id === projectId);
-      if (project) {
-        showToast('Opening project: ' + project.name, 'info');
-        console.log('Project modal opened for:', project);
-      }
+      if (!project) return;
+
+      currentProjectId = projectId;
+      const modal = document.getElementById('project-modal');
+
+      // Populate view mode
+      document.getElementById('modal-title').textContent = project.name;
+      document.getElementById('modal-name').textContent = project.name;
+      document.getElementById('modal-description').textContent = project.description || '(no description)';
+      document.getElementById('modal-importance').textContent = project.importance || 5;
+      document.getElementById('modal-deadline').textContent = project.deadline || 'None';
+      document.getElementById('modal-size').textContent = project.size || 'Unknown';
+      document.getElementById('modal-status').textContent = project.status || 'active';
+
+      // Show view mode, hide edit
+      document.getElementById('modal-view-mode').style.display = 'block';
+      document.getElementById('modal-edit-mode').style.display = 'none';
+
+      modal.style.display = 'flex';
+      modal.onclick = (e) => {
+        if (e.target === modal) window.closeProjectModal();
+      };
+    };
+
+    window.closeProjectModal = function() {
+      document.getElementById('project-modal').style.display = 'none';
+      currentProjectId = null;
+    };
+
+    window.editProject = function() {
+      const project = state.projects.find(p => p.id === currentProjectId);
+      if (!project) return;
+
+      document.getElementById('modal-edit-name').value = project.name || '';
+      document.getElementById('modal-edit-description').value = project.description || '';
+      document.getElementById('modal-edit-importance').value = project.importance || 5;
+      document.getElementById('modal-edit-deadline').value = project.deadline || '';
+      document.getElementById('modal-edit-size').value = project.size || '';
+      document.getElementById('modal-edit-status').value = project.status || 'active';
+
+      document.getElementById('modal-view-mode').style.display = 'none';
+      document.getElementById('modal-edit-mode').style.display = 'block';
+    };
+
+    window.cancelEdit = function() {
+      document.getElementById('modal-view-mode').style.display = 'block';
+      document.getElementById('modal-edit-mode').style.display = 'none';
+    };
+
+    window.saveProject = async function(e) {
+      e.preventDefault();
+      const project = state.projects.find(p => p.id === currentProjectId);
+      if (!project) return;
+
+      project.name = document.getElementById('modal-edit-name').value;
+      project.description = document.getElementById('modal-edit-description').value;
+      project.importance = parseInt(document.getElementById('modal-edit-importance').value);
+      project.deadline = document.getElementById('modal-edit-deadline').value;
+      project.size = parseInt(document.getElementById('modal-edit-size').value) || null;
+      project.status = document.getElementById('modal-edit-status').value;
+
+      await upsertProject(project);
+      renderProjects();
+      window.closeProjectModal();
+    };
+
+    window.deleteProject = async function() {
+      if (!currentProjectId) return;
+      await removeProject(currentProjectId);
+      window.closeProjectModal();
+      renderProjects();
     };
 
     window.openProjectForm = function(projectId) {
       if (projectId) {
-        const project = state.projects.find(p => p.id === projectId);
-        showToast('Editing project: ' + project.name, 'info');
+        window.openProjectModal(projectId);
+        setTimeout(() => window.editProject(), 100);
       } else {
-        showToast('Creating new project...', 'info');
+        // Create new project
+        const newProject = {
+          id: 'proj_' + Date.now(),
+          name: '',
+          description: '',
+          importance: 5,
+          deadline: '',
+          size: null,
+          status: 'active',
+          tasks: [],
+          createdAt: new Date().toISOString()
+        };
+        state.projects.push(newProject);
+        currentProjectId = newProject.id;
+        window.openProjectModal(newProject.id);
+        setTimeout(() => window.editProject(), 100);
       }
-      console.log('Project form opened for:', projectId || 'new');
     };
 
     window.toggleTask = async function(taskId) {
@@ -1106,6 +1325,15 @@
 
     window.filterProjects = function() {
       filterSearch = document.getElementById('dashboard-search').value;
+      renderProjects();
+    };
+
+    window.filterByDomain = function(domain) {
+      filterDomain = domain;
+      // Update active button
+      document.querySelectorAll('.domain-filter-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.domain === domain);
+      });
       renderProjects();
     };
 

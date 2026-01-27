@@ -12,7 +12,7 @@ import {
   limit as firestoreLimit,
   getDoc,
 } from 'firebase/firestore';
-import type { Project, TaskListItem, DailySchedule } from './types';
+import type { Project, TaskListItem, DailySchedule, RawInboxEmail } from './types';
 
 // Opt-in guard via env to avoid interfering with briizOS
 export const FIRESTORE_SYNC_ENABLED = process.env.NEXT_PUBLIC_ENABLE_FIRESTORE_SYNC === 'true';
@@ -35,6 +35,7 @@ function userPath(uid: string) {
     projectsCol: collection(db, 'users', uid, 'apps', 'actionDeck', 'projects'),
     casualCol: collection(db, 'users', uid, 'apps', 'actionDeck', 'casualTasks'),
     schedulesCol: collection(db, 'users', uid, 'apps', 'actionDeck', 'dailySchedules'),
+    inboxDailyCol: collection(db, 'users', uid, 'apps', 'actionDeck', 'inboxDaily'),
   } as const;
 }
 
@@ -180,6 +181,41 @@ export function subscribeScheduleHistory(historyLimit: number, cb: (schedules: D
     const list: DailySchedule[] = [];
     snap.forEach((doc) => list.push(doc.data() as DailySchedule));
     console.log('[persist] subscribeScheduleHistory snapshot size:', snap.size);
+    cb(list);
+  });
+}
+
+// ============================================
+// CC Daily Inbox Persistence
+// ============================================
+
+export function subscribeInboxDaily(cb: (emails: RawInboxEmail[]) => void) {
+  if (!FIRESTORE_SYNC_ENABLED) return () => {};
+  const auth = getAuth();
+  const uid = auth.currentUser?.uid;
+  if (!uid) {
+    console.log('[persist] subscribeInboxDaily: no uid');
+    return () => {};
+  }
+
+  const { inboxDailyCol } = userPath(uid);
+  console.log('[persist] subscribeInboxDaily path:', inboxDailyCol.path);
+
+  // Order by receivedAt descending to get most recent first
+  const q = query(inboxDailyCol, orderBy('receivedAt', 'desc'));
+
+  return onSnapshot(q, (snap) => {
+    const list: RawInboxEmail[] = [];
+    snap.forEach((d) => {
+      const data = d.data();
+      list.push({
+        messageId: d.id,
+        subject: data.subject || '',
+        body: data.body || '',
+        receivedAt: data.receivedAt,
+      });
+    });
+    console.log('[persist] subscribeInboxDaily snapshot size:', snap.size);
     cb(list);
   });
 }

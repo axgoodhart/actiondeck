@@ -643,8 +643,7 @@ gap:10px;
   box-shadow:inset 0 -10px 8px rgba(0, 80, 80, 0.718), inset 0 7px 8px rgba(0, 191, 255, 0.45);;
 }
 
-
-[data-style-id="stylo-428"] {
+[data-style-id="stylo-495"],[data-style-id="stylo-1228"],[data-style-id="stylo-428"] {
 background:rgba(0,0,0,.1);
 backdrop-filter:blur(22px);
 }
@@ -715,7 +714,7 @@ button [data-id="button-right-4-close"] {
 [data-style-id="stylo-1112"] {
 overflow:scroll}
 
-[data-style-id="stylo-0"]{
+[data-style-id="stylo-1204"],[data-style-id="stylo-0"]{
     background:radial-gradient(circle at bottom, black, teal, black, transparent, rgba(255, 20, 145, 0.515), transparent),radial-gradient(circle at top, black, teal, black, transparent, rgba(0, 191, 255, 0.326), transparent) !important;
 box-shadow:inset 0 0 40px black, inset 0 0 40px black !important;
   background-size:40% 400% !important;
@@ -728,3 +727,6 @@ padding:20px;margin:40px;}
 }
 [data-style-id="stylo-782"]{
 border-radius:0;background:none;border: none;box-shadow:none !important}
+	[data-style-id="stylo-857"]:hover{box-shadow:inset 0 0 40px white;}
+
+  	[data-style-id="stylo-857"]{OPACITY:.45;box-shadow:inset 0 0 40px black; transition:all 1s ease;}

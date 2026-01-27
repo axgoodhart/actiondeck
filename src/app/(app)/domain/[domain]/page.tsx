@@ -80,12 +80,7 @@ export default function DomainPage() {
       style={{ background: domainConfig.bgGradient }}>
 
         <div data-style-id="stylo-858" id="el-199" className="relative z-10">
-          <Link data-style-id="stylo-859" href="/dashboard">
-            <Button data-style-id="stylo-860" variant="ghost" size="sm" className="mb-4 text-white/80 hover:text-white hover:bg-white/10">
-              <ArrowLeft data-style-id="stylo-861" className="mr-2 h-4 w-4" />
-              Back to Dashboard
-            </Button>
-          </Link>
+        
 
           <div data-style-id="stylo-862" id="el-200" className="flex items-center gap-4">
             <div data-style-id="stylo-863" id="el-201" className="p-4 rounded-full bg-white/20 backdrop-blur-sm">

@@ -1,330 +1,75 @@
-[debug] [2026-01-10T22:44:22.132Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-01-10T22:44:22.134Z] > authorizing via signed-in user (alex.goodhart@gmail.com)
-[debug] [2026-01-10T22:44:22.134Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-01-10T22:44:22.134Z] > authorizing via signed-in user (alex.goodhart@gmail.com)
-[debug] [2026-01-10T22:44:22.134Z] Checked if tokens are valid: false, expires at: 1768085717457
-[debug] [2026-01-10T22:44:22.134Z] Checked if tokens are valid: false, expires at: 1768085717457
-[debug] [2026-01-10T22:44:22.135Z] > refreshing access token with scopes: []
-[debug] [2026-01-10T22:44:22.135Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
-[debug] [2026-01-10T22:44:22.135Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
-[debug] [2026-01-10T22:44:22.149Z] Checked if tokens are valid: false, expires at: 1768085717457
-[debug] [2026-01-10T22:44:22.149Z] Checked if tokens are valid: false, expires at: 1768085717457
-[debug] [2026-01-10T22:44:22.149Z] > refreshing access token with scopes: []
-[debug] [2026-01-10T22:44:22.149Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
-[debug] [2026-01-10T22:44:22.149Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
-[debug] [2026-01-10T22:44:22.150Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-01-10T22:44:22.150Z] > authorizing via signed-in user (alex.goodhart@gmail.com)
-[debug] [2026-01-10T22:44:22.150Z] Checked if tokens are valid: false, expires at: 1768085717457
-[debug] [2026-01-10T22:44:22.150Z] Checked if tokens are valid: false, expires at: 1768085717457
-[debug] [2026-01-10T22:44:22.150Z] > refreshing access token with scopes: []
-[debug] [2026-01-10T22:44:22.150Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
-[debug] [2026-01-10T22:44:22.150Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
-[debug] [2026-01-10T22:44:22.356Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
-[debug] [2026-01-10T22:44:22.356Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
-[debug] [2026-01-10T22:44:22.377Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo [none]
-[debug] [2026-01-10T22:44:22.379Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
-[debug] [2026-01-10T22:44:22.380Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
-[debug] [2026-01-10T22:44:22.393Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo [none]
-[debug] [2026-01-10T22:44:22.394Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
-[debug] [2026-01-10T22:44:22.394Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
-[debug] [2026-01-10T22:44:22.406Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo [none]
-[debug] [2026-01-10T22:44:22.633Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo 200
-[debug] [2026-01-10T22:44:22.634Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo {"name":"projects/briizos/billingInfo","projectId":"briizos","billingAccountName":"billingAccounts/010EDE-188442-B51CAD","billingEnabled":true}
-[debug] [2026-01-10T22:44:22.639Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T22:44:22.639Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T22:44:22.647Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T22:44:22.647Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T22:44:22.647Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com [none]
-[debug] [2026-01-10T22:44:22.647Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/briizos
-[debug] [2026-01-10T22:44:22.648Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com [none]
-[debug] [2026-01-10T22:44:22.648Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com x-goog-quota-user=projects/briizos
-[debug] [2026-01-10T22:44:22.707Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo 200
-[debug] [2026-01-10T22:44:22.707Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo {"name":"projects/briizos/billingInfo","projectId":"briizos","billingAccountName":"billingAccounts/010EDE-188442-B51CAD","billingEnabled":true}
-[debug] [2026-01-10T22:44:22.707Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T22:44:22.707Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T22:44:22.710Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T22:44:22.710Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T22:44:22.710Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com [none]
-[debug] [2026-01-10T22:44:22.710Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/briizos
-[debug] [2026-01-10T22:44:22.711Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com [none]
-[debug] [2026-01-10T22:44:22.711Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com x-goog-quota-user=projects/briizos
-[debug] [2026-01-10T22:44:22.743Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo 200
-[debug] [2026-01-10T22:44:22.743Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo {"name":"projects/briizos/billingInfo","projectId":"briizos","billingAccountName":"billingAccounts/010EDE-188442-B51CAD","billingEnabled":true}
-[debug] [2026-01-10T22:44:22.743Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T22:44:22.743Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T22:44:22.745Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T22:44:22.745Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T22:44:22.746Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com [none]
-[debug] [2026-01-10T22:44:22.746Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/briizos
-[debug] [2026-01-10T22:44:22.746Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com [none]
-[debug] [2026-01-10T22:44:22.746Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com x-goog-quota-user=projects/briizos
-[debug] [2026-01-10T22:44:23.957Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com 403
-[debug] [2026-01-10T22:44:23.957Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com [omitted]
-[debug] [2026-01-10T22:44:24.112Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com 200
-[debug] [2026-01-10T22:44:24.112Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com [omitted]
-[debug] [2026-01-10T22:44:24.132Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com 403
-[debug] [2026-01-10T22:44:24.133Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com [omitted]
-[debug] [2026-01-10T22:44:24.133Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com 403
-[debug] [2026-01-10T22:44:24.133Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com [omitted]
-[debug] [2026-01-10T22:44:24.570Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com 200
-[debug] [2026-01-10T22:44:24.570Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com [omitted]
-[debug] [2026-01-10T22:44:24.573Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-01-10T22:44:24.574Z] > authorizing via signed-in user (alex.goodhart@gmail.com)
-[debug] [2026-01-10T22:44:24.574Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T22:44:24.574Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T22:44:24.574Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo [none]
-[debug] [2026-01-10T22:44:24.587Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com 200
-[debug] [2026-01-10T22:44:24.587Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com [omitted]
-[debug] [2026-01-10T22:44:24.589Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-01-10T22:44:24.589Z] > authorizing via signed-in user (alex.goodhart@gmail.com)
-[debug] [2026-01-10T22:44:24.589Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T22:44:24.589Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T22:44:24.589Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo [none]
-[debug] [2026-01-10T22:44:24.696Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo 200
-[debug] [2026-01-10T22:44:24.696Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo {"name":"projects/briizos/billingInfo","projectId":"briizos","billingAccountName":"billingAccounts/010EDE-188442-B51CAD","billingEnabled":true}
-[debug] [2026-01-10T22:44:24.699Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-01-10T22:44:24.699Z] > authorizing via signed-in user (alex.goodhart@gmail.com)
-[debug] [2026-01-10T22:44:24.719Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo 200
-[debug] [2026-01-10T22:44:24.719Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo {"name":"projects/briizos/billingInfo","projectId":"briizos","billingAccountName":"billingAccounts/010EDE-188442-B51CAD","billingEnabled":true}
-[debug] [2026-01-10T22:44:24.721Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-01-10T22:44:24.721Z] > authorizing via signed-in user (alex.goodhart@gmail.com)
-[debug] [2026-01-10T22:58:19.084Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-01-10T22:58:19.085Z] > authorizing via signed-in user (alex.goodhart@gmail.com)
-[debug] [2026-01-10T22:58:19.085Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-01-10T22:58:19.085Z] > authorizing via signed-in user (alex.goodhart@gmail.com)
-[debug] [2026-01-10T22:58:19.086Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T22:58:19.086Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T22:58:19.086Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T22:58:19.086Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T22:58:19.086Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-01-10T22:58:19.086Z] > authorizing via signed-in user (alex.goodhart@gmail.com)
-[debug] [2026-01-10T22:58:19.086Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T22:58:19.086Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T22:58:19.087Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo [none]
-[debug] [2026-01-10T22:58:19.100Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo [none]
-[debug] [2026-01-10T22:58:19.101Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo [none]
-[debug] [2026-01-10T22:58:19.327Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo 200
-[debug] [2026-01-10T22:58:19.327Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo {"name":"projects/briizos/billingInfo","projectId":"briizos","billingAccountName":"billingAccounts/010EDE-188442-B51CAD","billingEnabled":true}
-[debug] [2026-01-10T22:58:19.330Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T22:58:19.330Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T22:58:19.337Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T22:58:19.337Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T22:58:19.337Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com [none]
-[debug] [2026-01-10T22:58:19.337Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/briizos
-[debug] [2026-01-10T22:58:19.338Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com [none]
-[debug] [2026-01-10T22:58:19.338Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com x-goog-quota-user=projects/briizos
-[debug] [2026-01-10T22:58:19.349Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo 200
-[debug] [2026-01-10T22:58:19.349Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo {"name":"projects/briizos/billingInfo","projectId":"briizos","billingAccountName":"billingAccounts/010EDE-188442-B51CAD","billingEnabled":true}
-[debug] [2026-01-10T22:58:19.350Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T22:58:19.350Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T22:58:19.352Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T22:58:19.352Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T22:58:19.352Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com [none]
-[debug] [2026-01-10T22:58:19.352Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/briizos
-[debug] [2026-01-10T22:58:19.353Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com [none]
-[debug] [2026-01-10T22:58:19.353Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com x-goog-quota-user=projects/briizos
-[debug] [2026-01-10T22:58:19.360Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo 200
-[debug] [2026-01-10T22:58:19.360Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo {"name":"projects/briizos/billingInfo","projectId":"briizos","billingAccountName":"billingAccounts/010EDE-188442-B51CAD","billingEnabled":true}
-[debug] [2026-01-10T22:58:19.361Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T22:58:19.361Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T22:58:19.362Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T22:58:19.362Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T22:58:19.362Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com [none]
-[debug] [2026-01-10T22:58:19.362Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/briizos
-[debug] [2026-01-10T22:58:19.363Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com [none]
-[debug] [2026-01-10T22:58:19.363Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com x-goog-quota-user=projects/briizos
-[debug] [2026-01-10T22:58:19.611Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com 403
-[debug] [2026-01-10T22:58:19.611Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com [omitted]
-[debug] [2026-01-10T22:58:19.635Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com 403
-[debug] [2026-01-10T22:58:19.635Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com [omitted]
-[debug] [2026-01-10T22:58:19.636Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com 403
-[debug] [2026-01-10T22:58:19.637Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com [omitted]
-[debug] [2026-01-10T22:58:19.669Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com 200
-[debug] [2026-01-10T22:58:19.669Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com [omitted]
-[debug] [2026-01-10T22:58:19.671Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-01-10T22:58:19.671Z] > authorizing via signed-in user (alex.goodhart@gmail.com)
-[debug] [2026-01-10T22:58:19.672Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T22:58:19.672Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T22:58:19.672Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo [none]
-[debug] [2026-01-10T22:58:19.742Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com 200
-[debug] [2026-01-10T22:58:19.742Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com [omitted]
-[debug] [2026-01-10T22:58:19.743Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com 200
-[debug] [2026-01-10T22:58:19.743Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com [omitted]
-[debug] [2026-01-10T22:58:19.745Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-01-10T22:58:19.745Z] > authorizing via signed-in user (alex.goodhart@gmail.com)
-[debug] [2026-01-10T22:58:19.745Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T22:58:19.745Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T22:58:19.745Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo [none]
-[debug] [2026-01-10T22:58:19.799Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo 200
-[debug] [2026-01-10T22:58:19.799Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo {"name":"projects/briizos/billingInfo","projectId":"briizos","billingAccountName":"billingAccounts/010EDE-188442-B51CAD","billingEnabled":true}
-[debug] [2026-01-10T22:58:19.800Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-01-10T22:58:19.800Z] > authorizing via signed-in user (alex.goodhart@gmail.com)
-[debug] [2026-01-10T22:58:19.887Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo 200
-[debug] [2026-01-10T22:58:19.887Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo {"name":"projects/briizos/billingInfo","projectId":"briizos","billingAccountName":"billingAccounts/010EDE-188442-B51CAD","billingEnabled":true}
-[debug] [2026-01-10T22:58:19.889Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-01-10T22:58:19.889Z] > authorizing via signed-in user (alex.goodhart@gmail.com)
-[debug] [2026-01-10T23:05:33.097Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-01-10T23:05:33.098Z] > authorizing via signed-in user (alex.goodhart@gmail.com)
-[debug] [2026-01-10T23:05:33.098Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-01-10T23:05:33.098Z] > authorizing via signed-in user (alex.goodhart@gmail.com)
-[debug] [2026-01-10T23:05:33.099Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T23:05:33.099Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T23:05:33.099Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T23:05:33.099Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T23:05:33.099Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-01-10T23:05:33.099Z] > authorizing via signed-in user (alex.goodhart@gmail.com)
-[debug] [2026-01-10T23:05:33.099Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T23:05:33.099Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T23:05:33.099Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo [none]
-[debug] [2026-01-10T23:05:33.113Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo [none]
-[debug] [2026-01-10T23:05:33.114Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo [none]
-[debug] [2026-01-10T23:05:33.326Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo 200
-[debug] [2026-01-10T23:05:33.326Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo {"name":"projects/briizos/billingInfo","projectId":"briizos","billingAccountName":"billingAccounts/010EDE-188442-B51CAD","billingEnabled":true}
-[debug] [2026-01-10T23:05:33.330Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T23:05:33.330Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T23:05:33.335Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T23:05:33.335Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T23:05:33.335Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com [none]
-[debug] [2026-01-10T23:05:33.335Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/briizos
-[debug] [2026-01-10T23:05:33.336Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com [none]
-[debug] [2026-01-10T23:05:33.336Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com x-goog-quota-user=projects/briizos
-[debug] [2026-01-10T23:05:33.347Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo 200
-[debug] [2026-01-10T23:05:33.347Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo {"name":"projects/briizos/billingInfo","projectId":"briizos","billingAccountName":"billingAccounts/010EDE-188442-B51CAD","billingEnabled":true}
-[debug] [2026-01-10T23:05:33.347Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T23:05:33.347Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T23:05:33.349Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T23:05:33.349Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T23:05:33.349Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com [none]
-[debug] [2026-01-10T23:05:33.349Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/briizos
-[debug] [2026-01-10T23:05:33.350Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com [none]
-[debug] [2026-01-10T23:05:33.350Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com x-goog-quota-user=projects/briizos
-[debug] [2026-01-10T23:05:33.357Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo 200
-[debug] [2026-01-10T23:05:33.357Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo {"name":"projects/briizos/billingInfo","projectId":"briizos","billingAccountName":"billingAccounts/010EDE-188442-B51CAD","billingEnabled":true}
-[debug] [2026-01-10T23:05:33.357Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T23:05:33.357Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T23:05:33.359Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T23:05:33.359Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T23:05:33.359Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com [none]
-[debug] [2026-01-10T23:05:33.359Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/briizos
-[debug] [2026-01-10T23:05:33.360Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com [none]
-[debug] [2026-01-10T23:05:33.360Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com x-goog-quota-user=projects/briizos
-[debug] [2026-01-10T23:05:33.611Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com 403
-[debug] [2026-01-10T23:05:33.611Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com [omitted]
-[debug] [2026-01-10T23:05:33.612Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com 403
-[debug] [2026-01-10T23:05:33.612Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com [omitted]
-[debug] [2026-01-10T23:05:33.612Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com 403
-[debug] [2026-01-10T23:05:33.612Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com [omitted]
-[debug] [2026-01-10T23:05:33.719Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com 200
-[debug] [2026-01-10T23:05:33.719Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com [omitted]
-[debug] [2026-01-10T23:05:33.721Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-01-10T23:05:33.721Z] > authorizing via signed-in user (alex.goodhart@gmail.com)
-[debug] [2026-01-10T23:05:33.721Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T23:05:33.721Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T23:05:33.722Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo [none]
-[debug] [2026-01-10T23:05:33.724Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com 200
-[debug] [2026-01-10T23:05:33.724Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com [omitted]
-[debug] [2026-01-10T23:05:33.725Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-01-10T23:05:33.725Z] > authorizing via signed-in user (alex.goodhart@gmail.com)
-[debug] [2026-01-10T23:05:33.725Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T23:05:33.725Z] Checked if tokens are valid: true, expires at: 1768088661394
-[debug] [2026-01-10T23:05:33.725Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo [none]
-[debug] [2026-01-10T23:05:33.725Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com 200
-[debug] [2026-01-10T23:05:33.725Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com [omitted]
-[debug] [2026-01-10T23:05:33.866Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo 200
-[debug] [2026-01-10T23:05:33.866Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo {"name":"projects/briizos/billingInfo","projectId":"briizos","billingAccountName":"billingAccounts/010EDE-188442-B51CAD","billingEnabled":true}
-[debug] [2026-01-10T23:05:33.868Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-01-10T23:05:33.868Z] > authorizing via signed-in user (alex.goodhart@gmail.com)
-[debug] [2026-01-10T23:05:33.917Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo 200
-[debug] [2026-01-10T23:05:33.918Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo {"name":"projects/briizos/billingInfo","projectId":"briizos","billingAccountName":"billingAccounts/010EDE-188442-B51CAD","billingEnabled":true}
-[debug] [2026-01-10T23:05:33.919Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-01-10T23:05:33.919Z] > authorizing via signed-in user (alex.goodhart@gmail.com)
-[debug] [2026-01-11T06:34:20.305Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-01-11T06:34:20.306Z] > authorizing via signed-in user (alex.goodhart@gmail.com)
-[debug] [2026-01-11T06:34:20.306Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-01-11T06:34:20.306Z] > authorizing via signed-in user (alex.goodhart@gmail.com)
-[debug] [2026-01-11T06:34:20.306Z] Checked if tokens are valid: false, expires at: 1768088661394
-[debug] [2026-01-11T06:34:20.307Z] Checked if tokens are valid: false, expires at: 1768088661394
-[debug] [2026-01-11T06:34:20.307Z] > refreshing access token with scopes: []
-[debug] [2026-01-11T06:34:20.307Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
-[debug] [2026-01-11T06:34:20.308Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
-[debug] [2026-01-11T06:34:20.321Z] Checked if tokens are valid: false, expires at: 1768088661394
-[debug] [2026-01-11T06:34:20.321Z] Checked if tokens are valid: false, expires at: 1768088661394
-[debug] [2026-01-11T06:34:20.321Z] > refreshing access token with scopes: []
-[debug] [2026-01-11T06:34:20.321Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
-[debug] [2026-01-11T06:34:20.321Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
-[debug] [2026-01-11T06:34:20.322Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-01-11T06:34:20.322Z] > authorizing via signed-in user (alex.goodhart@gmail.com)
-[debug] [2026-01-11T06:34:20.322Z] Checked if tokens are valid: false, expires at: 1768088661394
-[debug] [2026-01-11T06:34:20.322Z] Checked if tokens are valid: false, expires at: 1768088661394
-[debug] [2026-01-11T06:34:20.322Z] > refreshing access token with scopes: []
-[debug] [2026-01-11T06:34:20.322Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
-[debug] [2026-01-11T06:34:20.322Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
-[debug] [2026-01-11T06:34:20.485Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
-[debug] [2026-01-11T06:34:20.485Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
-[debug] [2026-01-11T06:34:20.536Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo [none]
-[debug] [2026-01-11T06:34:20.538Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
-[debug] [2026-01-11T06:34:20.538Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
-[debug] [2026-01-11T06:34:20.554Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo [none]
-[debug] [2026-01-11T06:34:20.556Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
-[debug] [2026-01-11T06:34:20.556Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
-[debug] [2026-01-11T06:34:20.566Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo [none]
-[debug] [2026-01-11T06:34:21.815Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo 200
-[debug] [2026-01-11T06:34:21.816Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo {"name":"projects/briizos/billingInfo","projectId":"briizos","billingAccountName":"billingAccounts/010EDE-188442-B51CAD","billingEnabled":true}
-[debug] [2026-01-11T06:34:21.822Z] Checked if tokens are valid: true, expires at: 1768116859556
-[debug] [2026-01-11T06:34:21.822Z] Checked if tokens are valid: true, expires at: 1768116859556
-[debug] [2026-01-11T06:34:21.830Z] Checked if tokens are valid: true, expires at: 1768116859556
-[debug] [2026-01-11T06:34:21.830Z] Checked if tokens are valid: true, expires at: 1768116859556
-[debug] [2026-01-11T06:34:21.830Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com [none]
-[debug] [2026-01-11T06:34:21.830Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/briizos
-[debug] [2026-01-11T06:34:21.831Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com [none]
-[debug] [2026-01-11T06:34:21.831Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com x-goog-quota-user=projects/briizos
-[debug] [2026-01-11T06:34:21.901Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo 200
-[debug] [2026-01-11T06:34:21.901Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo {"name":"projects/briizos/billingInfo","projectId":"briizos","billingAccountName":"billingAccounts/010EDE-188442-B51CAD","billingEnabled":true}
-[debug] [2026-01-11T06:34:21.901Z] Checked if tokens are valid: true, expires at: 1768116859556
-[debug] [2026-01-11T06:34:21.901Z] Checked if tokens are valid: true, expires at: 1768116859556
-[debug] [2026-01-11T06:34:21.903Z] Checked if tokens are valid: true, expires at: 1768116859556
-[debug] [2026-01-11T06:34:21.903Z] Checked if tokens are valid: true, expires at: 1768116859556
-[debug] [2026-01-11T06:34:21.903Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com [none]
-[debug] [2026-01-11T06:34:21.903Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/briizos
-[debug] [2026-01-11T06:34:21.904Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com [none]
-[debug] [2026-01-11T06:34:21.904Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com x-goog-quota-user=projects/briizos
-[debug] [2026-01-11T06:34:21.912Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo 200
-[debug] [2026-01-11T06:34:21.913Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo {"name":"projects/briizos/billingInfo","projectId":"briizos","billingAccountName":"billingAccounts/010EDE-188442-B51CAD","billingEnabled":true}
-[debug] [2026-01-11T06:34:21.913Z] Checked if tokens are valid: true, expires at: 1768116859556
-[debug] [2026-01-11T06:34:21.913Z] Checked if tokens are valid: true, expires at: 1768116859556
-[debug] [2026-01-11T06:34:21.915Z] Checked if tokens are valid: true, expires at: 1768116859556
-[debug] [2026-01-11T06:34:21.915Z] Checked if tokens are valid: true, expires at: 1768116859556
-[debug] [2026-01-11T06:34:21.915Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com [none]
-[debug] [2026-01-11T06:34:21.915Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/briizos
-[debug] [2026-01-11T06:34:21.915Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com [none]
-[debug] [2026-01-11T06:34:21.915Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com x-goog-quota-user=projects/briizos
-[debug] [2026-01-11T06:34:22.134Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com 403
-[debug] [2026-01-11T06:34:22.135Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com [omitted]
-[debug] [2026-01-11T06:34:22.304Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com 403
-[debug] [2026-01-11T06:34:22.304Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com [omitted]
-[debug] [2026-01-11T06:34:22.397Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com 403
-[debug] [2026-01-11T06:34:22.397Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com [omitted]
-[debug] [2026-01-11T06:34:22.424Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com 200
-[debug] [2026-01-11T06:34:22.424Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com [omitted]
-[debug] [2026-01-11T06:34:22.426Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-01-11T06:34:22.426Z] > authorizing via signed-in user (alex.goodhart@gmail.com)
-[debug] [2026-01-11T06:34:22.426Z] Checked if tokens are valid: true, expires at: 1768116859556
-[debug] [2026-01-11T06:34:22.426Z] Checked if tokens are valid: true, expires at: 1768116859556
-[debug] [2026-01-11T06:34:22.427Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo [none]
-[debug] [2026-01-11T06:34:22.428Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com 200
-[debug] [2026-01-11T06:34:22.428Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com [omitted]
-[debug] [2026-01-11T06:34:22.528Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo 200
-[debug] [2026-01-11T06:34:22.529Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo {"name":"projects/briizos/billingInfo","projectId":"briizos","billingAccountName":"billingAccounts/010EDE-188442-B51CAD","billingEnabled":true}
-[debug] [2026-01-11T06:34:22.530Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-01-11T06:34:22.530Z] > authorizing via signed-in user (alex.goodhart@gmail.com)
-[debug] [2026-01-11T06:34:22.700Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com 200
-[debug] [2026-01-11T06:34:22.701Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com [omitted]
-[debug] [2026-01-11T06:34:22.703Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-01-11T06:34:22.703Z] > authorizing via signed-in user (alex.goodhart@gmail.com)
-[debug] [2026-01-11T06:34:22.703Z] Checked if tokens are valid: true, expires at: 1768116859556
-[debug] [2026-01-11T06:34:22.703Z] Checked if tokens are valid: true, expires at: 1768116859556
-[debug] [2026-01-11T06:34:22.703Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo [none]
-[debug] [2026-01-11T06:34:22.838Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo 200
-[debug] [2026-01-11T06:34:22.839Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo {"name":"projects/briizos/billingInfo","projectId":"briizos","billingAccountName":"billingAccounts/010EDE-188442-B51CAD","billingEnabled":true}
-[debug] [2026-01-11T06:34:22.840Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-01-11T06:34:22.840Z] > authorizing via signed-in user (alex.goodhart@gmail.com)
+[debug] [2026-01-26T16:49:05.510Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-01-26T16:49:05.512Z] > authorizing via signed-in user (alex.goodhart@gmail.com)
+[debug] [2026-01-26T16:49:05.512Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-01-26T16:49:05.512Z] > authorizing via signed-in user (alex.goodhart@gmail.com)
+[debug] [2026-01-26T16:49:05.512Z] Checked if tokens are valid: true, expires at: 1769447364669
+[debug] [2026-01-26T16:49:05.512Z] Checked if tokens are valid: true, expires at: 1769447364669
+[debug] [2026-01-26T16:49:05.512Z] Checked if tokens are valid: true, expires at: 1769447364669
+[debug] [2026-01-26T16:49:05.513Z] Checked if tokens are valid: true, expires at: 1769447364669
+[debug] [2026-01-26T16:49:05.513Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-01-26T16:49:05.513Z] > authorizing via signed-in user (alex.goodhart@gmail.com)
+[debug] [2026-01-26T16:49:05.513Z] Checked if tokens are valid: true, expires at: 1769447364669
+[debug] [2026-01-26T16:49:05.513Z] Checked if tokens are valid: true, expires at: 1769447364669
+[debug] [2026-01-26T16:49:05.513Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo [none]
+[debug] [2026-01-26T16:49:05.524Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo [none]
+[debug] [2026-01-26T16:49:05.525Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo [none]
+[debug] [2026-01-26T16:49:05.744Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo 200
+[debug] [2026-01-26T16:49:05.744Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo {"name":"projects/briizos/billingInfo","projectId":"briizos","billingAccountName":"billingAccounts/010EDE-188442-B51CAD","billingEnabled":true}
+[debug] [2026-01-26T16:49:05.747Z] Checked if tokens are valid: true, expires at: 1769447364669
+[debug] [2026-01-26T16:49:05.747Z] Checked if tokens are valid: true, expires at: 1769447364669
+[debug] [2026-01-26T16:49:05.752Z] Checked if tokens are valid: true, expires at: 1769447364669
+[debug] [2026-01-26T16:49:05.752Z] Checked if tokens are valid: true, expires at: 1769447364669
+[debug] [2026-01-26T16:49:05.752Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com [none]
+[debug] [2026-01-26T16:49:05.752Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/briizos
+[debug] [2026-01-26T16:49:05.752Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com [none]
+[debug] [2026-01-26T16:49:05.753Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com x-goog-quota-user=projects/briizos
+[debug] [2026-01-26T16:49:05.762Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo 200
+[debug] [2026-01-26T16:49:05.762Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo {"name":"projects/briizos/billingInfo","projectId":"briizos","billingAccountName":"billingAccounts/010EDE-188442-B51CAD","billingEnabled":true}
+[debug] [2026-01-26T16:49:05.762Z] Checked if tokens are valid: true, expires at: 1769447364669
+[debug] [2026-01-26T16:49:05.762Z] Checked if tokens are valid: true, expires at: 1769447364669
+[debug] [2026-01-26T16:49:05.763Z] Checked if tokens are valid: true, expires at: 1769447364669
+[debug] [2026-01-26T16:49:05.764Z] Checked if tokens are valid: true, expires at: 1769447364669
+[debug] [2026-01-26T16:49:05.764Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com [none]
+[debug] [2026-01-26T16:49:05.764Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/briizos
+[debug] [2026-01-26T16:49:05.764Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com [none]
+[debug] [2026-01-26T16:49:05.764Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com x-goog-quota-user=projects/briizos
+[debug] [2026-01-26T16:49:05.808Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo 200
+[debug] [2026-01-26T16:49:05.808Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo {"name":"projects/briizos/billingInfo","projectId":"briizos","billingAccountName":"billingAccounts/010EDE-188442-B51CAD","billingEnabled":true}
+[debug] [2026-01-26T16:49:05.809Z] Checked if tokens are valid: true, expires at: 1769447364669
+[debug] [2026-01-26T16:49:05.809Z] Checked if tokens are valid: true, expires at: 1769447364669
+[debug] [2026-01-26T16:49:05.810Z] Checked if tokens are valid: true, expires at: 1769447364669
+[debug] [2026-01-26T16:49:05.810Z] Checked if tokens are valid: true, expires at: 1769447364669
+[debug] [2026-01-26T16:49:05.810Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com [none]
+[debug] [2026-01-26T16:49:05.810Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/briizos
+[debug] [2026-01-26T16:49:05.810Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com [none]
+[debug] [2026-01-26T16:49:05.810Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com x-goog-quota-user=projects/briizos
+[debug] [2026-01-26T16:49:06.054Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com 403
+[debug] [2026-01-26T16:49:06.054Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com [omitted]
+[debug] [2026-01-26T16:49:06.056Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com 403
+[debug] [2026-01-26T16:49:06.056Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com [omitted]
+[debug] [2026-01-26T16:49:06.080Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com 403
+[debug] [2026-01-26T16:49:06.080Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebaseio.com [omitted]
+[debug] [2026-01-26T16:49:06.193Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com 200
+[debug] [2026-01-26T16:49:06.193Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2026-01-26T16:49:06.194Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-01-26T16:49:06.194Z] > authorizing via signed-in user (alex.goodhart@gmail.com)
+[debug] [2026-01-26T16:49:06.195Z] Checked if tokens are valid: true, expires at: 1769447364669
+[debug] [2026-01-26T16:49:06.195Z] Checked if tokens are valid: true, expires at: 1769447364669
+[debug] [2026-01-26T16:49:06.195Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo [none]
+[debug] [2026-01-26T16:49:06.589Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com 200
+[debug] [2026-01-26T16:49:06.589Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2026-01-26T16:49:06.591Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com 200
+[debug] [2026-01-26T16:49:06.591Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/briizos/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2026-01-26T16:49:06.592Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-01-26T16:49:06.592Z] > authorizing via signed-in user (alex.goodhart@gmail.com)
+[debug] [2026-01-26T16:49:06.592Z] Checked if tokens are valid: true, expires at: 1769447364669
+[debug] [2026-01-26T16:49:06.592Z] Checked if tokens are valid: true, expires at: 1769447364669
+[debug] [2026-01-26T16:49:06.592Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo [none]
+[debug] [2026-01-26T16:49:06.593Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo 200
+[debug] [2026-01-26T16:49:06.593Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo {"name":"projects/briizos/billingInfo","projectId":"briizos","billingAccountName":"billingAccounts/010EDE-188442-B51CAD","billingEnabled":true}
+[debug] [2026-01-26T16:49:06.593Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-01-26T16:49:06.593Z] > authorizing via signed-in user (alex.goodhart@gmail.com)
+[debug] [2026-01-26T16:49:06.727Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo 200
+[debug] [2026-01-26T16:49:06.727Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/briizos/billingInfo {"name":"projects/briizos/billingInfo","projectId":"briizos","billingAccountName":"billingAccounts/010EDE-188442-B51CAD","billingEnabled":true}
+[debug] [2026-01-26T16:49:06.728Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-01-26T16:49:06.728Z] > authorizing via signed-in user (alex.goodhart@gmail.com)
