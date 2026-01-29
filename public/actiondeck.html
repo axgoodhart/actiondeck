@@ -17,6 +17,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
+    html {
+      overflow:none;
+    }
     /* CSS Variables - Neon teal cyber theme */
     :root {
       --background: 210 30% 15%;
@@ -79,7 +82,7 @@
     body {
       background-color: hsl(var(--background));
       color: hsl(var(--foreground));
-      font-family: 'Jost', sans-serif;
+      font-family: 'Chillax', sans-serif;
     }
 
     /* Global skin */
@@ -160,33 +163,40 @@
     header {
       background: linear-gradient(to top, black, rgba(0, 0, 0, 0.743), rgba(0, 128, 128, 0.275));
       z-index: 100000;
-      position: fixed;
+      position: sticky;
       top: 0;
-      left: 10%;
+      bottom:auto;
+      justify-content:center;
+      align-items:center;
+      left: 0%;
       right: 10%;
-      padding: 10px 10px 4px 10px;
+      padding-left:20px;
+      padding-right:10px;
+      border-bottom:1px solid rgb(138, 246, 138);
       box-shadow: -50vw 0 40px black, 50vw 0 40px black;
-      border-radius: 0 0 30px 30px;
-      backdrop-filter: blur(5px);
+      border-radius: 0 0 0px 30px;
+      backdrop-filter: blur(15px);
+      padding-bottom:5px;
     }
 
     main {
-      padding-top: 80px;
-      padding-bottom: 80px;
+      padding-top:20px;
+      max-width:90vw !important;
+      padding-bottom: 20px;
     }
 
     /* Tab Navigation */
     .nav-tabs {
       display: flex;
-      gap: 1rem;
-      border-bottom: 1px solid hsla(165, 70%, 40%, 0.35);
-      padding: 1rem 0;
-      overflow-x: auto;
+justify-content:center;
+gap:.2rem;      
     }
 
     .nav-tab {
-      padding: 0.5rem 1rem;
       cursor: pointer;
+      justify-content:center;
+      height:40px;
+      width:100px;
       border: none;
       background: transparent;
       color: hsl(var(--foreground));
@@ -195,7 +205,11 @@
     }
 
     .nav-tab.active {
+      box-shadow:0px -20px 2px black;
+      transform:translateY(10px);;
+      background:linear-gradient(to bottom, teal, black 40%);
       color: hsl(var(--primary));
+      border-radius: 0 0 4px 4px;
       border-bottom-color: hsl(var(--primary));
     }
 
@@ -214,13 +228,36 @@
 
     /* Card styling */
     .card {
-      background: linear-gradient(to bottom, hsl(180 100% 20%), hsl(210 30% 6%) 40%, hsl(210 30% 3%));
+      background: linear-gradient(to bottom, transparent, hsl(180 100% 20%) 5%, hsl(210 30% 6%) 40%, hsl(210 30% 3%));
       border: 1px solid hsla(165, 70%, 35%, 0.4);
       border-radius: 16px;
       padding: 1.5rem;
       box-shadow: 0 0 10px hsla(165, 100%, 45%, 0.35);
     }
 
+.card-inbox {
+      background:radial-gradient(circle at bottom, black, teal, black, transparent, rgba(255, 20, 145, 0.515), transparent),radial-gradient(circle at top, black, teal, black, transparent, rgba(0, 191, 255, 0.326), transparent) !important;
+box-shadow:inset 0 0 40px black, inset 0 0 40px black !important;
+  background-size:70% 400% !important;
+border: 2.5px solid rgba(255, 255, 255, 0.254) !important;
+padding:20px;margin:10px;
+border-radius:20px;}
+
+
+    #navii {
+      transform:translateY(-20px)translateX(-20px);
+      padding-left:16px;padding-right:20px;border-radius:20px 0 20px 8px;
+            background:linear-gradient(to bottom, deeppink, black 40%);
+      color:lime;
+      border-bottom:2px solid deeppink;
+
+      text-transform:lowercase;
+      font-family:Aovel Neo;
+      font-weight:10;
+    }
+
+
+    
     /* Login overlay */
     #login-overlay {
       position: fixed;
@@ -406,12 +443,14 @@
     }
 
     .project-card-item {
+      position: relative;
       background: linear-gradient(to bottom, rgba(0, 128, 128, 0.12), rgba(0,0,0,0.6));
       border: 1px solid hsla(165, 70%, 40%, 0.35);
       border-radius: 12px;
       padding: 1.25rem;
       cursor: pointer;
       transition: all 0.3s ease;
+      overflow: hidden;
     }
 
     .project-card-item:hover {
@@ -419,6 +458,686 @@
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
       border-color: hsla(165, 90%, 55%, 0.45);
     }
+
+    /* Cover image background */
+    .project-card-cover {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: opacity 0.3s ease;
+    }
+    .project-card-cover-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.25);
+      transition: opacity 0.3s ease;
+    }
+    .project-card-item:hover .project-card-cover,
+    .project-card-item:hover .project-card-cover-overlay {
+      opacity: 0;
+    }
+    .project-card-content {
+      position: relative;
+      z-index: 1;
+    }
+    .project-card-item.has-cover .project-card-content {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .project-card-item.has-cover:hover .project-card-content {
+      opacity: 1;
+    }
+
+    /* ============================================
+       Project Drawer - Full Height Right Panel
+       ============================================ */
+    #project-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 40;
+      display: none;
+    }
+
+    #project-modal.open {
+      display: block;
+    }
+
+    #project-drawer {
+      position: fixed;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 480px;
+      max-width: 100vw;
+      background: linear-gradient(to bottom, rgba(0, 128, 128, 0.2), rgba(0, 0, 0, 0.85));
+      border-left: 1px solid hsla(165, 70%, 35%, 0.4);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
+    }
+
+    #project-modal.open #project-drawer {
+      transform: translateX(0);
+    }
+
+    .drawer-header {
+      background: linear-gradient(to bottom, rgba(0, 128, 128, 0.25), transparent);
+      padding: 1.5rem;
+      border-bottom: 1px solid hsla(165, 70%, 35%, 0.25);
+      position: relative;
+    }
+
+    .drawer-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.5rem;
+    }
+
+    .drawer-footer {
+      background: linear-gradient(to top, rgba(0, 128, 128, 0.15), transparent);
+      padding: 1rem 1.5rem;
+      border-top: 1px solid hsla(165, 70%, 35%, 0.25);
+    }
+
+    .drawer-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      color: inherit;
+      font-size: 1.5rem;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+    }
+
+    .drawer-close:hover {
+      opacity: 1;
+      background: hsla(165, 70%, 40%, 0.1);
+    }
+
+    .drawer-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .drawer-stat-card {
+      padding: 0.75rem;
+      border-radius: 8px;
+      background: rgba(0, 128, 128, 0.1);
+      border: 1px solid hsla(165, 70%, 35%, 0.2);
+    }
+
+    /* ============================================
+       Domain Badge Colors (8 domains)
+       ============================================ */
+    .domain-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
+    .domain-badge-music { background: hsla(280, 70%, 50%, 0.2); color: hsl(280, 70%, 70%); }
+    .domain-badge-poetry { background: hsla(200, 70%, 50%, 0.2); color: hsl(200, 70%, 70%); }
+    .domain-badge-theatre { background: hsla(340, 70%, 50%, 0.2); color: hsl(340, 70%, 70%); }
+    .domain-badge-theory { background: hsla(45, 70%, 50%, 0.2); color: hsl(45, 70%, 70%); }
+    .domain-badge-coding { background: hsla(165, 70%, 50%, 0.2); color: hsl(165, 70%, 70%); }
+    .domain-badge-visual-art { background: hsla(315, 70%, 50%, 0.2); color: hsl(315, 70%, 70%); }
+    .domain-badge-health { background: hsla(120, 70%, 50%, 0.2); color: hsl(120, 70%, 70%); }
+    .domain-badge-home { background: hsla(30, 70%, 50%, 0.2); color: hsl(30, 70%, 70%); }
+
+    /* ============================================
+       Today Timeline View
+       ============================================ */
+    .today-container {
+      position: relative;
+    }
+
+    .today-date-nav {
+      display: flex;
+      width:70%;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .today-date-nav button {
+      background: none;
+      color: inherit;
+      border-radius: 26px;
+      transform:translateY(-20px)translateX(20px);
+      cursor: pointer;
+      padding:6px 14px;
+
+      color:deepskyblue;
+      transition: all 0.2s;
+      z-index:100;
+    }
+
+    .today-date-nav button:hover {
+      color:yellow;
+    }
+
+    .today-date-display {
+      flex: 1;
+      margin-left:-60px;
+      margin-right:-60px;
+            transform:translateY(-20px)translateX(20px);
+padding-left:16px;padding-right:20px;border-radius:20px 0 20px 8px;
+            background:linear-gradient(to bottom, deepskyblue, black 40%);
+      color:lime;
+      border-bottom:2px solid deepskyblue;
+z-index:1;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .today-quick-entry {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .today-timeline-wrapper {
+      position: relative;
+      overflow-y: auto;
+      max-height: calc(100vh - 380px);
+      min-height: 400px;
+      scrollbar-width: thin;
+      scrollbar-color: hsla(165, 70%, 40%, 0.3) transparent;
+    }
+
+    .today-timeline-wrapper::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .today-timeline-wrapper::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .today-timeline-wrapper::-webkit-scrollbar-thumb {
+      background: hsla(165, 70%, 40%, 0.3);
+      border-radius: 4px;
+    }
+
+    .today-timeline {
+      position: relative;
+      margin-left: 64px;
+    }
+
+    .today-hour-marker {
+      position: absolute;
+      left: -64px;
+      right: 0;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .today-hour-label {
+      width: 64px;
+      font-size: 0.75rem;
+      color: hsla(190, 10%, 60%, 1);
+      text-align: right;
+      padding-right: 0.75rem;
+      user-select: none;
+    }
+
+    .today-hour-line {
+      flex: 1;
+      border-top: 1px solid hsla(165, 70%, 40%, 0.15);
+      margin-top: 0.5rem;
+    }
+
+    .today-current-time {
+      position: absolute;
+      left: -64px;
+      right: 0;
+      z-index: 20;
+      pointer-events: none;
+    }
+
+    .today-current-time-dot {
+      position: absolute;
+      left: 52px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: hsl(0, 84%, 60%);
+      transform: translateY(-5px);
+      box-shadow: 0 0 8px rgba(239, 68, 68, 0.6);
+    }
+
+    .today-current-time-line {
+      margin-left: 64px;
+      height: 2px;
+      background: hsl(0, 84%, 60%);
+      box-shadow: 0 0 8px rgba(239, 68, 68, 0.5);
+    }
+
+    .today-time-block {
+      position: absolute;
+      left: 0;
+      right: 16px;
+      border-radius: 8px;
+      padding: 0.5rem 0.75rem;
+      cursor: grab;
+      transition: box-shadow 0.15s, border-color 0.15s;
+      background: linear-gradient(to bottom, hsla(165, 100%, 45%, 0.15), hsla(165, 100%, 35%, 0.08));
+      border: 1px solid hsla(165, 90%, 55%, 0.3);
+      border-left-width: 3px;
+      user-select: none;
+    }
+
+    .today-time-block:hover {
+      border-color: hsla(165, 90%, 55%, 0.5);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .today-time-block.dragging {
+      cursor: grabbing;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      z-index: 30;
+      opacity: 0.9;
+    }
+
+    .today-time-block.completed {
+      background: linear-gradient(to bottom, hsla(210, 20%, 25%, 0.2), hsla(210, 20%, 20%, 0.15));
+      border-color: hsla(210, 20%, 40%, 0.3);
+      opacity: 0.6;
+    }
+
+    .today-time-block .block-title {
+      font-weight: 500;
+      font-size: 0.875rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .today-time-block .block-time {
+      font-size: 0.75rem;
+      color: hsla(190, 10%, 60%, 1);
+    }
+
+    .today-time-block .resize-handle {
+      position: absolute;
+      left: 8px;
+      right: 8px;
+      bottom: 0;
+      height: 8px;
+      cursor: ns-resize;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .today-time-block:hover .resize-handle {
+      opacity: 0.5;
+    }
+
+    .today-time-block .resize-handle::after {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 4px;
+      background: hsla(190, 10%, 60%, 0.5);
+      border-radius: 2px;
+      margin: 2px auto;
+    }
+
+    .today-empty-state {
+      text-align: center;
+      padding: 4rem 1rem;
+      color: hsla(190, 10%, 60%, 1);
+    }
+
+    /* ============================================
+       AI Chat Footer for Today View
+       ============================================ */
+    .today-chat-footer {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid hsla(165, 70%, 40%, 0.25);
+    }
+
+    .chat-messages {
+      max-height: 150px;
+      overflow-y: auto;
+      margin-bottom: 0.75rem;
+      scrollbar-width: thin;
+      scrollbar-color: hsla(165, 70%, 40%, 0.3) transparent;
+    }
+
+    .chat-messages::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .chat-messages::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .chat-messages::-webkit-scrollbar-thumb {
+      background: hsla(165, 70%, 40%, 0.3);
+      border-radius: 3px;
+    }
+
+    .chat-message {
+      padding: 0.5rem 0.75rem;
+      border-radius: 12px;
+      margin-bottom: 0.5rem;
+      max-width: 85%;
+      font-size: 0.875rem;
+      line-height: 1.4;
+      word-wrap: break-word;
+    }
+
+    .chat-message.user {
+      margin-left: auto;
+      background: linear-gradient(to bottom, hsla(165, 100%, 45%, 0.2), hsla(165, 100%, 35%, 0.1));
+      border: 1px solid hsla(165, 90%, 55%, 0.3);
+      color: hsl(165 100% 85%);
+    }
+
+    .chat-message.ai {
+      margin-right: auto;
+      background: linear-gradient(to bottom, hsla(210, 30%, 25%, 0.3), hsla(210, 30%, 20%, 0.2));
+      border: 1px solid hsla(210, 30%, 50%, 0.25);
+      color: hsla(190, 20%, 85%, 1);
+    }
+
+    .chat-message.ai.loading {
+      opacity: 0.7;
+      font-style: italic;
+    }
+
+    .chat-input-row {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .chat-input-row input {
+      flex: 1;
+    }
+
+    /* ============================================
+       Inbox Daily Section
+       ============================================ */
+    .inbox-section {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-radius:40px;
+      border-top: 1px solid hsla(165, 70%, 40%, 0.25);
+    }
+
+    .inbox-task-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.75rem;
+      border-radius: 8px;
+      background: linear-gradient(to bottom, rgba(0, 128, 128, 0.08), rgba(0, 0, 0, 0.3));
+      border: 1px solid hsla(165, 70%, 40%, 0.2);
+      margin-bottom: 0.5rem;
+      transition: all 0.2s ease;
+    }
+
+    .inbox-task-item:hover {
+      transform: translateX(2px);
+      border-color: hsla(165, 70%, 40%, 0.35);
+    }
+
+    .inbox-task-icon {
+      color: hsl(200, 70%, 60%);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .inbox-task-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .inbox-task-text {
+      font-size: 0.875rem;
+      line-height: 1.4;
+    }
+
+    .inbox-task-due {
+      font-size: 0.75rem;
+      color: hsla(45, 90%, 60%, 0.9);
+      margin-top: 0.25rem;
+    }
+
+    .inbox-date-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .inbox-date-nav button {
+      background: none;
+      border: 1px solid hsla(165, 70%, 40%, 0.35);
+      color: inherit;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .inbox-date-nav button:hover {
+      background: hsla(165, 70%, 40%, 0.1);
+    }
+
+    .inbox-count-badge {
+      background: linear-gradient(to bottom, rgba(0, 128, 128, 0.18), rgba(0, 0, 0, 0.7));
+      border: 1px solid hsla(165, 70%, 40%, 0.35);
+      border-radius: 12px;
+      padding: 0.5rem 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Line clamp utility */
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* ============================================
+       Filters Modal
+       ============================================ */
+    #filters-modal {
+      position: fixed;
+      inset: 0;
+      background: transparent;
+      z-index: 50;
+      display: none;
+    }
+    #filters-modal.open { display: flex; align-items: center; justify-content: center; }
+
+    #filters-dialog {
+      width: 100%;
+      max-width: 480px;
+      background: linear-gradient(to bottom, rgba(0, 40, 40, 0.95), rgba(0, 0, 0, 0.98));
+      border: 1px solid hsla(165, 70%, 40%, 0.5);
+      border-top: 2px solid hsl(165, 70%, 50%);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 0 60px 20px rgba(0,0,0,0.8), 0 0 100px 40px rgba(0,0,0,0.6);
+    }
+
+    .filters-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    .filters-header h2 {
+      font-family: var(--font-headline, 'Nokie', sans-serif);
+      font-size: 1.5rem;
+      color: hsl(165, 70%, 50%);
+      text-transform: lowercase;
+      letter-spacing: 0.05em;
+    }
+    .filters-close-btn {
+      background: none;
+      border: none;
+      color: hsl(var(--foreground));
+      opacity: 0.7;
+      cursor: pointer;
+      padding: 0.25rem;
+    }
+    .filters-close-btn:hover { opacity: 1; }
+
+    .filter-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-bottom: 1.25rem;
+    }
+    .filter-label {
+      font-size: 0.95rem;
+      font-weight: 500;
+      min-width: 140px;
+      color: hsl(var(--foreground));
+    }
+
+    /* Custom slider */
+    .filter-slider {
+      flex: 1;
+      height: 6px;
+      -webkit-appearance: none;
+      appearance: none;
+      background: hsla(165, 50%, 30%, 0.4);
+      border-radius: 3px;
+      outline: none;
+    }
+    .filter-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, hsl(165, 70%, 50%), hsl(180, 70%, 40%));
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 128, 128, 0.4);
+    }
+    .filter-slider::-moz-range-thumb {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, hsl(165, 70%, 50%), hsl(180, 70%, 40%));
+      cursor: pointer;
+      border: none;
+    }
+
+    /* Checkbox for invert */
+    .filter-checkbox {
+      width: 20px;
+      height: 20px;
+      accent-color: hsl(165, 70%, 50%);
+      cursor: pointer;
+    }
+
+    /* Select dropdown */
+    .filter-select {
+      width: 180px;
+      padding: 0.5rem 0.75rem;
+      background: hsla(165, 30%, 15%, 0.6);
+      border: 1px solid hsla(165, 70%, 40%, 0.35);
+      border-radius: 6px;
+      color: hsl(var(--foreground));
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    .filters-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid hsla(165, 70%, 40%, 0.25);
+    }
+    .filters-footer button {
+      padding: 0.5rem 1.25rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .filters-reset-btn {
+      background: transparent;
+      border: 1px solid hsla(165, 70%, 40%, 0.4);
+      color: hsl(var(--foreground));
+    }
+    .filters-reset-btn:hover {
+      border-color: hsla(165, 70%, 50%, 0.6);
+    }
+    .filters-done-btn {
+      background: linear-gradient(135deg, hsla(165, 70%, 40%, 0.8), hsla(180, 70%, 35%, 0.8));
+      border: none;
+      color: white;
+    }
+    .filters-done-btn:hover {
+      background: linear-gradient(135deg, hsla(165, 70%, 45%, 0.9), hsla(180, 70%, 40%, 0.9));
+    }
+
+    /* Background panel container */
+    #app-filter-container {
+      position: relative;
+      min-height: 100vh;
+    }
+    .app-background-panel {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* Background patterns */
+    .app-background-panel.bg-stars { background-image: radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.4), transparent), radial-gradient(1px 1px at 40% 70%, rgba(255,255,255,0.3), transparent), radial-gradient(1.5px 1.5px at 60% 20%, rgba(255,255,255,0.35), transparent), radial-gradient(1px 1px at 80% 50%, rgba(255,255,255,0.25), transparent); }
+    .app-background-panel.bg-grid { background-image: linear-gradient(hsla(165, 70%, 40%, 0.1) 1px, transparent 1px), linear-gradient(90deg, hsla(165, 70%, 40%, 0.1) 1px, transparent 1px); background-size: 40px 40px; }
+    .app-background-panel.bg-dots { background-image: radial-gradient(hsla(165, 70%, 40%, 0.3) 1px, transparent 1px); background-size: 20px 20px; }
+    .app-background-panel.bg-waves { background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, hsla(165, 70%, 40%, 0.05) 10px, hsla(165, 70%, 40%, 0.05) 20px); }
+
+    /* Filters icon button in nav */
+    .nav-icon-btn {
+      background: transparent;
+      border: none;
+      color: hsl(var(--foreground));
+      padding: 0.5rem;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: all 0.2s ease;
+    }
+    .nav-icon-btn:hover {
+      opacity: 1;
+      color: hsl(165, 70%, 50%);
+    }
+
   </style>
 </head>
 
@@ -457,13 +1176,36 @@
     </div>
   </div>
 
+  <!-- App Filter Container (for CSS filter effects) -->
+  <div id="app-filter-container">
+    <!-- Background Panel (for patterns) -->
+    <div id="app-background-panel" class="app-background-panel"></div>
+
   <!-- Header -->
   <header>
     <div class="flex justify-between items-center">
       <div class="flex items-center gap-4">
-        <h1 class="text-2xl font-bold">ActionDeck</h1>
-        <span id="user-email" class="text-sm text-muted-foreground"></span>
+        <h1 class="text-2xl font-bold">dex</h1>
+        <span id="user-email" class="text-sm text-muted-foreground" style="display: none;"></span>
       </div>
+          <!-- Navigation Tabs -->
+    <div class="nav-tabs">
+      <button class="nav-tab active" data-view="dashboard">Dashboard</button>
+      <button class="nav-tab" data-view="tasks">Tasks</button>
+      <button class="nav-tab" data-view="prioritize">Prioritize</button>
+      <button class="nav-tab" data-view="today">Today</button>
+      <button class="nav-tab" data-view="settings">Settings</button>
+      <button class="nav-icon-btn" onclick="window.openFiltersModal()" title="Visual Filters">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M12 1v6m0 6v10"/>
+          <path d="M5.6 5.6l4.2 4.2m4.4 4.4l4.2 4.2"/>
+          <path d="M1 12h6m6 0h10"/>
+          <path d="M5.6 18.4l4.2-4.2m4.4-4.4l4.2-4.2"/>
+        </svg>
+      </button>
+    </div>
+
       <button id="logout-btn" class="neon-button text-sm" style="display: none;">
         Logout
       </button>
@@ -472,21 +1214,50 @@
 
   <!-- Main Content -->
   <main class="max-w-6xl mx-auto px-4">
-    <!-- Navigation Tabs -->
-    <div class="nav-tabs">
-      <button class="nav-tab active" data-view="dashboard">Dashboard</button>
-      <button class="nav-tab" data-view="tasks">Tasks</button>
-      <button class="nav-tab" data-view="prioritize">Prioritize</button>
-      <button class="nav-tab" data-view="today">Today</button>
-      <button class="nav-tab" data-view="settings">Settings</button>
-    </div>
 
     <!-- Dashboard View -->
     <div id="dashboard" class="view active">
       <div class="mb-6">
         <h2 class="text-xl font-semibold mb-4">Dashboard</h2>
-        <div id="dashboard-summary" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div id="dashboard-summary" class="grid grid-cols-3 md:grid-cols-1 gap-4">
           <!-- Summary cards will be rendered here -->
+        </div>
+      </div>
+
+      <!-- CC Daily Inbox Section -->
+      <div id="inbox-section" class="mb-6" style="display: none;">
+        <div class="card-inbox">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold flex items-center gap-2" id="navii">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: hsl(200, 70%, 60%);">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+              Email Tasks
+            </h3>
+            <div class="inbox-date-nav">
+              <button onclick="window.navigateInboxDay(-1)" title="Previous">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <span id="inbox-date-label" class="text-sm px-2">Today</span>
+              <button onclick="window.navigateInboxDay(1)" title="Next">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div id="inbox-count" class="inbox-count-badge mb-4">
+            <span id="inbox-task-count" class="text-xl font-bold">0</span>
+            <span class="text-sm">Top of Mind tasks</span>
+          </div>
+
+          <div id="inbox-task-list" class="space-y-2" style="max-height: 300px; overflow-y: auto;">
+            <!-- Inbox tasks will be rendered here -->
+          </div>
         </div>
       </div>
 
@@ -524,12 +1295,16 @@
         <!-- Domain Filter Bar (Bottom) -->
         <div class="mt-8 pt-6 border-t border-border">
           <div class="text-xs text-muted-foreground mb-3">Filter by Domain:</div>
-          <div class="flex gap-2 overflow-x-auto pb-2">
+          <div class="flex gap-2 overflow-x-auto pb-2 flex-wrap">
             <button class="domain-filter-btn active" data-domain="all" onclick="window.filterByDomain('all')">All</button>
-            <button class="domain-filter-btn" data-domain="work" onclick="window.filterByDomain('work')">Work</button>
-            <button class="domain-filter-btn" data-domain="personal" onclick="window.filterByDomain('personal')">Personal</button>
-            <button class="domain-filter-btn" data-domain="learning" onclick="window.filterByDomain('learning')">Learning</button>
+            <button class="domain-filter-btn" data-domain="music" onclick="window.filterByDomain('music')">Music</button>
+            <button class="domain-filter-btn" data-domain="poetry" onclick="window.filterByDomain('poetry')">Poetry</button>
+            <button class="domain-filter-btn" data-domain="theatre" onclick="window.filterByDomain('theatre')">Theatre</button>
+            <button class="domain-filter-btn" data-domain="theory" onclick="window.filterByDomain('theory')">Theory</button>
+            <button class="domain-filter-btn" data-domain="coding" onclick="window.filterByDomain('coding')">Coding</button>
+            <button class="domain-filter-btn" data-domain="visual-art" onclick="window.filterByDomain('visual-art')">Visual Art</button>
             <button class="domain-filter-btn" data-domain="health" onclick="window.filterByDomain('health')">Health</button>
+            <button class="domain-filter-btn" data-domain="home" onclick="window.filterByDomain('home')">Home</button>
           </div>
         </div>
       </div>
@@ -567,9 +1342,16 @@
 
         <div id="prioritize-form-container">
           <div class="form-group mb-4">
-            <label class="font-semibold mb-2">Select Projects to Prioritize</label>
-            <div id="prioritize-projects" class="space-y-2 mb-4">
+            <label class="font-semibold mb-2 block">Select Projects to Prioritize</label>
+            <div id="prioritize-projects" class="space-y-2 mb-4 max-h-48 overflow-y-auto">
               <!-- Project checkboxes will be rendered here -->
+            </div>
+          </div>
+
+          <div class="form-group mb-4">
+            <label class="font-semibold mb-2 block">Include Casual Tasks</label>
+            <div id="prioritize-tasks" class="space-y-2 mb-4 max-h-48 overflow-y-auto">
+              <!-- Task checkboxes will be rendered here -->
             </div>
           </div>
 
@@ -610,10 +1392,73 @@
     </div>
 
     <!-- Today View -->
+    <!-- Today View - Apple Calendar Style Timeline -->
     <div id="today" class="view">
-      <div class="card">
-        <h2 class="text-xl font-semibold mb-4">Today</h2>
-        <p class="text-muted-foreground">Daily schedule view coming soon...</p>
+      <div class="card" id="today-card">
+        <div class="today-container">
+          <!-- Header with date navigation -->
+          <div class="flex justify-between items-center mb-4">
+            <h2 class="text-xl font-semibold">Today</h2>
+            <div class="today-date-nav">
+              <button onclick="window.navigateDay(-1)" title="Previous day">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <div class="today-date-display" id="today-date-label">Monday, January 27, 2026</div>
+              <button onclick="window.navigateDay(1)" title="Next day">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+              <button id="today-goto-btn" class="neon-button text-sm" onclick="window.goToToday()" style="display: none; padding: 0.25rem 0.5rem;">Today</button>
+            </div>
+          </div>
+
+          <!-- Quick entry -->
+          <div class="today-quick-entry">
+            <input
+              type="text"
+              id="today-entry-input"
+              placeholder="What's on your plate today?"
+              class="neon-input flex-1"
+              onkeypress="if(event.key==='Enter') window.addTodayItem()"
+            >
+            <select id="today-duration-select" class="neon-input" style="width: 110px;">
+              <option value="15">15 min</option>
+              <option value="30" selected>30 min</option>
+              <option value="45">45 min</option>
+              <option value="60">1 hour</option>
+              <option value="90">1.5 hours</option>
+              <option value="120">2 hours</option>
+            </select>
+            <button class="neon-button" onclick="window.addTodayItem()">Add</button>
+          </div>
+
+          <!-- Timeline -->
+          <div class="today-timeline-wrapper" id="today-timeline-wrapper">
+            <div class="today-timeline" id="today-timeline">
+              <!-- Hour markers and time blocks will be rendered here -->
+            </div>
+          </div>
+
+          <!-- AI Chat Footer -->
+          <div class="today-chat-footer">
+            <div class="chat-messages" id="today-chat-messages">
+              <!-- AI conversation history renders here -->
+            </div>
+            <div class="chat-input-row">
+              <input
+                id="today-chat-input"
+                type="text"
+                placeholder="e.g., 'Add meeting at 2pm for 1 hour' or 'Move lunch to 1pm'"
+                class="neon-input"
+                onkeydown="if(event.key==='Enter') window.sendScheduleChat()"
+              >
+              <button onclick="window.sendScheduleChat()" class="neon-button">Send</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -678,83 +1523,180 @@
       </div>
     </div>
   </main>
+  </div><!-- End App Filter Container -->
 
-  <!-- Project Modal -->
-  <div id="project-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 40; overflow-y: auto;">
-    <div class="flex items-center justify-center min-h-screen p-4">
-      <div class="card max-w-2xl w-full" onclick="event.stopPropagation()">
-        <button onclick="window.closeProjectModal()" style="position: absolute; top: 10px; right: 10px; background: none; border: none; color: inherit; font-size: 24px; cursor: pointer;">✕</button>
+  <!-- Project Drawer (Full-Height Right Panel) -->
+  <div id="project-modal" onclick="if(event.target === this) window.closeProjectModal()">
+    <div id="project-drawer" onclick="event.stopPropagation()">
+      <button class="drawer-close" onclick="window.closeProjectModal()">×</button>
 
-        <h2 class="text-2xl font-semibold mb-4" id="modal-title">Project Details</h2>
+      <!-- Drawer Header -->
+      <div class="drawer-header">
+        <h2 class="text-2xl font-semibold" id="modal-title">Project Details</h2>
+        <div id="modal-domain-badge" class="mt-2"></div>
+      </div>
 
-        <!-- View Mode -->
-        <div id="modal-view-mode">
-          <div class="mb-4">
-            <h3 class="text-lg font-semibold" id="modal-name">Project Name</h3>
-            <p class="text-sm text-muted-foreground mt-2" id="modal-description">Description</p>
+      <!-- View Mode -->
+      <div id="modal-view-mode" class="drawer-content">
+        <div class="mb-6">
+          <h3 class="text-xl font-semibold" id="modal-name">Project Name</h3>
+          <p class="text-sm text-muted-foreground mt-2" id="modal-description">Description</p>
+        </div>
+
+        <div class="drawer-stat-grid mb-6">
+          <div class="drawer-stat-card">
+            <span class="text-xs text-muted-foreground">Importance</span>
+            <div class="text-xl font-semibold" id="modal-importance">5</div>
           </div>
-          <div class="grid grid-cols-2 gap-4 mb-6">
-            <div>
-              <span class="text-xs text-muted-foreground">Importance</span>
-              <div class="text-xl font-semibold" id="modal-importance">5</div>
-            </div>
-            <div>
-              <span class="text-xs text-muted-foreground">Deadline</span>
-              <div class="text-xl font-semibold" id="modal-deadline">None</div>
-            </div>
-            <div>
-              <span class="text-xs text-muted-foreground">Size (hours)</span>
-              <div class="text-xl font-semibold" id="modal-size">Unknown</div>
-            </div>
-            <div>
-              <span class="text-xs text-muted-foreground">Status</span>
-              <div class="text-xl font-semibold" id="modal-status">Active</div>
-            </div>
+          <div class="drawer-stat-card">
+            <span class="text-xs text-muted-foreground">Deadline</span>
+            <div class="text-xl font-semibold" id="modal-deadline">None</div>
           </div>
-          <div class="flex gap-2">
-            <button class="neon-button flex-1" onclick="window.editProject()">Edit</button>
-            <button class="neon-button flex-1" onclick="if(confirm('Delete this project?')) window.deleteProject()" style="border-color: hsla(0, 84%, 60%, 0.6);">Delete</button>
+          <div class="drawer-stat-card">
+            <span class="text-xs text-muted-foreground">Size (hours)</span>
+            <div class="text-xl font-semibold" id="modal-size">Unknown</div>
+          </div>
+          <div class="drawer-stat-card">
+            <span class="text-xs text-muted-foreground">Status</span>
+            <div class="text-xl font-semibold" id="modal-status">Active</div>
           </div>
         </div>
 
-        <!-- Edit Mode -->
-        <form id="modal-edit-mode" style="display: none;" onsubmit="window.saveProject(event)">
-          <div class="form-group mb-4">
-            <label for="modal-edit-name">Project Name</label>
-            <input id="modal-edit-name" type="text" class="neon-input w-full" required>
+        <!-- Tasks Section -->
+        <div class="mb-6">
+          <h4 class="font-semibold mb-3 text-sm text-muted-foreground uppercase">Tasks</h4>
+          <div id="modal-tasks-list" class="space-y-2">
+            <!-- Tasks will be rendered here -->
           </div>
-          <div class="form-group mb-4">
-            <label for="modal-edit-description">Description</label>
-            <textarea id="modal-edit-description" class="neon-input w-full" rows="2"></textarea>
+        </div>
+      </div>
+
+      <!-- Edit Mode -->
+      <form id="modal-edit-mode" class="drawer-content" style="display: none;" onsubmit="window.saveProject(event)">
+        <div class="form-group mb-4">
+          <label for="modal-edit-name">Project Name</label>
+          <input id="modal-edit-name" type="text" class="neon-input w-full" required>
+        </div>
+        <div class="form-group mb-4">
+          <label for="modal-edit-description">Description</label>
+          <textarea id="modal-edit-description" class="neon-input w-full" rows="3"></textarea>
+        </div>
+        <div class="form-group mb-4">
+          <label for="modal-edit-domain">Domain</label>
+          <select id="modal-edit-domain" class="neon-input w-full">
+            <option value="">None</option>
+            <option value="music">Music</option>
+            <option value="poetry">Poetry</option>
+            <option value="theatre">Theatre</option>
+            <option value="theory">Theory</option>
+            <option value="coding">Coding</option>
+            <option value="visual-art">Visual Art</option>
+            <option value="health">Health</option>
+            <option value="home">Home</option>
+          </select>
+        </div>
+        <div class="form-group mb-4">
+          <label for="modal-edit-cover">Cover Image URL</label>
+          <input id="modal-edit-cover" type="url" class="neon-input w-full" placeholder="https://...">
+        </div>
+        <div class="grid grid-cols-2 gap-4 mb-4">
+          <div class="form-group">
+            <label for="modal-edit-importance">Importance (1-10)</label>
+            <input id="modal-edit-importance" type="number" class="neon-input w-full" min="1" max="10" value="5">
           </div>
-          <div class="grid grid-cols-2 gap-4 mb-4">
-            <div class="form-group">
-              <label for="modal-edit-importance">Importance (1-10)</label>
-              <input id="modal-edit-importance" type="number" class="neon-input w-full" min="1" max="10" value="5">
-            </div>
-            <div class="form-group">
-              <label for="modal-edit-deadline">Deadline</label>
-              <input id="modal-edit-deadline" type="date" class="neon-input w-full">
-            </div>
-            <div class="form-group">
-              <label for="modal-edit-size">Size (hours)</label>
-              <input id="modal-edit-size" type="number" class="neon-input w-full" min="0">
-            </div>
-            <div class="form-group">
-              <label for="modal-edit-status">Status</label>
-              <select id="modal-edit-status" class="neon-input w-full">
-                <option value="active">Active</option>
-                <option value="paused">Paused</option>
-                <option value="done">Done</option>
-                <option value="archived">Archived</option>
-              </select>
-            </div>
+          <div class="form-group">
+            <label for="modal-edit-deadline">Deadline</label>
+            <input id="modal-edit-deadline" type="date" class="neon-input w-full">
           </div>
-          <div class="flex gap-2">
-            <button type="submit" class="neon-button flex-1">Save</button>
-            <button type="button" class="neon-button flex-1" onclick="window.cancelEdit()">Cancel</button>
+          <div class="form-group">
+            <label for="modal-edit-size">Size (hours)</label>
+            <input id="modal-edit-size" type="number" class="neon-input w-full" min="0">
           </div>
-        </form>
+          <div class="form-group">
+            <label for="modal-edit-status">Status</label>
+            <select id="modal-edit-status" class="neon-input w-full">
+              <option value="active">Active</option>
+              <option value="paused">Paused</option>
+              <option value="done">Done</option>
+              <option value="archived">Archived</option>
+            </select>
+          </div>
+        </div>
+      </form>
+
+      <!-- Drawer Footer -->
+      <div class="drawer-footer">
+        <!-- View mode buttons -->
+        <div id="modal-view-buttons" class="flex gap-2">
+          <button class="neon-button flex-1" onclick="window.editProject()">Edit</button>
+          <button class="neon-button flex-1" onclick="if(confirm('Delete this project?')) window.deleteProject()" style="border-color: hsla(0, 84%, 60%, 0.6);">Delete</button>
+        </div>
+        <!-- Edit mode buttons -->
+        <div id="modal-edit-buttons" style="display: none;" class="flex gap-2">
+          <button type="submit" form="modal-edit-mode" class="neon-button flex-1">Save</button>
+          <button type="button" class="neon-button flex-1" onclick="window.cancelEdit()">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filters Modal -->
+  <div id="filters-modal" onclick="if(event.target === this) window.cancelFilters()">
+    <div id="filters-dialog">
+      <div class="filters-header">
+        <h2>filters</h2>
+        <button class="filters-close-btn" onclick="window.cancelFilters()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="filter-row">
+        <label class="filter-label">Brightness <span id="filter-brightness-val">100</span>%</label>
+        <input type="range" id="filter-brightness" class="filter-slider" min="0" max="200" value="100">
+      </div>
+
+      <div class="filter-row">
+        <label class="filter-label">Contrast <span id="filter-contrast-val">100</span>%</label>
+        <input type="range" id="filter-contrast" class="filter-slider" min="0" max="200" value="100">
+      </div>
+
+      <div class="filter-row">
+        <label class="filter-label">Saturate <span id="filter-saturate-val">100</span>%</label>
+        <input type="range" id="filter-saturate" class="filter-slider" min="0" max="200" value="100">
+      </div>
+
+      <div class="filter-row">
+        <label class="filter-label">Hue Rotate <span id="filter-hue-val">0</span>°</label>
+        <input type="range" id="filter-hue" class="filter-slider" min="0" max="360" value="0">
+      </div>
+
+      <div class="filter-row">
+        <label class="filter-label">Sepia <span id="filter-sepia-val">0</span>%</label>
+        <input type="range" id="filter-sepia" class="filter-slider" min="0" max="100" value="0">
+      </div>
+
+      <div class="filter-row">
+        <label class="filter-label">Invert</label>
+        <input type="checkbox" id="filter-invert" class="filter-checkbox">
+      </div>
+
+      <div class="filter-row">
+        <label class="filter-label">Background</label>
+        <select id="filter-background" class="filter-select">
+          <option value="none">None</option>
+          <option value="stars">Stars</option>
+          <option value="grid">Grid</option>
+          <option value="dots">Dots</option>
+          <option value="waves">Waves</option>
+        </select>
+      </div>
+
+      <div class="filters-footer">
+        <button class="filters-reset-btn" onclick="window.resetFilters()">Reset</button>
+        <button class="filters-done-btn" onclick="window.saveFilters()">Done</button>
       </div>
     </div>
   </div>
@@ -779,7 +1721,10 @@
       onSnapshot,
       setDoc,
       deleteDoc,
-      doc
+      doc,
+      getDoc,
+      query,
+      orderBy
     } from 'https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js';
 
     // Firebase Configuration
@@ -802,6 +1747,26 @@
     await setPersistence(auth, browserLocalPersistence);
 
     console.log('Firebase initialized successfully');
+
+    // ============================================
+    // Domain Configuration (8 domains)
+    // ============================================
+    const DOMAINS = {
+      music: { label: 'Music', color: 'hsl(280, 70%, 60%)' },
+      poetry: { label: 'Poetry', color: 'hsl(200, 70%, 60%)' },
+      theatre: { label: 'Theatre', color: 'hsl(340, 70%, 60%)' },
+      theory: { label: 'Theory', color: 'hsl(45, 70%, 60%)' },
+      coding: { label: 'Coding', color: 'hsl(165, 70%, 60%)' },
+      'visual-art': { label: 'Visual Art', color: 'hsl(315, 70%, 60%)' },
+      health: { label: 'Health', color: 'hsl(120, 70%, 60%)' },
+      home: { label: 'Home', color: 'hsl(30, 70%, 60%)' }
+    };
+
+    function getDomainBadgeHtml(domain) {
+      if (!domain || !DOMAINS[domain]) return '';
+      const cfg = DOMAINS[domain];
+      return `<span class="domain-badge domain-badge-${domain}">${cfg.label}</span>`;
+    }
 
     // Global App State
     function createEmptyState() {
@@ -891,6 +1856,11 @@
         if (state.settings.enableSync) {
           subscribeProjects();
           subscribeCasualTasks();
+          loadTodaySchedule();
+          loadChatHistory();
+          subscribeInboxDaily();
+          // Load saved filters
+          loadFiltersFromFirestore();
         }
       } else {
         uid = null;
@@ -1078,24 +2048,31 @@
 
       container.innerHTML = `<div class="project-grid">
         ${filtered.map(project => `
-          <div class="project-card-item" onclick="window.openProjectModal('${project.id}')">
-            <div class="flex justify-between items-start mb-3">
-              <h4 class="text-base font-semibold flex-1">${project.name || 'Untitled'}</h4>
-              <span class="text-xs px-2 py-1 rounded ml-2 whitespace-nowrap" style="
-                background: ${getStatusColor(project.status)};
-                color: ${getStatusColorText(project.status)};
-              ">${project.status || 'active'}</span>
-            </div>
-            <p class="text-sm text-muted-foreground mb-3 line-clamp-2">${project.description || 'No description'}</p>
-            <div class="flex justify-between items-center text-xs text-muted-foreground mb-3">
-              <span>Importance: ${project.importance || 5}/10</span>
-              <span>${project.deadline || 'No deadline'}</span>
-            </div>
-            ${project.tasks ? `
-              <div class="text-xs pt-3 border-t border-border">
-                <span>${project.tasks.filter(t => t.completed).length}/${project.tasks.length} tasks</span>
-              </div>
+          <div class="project-card-item${project.coverImage ? ' has-cover' : ''}" onclick="window.openProjectModal('${project.id}')">
+            ${project.coverImage ? `
+              <div class="project-card-cover" style="background-image: url('${project.coverImage}')"></div>
+              <div class="project-card-cover-overlay"></div>
             ` : ''}
+            <div class="project-card-content">
+              <div class="flex justify-between items-start mb-2">
+                <h4 class="text-base font-semibold flex-1">${project.name || 'Untitled'}</h4>
+                <span class="text-xs px-2 py-1 rounded ml-2 whitespace-nowrap" style="
+                  background: ${getStatusColor(project.status)};
+                  color: ${getStatusColorText(project.status)};
+                ">${project.status || 'active'}</span>
+              </div>
+              ${project.domain ? `<div class="mb-2">${getDomainBadgeHtml(project.domain)}</div>` : ''}
+              <p class="text-sm text-muted-foreground mb-3 line-clamp-2">${project.description || 'No description'}</p>
+              <div class="flex justify-between items-center text-xs text-muted-foreground mb-3">
+                <span>Importance: ${project.importance || 5}/10</span>
+                <span>${project.deadline || 'No deadline'}</span>
+              </div>
+              ${project.tasks ? `
+                <div class="text-xs pt-3 border-t border-border">
+                  <span>${project.tasks.filter(t => t.completed).length}/${project.tasks.length} tasks</span>
+                </div>
+              ` : ''}
+            </div>
           </div>
         `).join('')}
       </div>`;
@@ -1214,26 +2191,44 @@
       const modal = document.getElementById('project-modal');
 
       // Populate view mode
-      document.getElementById('modal-title').textContent = project.name;
-      document.getElementById('modal-name').textContent = project.name;
+      document.getElementById('modal-title').textContent = project.name || 'Untitled Project';
+      document.getElementById('modal-name').textContent = project.name || 'Untitled Project';
       document.getElementById('modal-description').textContent = project.description || '(no description)';
       document.getElementById('modal-importance').textContent = project.importance || 5;
       document.getElementById('modal-deadline').textContent = project.deadline || 'None';
       document.getElementById('modal-size').textContent = project.size || 'Unknown';
       document.getElementById('modal-status').textContent = project.status || 'active';
 
+      // Show domain badge
+      document.getElementById('modal-domain-badge').innerHTML = getDomainBadgeHtml(project.domain);
+
+      // Render tasks in drawer
+      const tasksList = document.getElementById('modal-tasks-list');
+      if (project.tasks && project.tasks.length > 0) {
+        tasksList.innerHTML = project.tasks.map(task => `
+          <div class="flex items-center gap-2 p-2 rounded border border-border">
+            <input type="checkbox" ${task.completed ? 'checked' : ''}
+                   onclick="window.toggleProjectTask('${project.id}', '${task.id}')"
+                   style="cursor: pointer;">
+            <span class="${task.completed ? 'line-through opacity-50' : ''}">${task.title}</span>
+          </div>
+        `).join('');
+      } else {
+        tasksList.innerHTML = '<p class="text-sm text-muted-foreground">No tasks yet</p>';
+      }
+
       // Show view mode, hide edit
       document.getElementById('modal-view-mode').style.display = 'block';
       document.getElementById('modal-edit-mode').style.display = 'none';
+      document.getElementById('modal-view-buttons').style.display = 'flex';
+      document.getElementById('modal-edit-buttons').style.display = 'none';
 
-      modal.style.display = 'flex';
-      modal.onclick = (e) => {
-        if (e.target === modal) window.closeProjectModal();
-      };
+      // Open drawer with animation
+      modal.classList.add('open');
     };
 
     window.closeProjectModal = function() {
-      document.getElementById('project-modal').style.display = 'none';
+      document.getElementById('project-modal').classList.remove('open');
       currentProjectId = null;
     };
 
@@ -1243,6 +2238,8 @@
 
       document.getElementById('modal-edit-name').value = project.name || '';
       document.getElementById('modal-edit-description').value = project.description || '';
+      document.getElementById('modal-edit-domain').value = project.domain || '';
+      document.getElementById('modal-edit-cover').value = project.coverImage || '';
       document.getElementById('modal-edit-importance').value = project.importance || 5;
       document.getElementById('modal-edit-deadline').value = project.deadline || '';
       document.getElementById('modal-edit-size').value = project.size || '';
@@ -1250,11 +2247,15 @@
 
       document.getElementById('modal-view-mode').style.display = 'none';
       document.getElementById('modal-edit-mode').style.display = 'block';
+      document.getElementById('modal-view-buttons').style.display = 'none';
+      document.getElementById('modal-edit-buttons').style.display = 'flex';
     };
 
     window.cancelEdit = function() {
       document.getElementById('modal-view-mode').style.display = 'block';
       document.getElementById('modal-edit-mode').style.display = 'none';
+      document.getElementById('modal-view-buttons').style.display = 'flex';
+      document.getElementById('modal-edit-buttons').style.display = 'none';
     };
 
     window.saveProject = async function(e) {
@@ -1264,6 +2265,8 @@
 
       project.name = document.getElementById('modal-edit-name').value;
       project.description = document.getElementById('modal-edit-description').value;
+      project.domain = document.getElementById('modal-edit-domain').value || null;
+      project.coverImage = document.getElementById('modal-edit-cover').value || null;
       project.importance = parseInt(document.getElementById('modal-edit-importance').value);
       project.deadline = document.getElementById('modal-edit-deadline').value;
       project.size = parseInt(document.getElementById('modal-edit-size').value) || null;
@@ -1272,6 +2275,18 @@
       await upsertProject(project);
       renderProjects();
       window.closeProjectModal();
+    };
+
+    window.toggleProjectTask = async function(projectId, taskId) {
+      const project = state.projects.find(p => p.id === projectId);
+      if (!project || !project.tasks) return;
+      const task = project.tasks.find(t => t.id === taskId);
+      if (task) {
+        task.completed = !task.completed;
+        await upsertProject(project);
+        // Refresh the modal display
+        window.openProjectModal(projectId);
+      }
     };
 
     window.deleteProject = async function() {
@@ -1590,7 +2605,7 @@ Only output valid JSON, no other text.`;
     function renderPrioritizeForm() {
       const container = document.getElementById('prioritize-projects');
       if (!state.projects.length) {
-        container.innerHTML = '<p class="text-muted-foreground">No projects to prioritize. Create some projects first.</p>';
+        container.innerHTML = '<p class="text-muted-foreground text-sm">No projects to prioritize. Create some projects first.</p>';
         return;
       }
 
@@ -1609,10 +2624,35 @@ Only output valid JSON, no other text.`;
       `).join('');
     }
 
+    function renderPrioritizeTasks() {
+      const container = document.getElementById('prioritize-tasks');
+      const pendingTasks = state.casualTasks.filter(t => !t.completed && !t.isDeck);
+
+      if (!pendingTasks.length) {
+        container.innerHTML = '<p class="text-muted-foreground text-sm">No pending casual tasks.</p>';
+        return;
+      }
+
+      container.innerHTML = pendingTasks.map(task => `
+        <label class="flex items-center gap-3 cursor-pointer p-2 rounded hover:bg-muted/50">
+          <input
+            type="checkbox"
+            class="prioritize-task-checkbox"
+            data-id="${task.id}"
+            data-title="${(task.title || '').replace(/"/g, '&quot;')}"
+            style="width: 18px; height: 18px; cursor: pointer;"
+          >
+          <span class="flex-1 text-sm">${task.title}</span>
+        </label>
+      `).join('');
+    }
+
     window.prioritizeProjects = async function() {
-      const selected = Array.from(document.querySelectorAll('.prioritize-project-checkbox:checked'));
-      if (!selected.length) {
-        showToast('Select at least one project', 'error');
+      const selectedProjects = Array.from(document.querySelectorAll('.prioritize-project-checkbox:checked'));
+      const selectedTasks = Array.from(document.querySelectorAll('.prioritize-task-checkbox:checked'));
+
+      if (!selectedProjects.length && !selectedTasks.length) {
+        showToast('Select at least one project or task', 'error');
         return;
       }
 
@@ -1630,30 +2670,36 @@ Only output valid JSON, no other text.`;
 
       try {
         // Build project descriptions
-        const projects = selected.map(checkbox => {
+        const projectsText = selectedProjects.map(checkbox => {
           const projectId = checkbox.dataset.id;
           const project = state.projects.find(p => p.id === projectId);
-          return `- ${project.name} (importance: ${project.importance || 5}/10, size: ${project.size || 'unknown'} hours, deadline: ${project.deadline || 'none'})`;
+          return `- [Project] ${project.name} (importance: ${project.importance || 5}/10, size: ${project.size || 'unknown'} hours, deadline: ${project.deadline || 'none'}, domain: ${project.domain || 'none'})`;
         }).join('\n');
 
-        const systemPrompt = `You are an intelligent project prioritization assistant.
-Analyze the given projects and the user's goals, then provide a prioritized list with detailed reasoning.
+        // Build task descriptions
+        const tasksText = selectedTasks.map(checkbox => {
+          return `- [Task] ${checkbox.dataset.title}`;
+        }).join('\n');
+
+        const systemPrompt = `You are an intelligent prioritization assistant.
+Analyze the given projects and tasks, then provide a prioritized list with detailed reasoning.
 Format your response as markdown with:
-1. A prioritized numbered list of projects
-2. For each project, explain WHY it should be at that priority level
+1. A prioritized numbered list combining both projects and tasks
+2. For each item, explain WHY it should be at that priority level
 3. At the end, provide overall strategic recommendations
 
 Use clear markdown formatting.`;
 
-        const prompt = `Projects to prioritize:
-${projects}
+        const allItems = [projectsText, tasksText].filter(Boolean).join('\n');
+        const prompt = `Items to prioritize:
+${allItems}
 
 User's goals:
 ${goals}
 
 ${context ? `Additional context:\n${context}` : ''}
 
-Please prioritize these projects based on impact, deadline urgency, and the user's stated goals.`;
+Please prioritize these items based on impact, deadline urgency, and the user's stated goals.`;
 
         const response = await callGemini(prompt, systemPrompt);
 
@@ -1684,32 +2730,1107 @@ Please prioritize these projects based on impact, deadline urgency, and the user
       document.getElementById('prioritize-goals').value = '';
       document.getElementById('prioritize-context').value = '';
       document.querySelectorAll('.prioritize-project-checkbox').forEach(cb => cb.checked = false);
+      document.querySelectorAll('.prioritize-task-checkbox').forEach(cb => cb.checked = false);
     };
 
-    // Render prioritize form when view loads
-    const origRenderAll = window.renderAll;
-    window.renderAll = function() {
-      origRenderAll();
-      renderPrioritizeForm();
+    // ============================================
+    // Today View - Apple Calendar Timeline
+    // ============================================
+    const TODAY_START_HOUR = 6;   // 6 AM
+    const TODAY_END_HOUR = 23;    // 11 PM
+    const TODAY_PIXELS_PER_HOUR = 64;
+    const TODAY_TOTAL_HOURS = TODAY_END_HOUR - TODAY_START_HOUR;
+    const TODAY_TIMELINE_HEIGHT = TODAY_TOTAL_HOURS * TODAY_PIXELS_PER_HOUR;
+
+    // Today state
+    let todayState = {
+      currentDate: getTodayDateString(),
+      items: [],
+      currentTimeInterval: null
     };
+
+    let scheduleSubscription = null;
+
+    function getTodayDateString() {
+      return new Date().toISOString().split('T')[0];
+    }
+
+    function getCurrentMinute() {
+      const now = new Date();
+      return now.getHours() * 60 + now.getMinutes();
+    }
+
+    function minuteToPixel(minute) {
+      const adjustedMinute = minute - TODAY_START_HOUR * 60;
+      return adjustedMinute / 60 * TODAY_PIXELS_PER_HOUR;
+    }
+
+    function pixelToMinute(pixel) {
+      const minute = pixel / TODAY_PIXELS_PER_HOUR * 60 + TODAY_START_HOUR * 60;
+      return Math.round(minute / 15) * 15; // Snap to 15-min intervals
+    }
+
+    function formatTodayTime(minute) {
+      const hours = Math.floor(minute / 60);
+      const mins = minute % 60;
+      const displayHour = hours % 12 || 12;
+      const ampm = hours < 12 ? 'AM' : 'PM';
+      return `${displayHour}:${mins.toString().padStart(2, '0')} ${ampm}`;
+    }
+
+    function renderTodayView() {
+      const timeline = document.getElementById('today-timeline');
+      const wrapper = document.getElementById('today-timeline-wrapper');
+      if (!timeline || !wrapper) return;
+
+      timeline.style.height = `${TODAY_TIMELINE_HEIGHT}px`;
+
+      let html = '';
+
+      // Render hour markers
+      for (let hour = TODAY_START_HOUR; hour <= TODAY_END_HOUR; hour++) {
+        const displayHour = hour % 12 || 12;
+        const ampm = hour < 12 ? 'AM' : 'PM';
+        const top = (hour - TODAY_START_HOUR) * TODAY_PIXELS_PER_HOUR;
+
+        html += `
+          <div class="today-hour-marker" style="top: ${top}px;">
+            <span class="today-hour-label">${displayHour} ${ampm}</span>
+            <div class="today-hour-line"></div>
+          </div>
+        `;
+      }
+
+      // Render current time indicator (only if viewing today)
+      const isToday = todayState.currentDate === getTodayDateString();
+      if (isToday) {
+        const currentMinute = getCurrentMinute();
+        if (currentMinute >= TODAY_START_HOUR * 60 && currentMinute <= TODAY_END_HOUR * 60) {
+          const top = minuteToPixel(currentMinute);
+          html += `
+            <div class="today-current-time" style="top: ${top}px;">
+              <div class="today-current-time-dot"></div>
+              <div class="today-current-time-line"></div>
+            </div>
+          `;
+        }
+      }
+
+      // Render time blocks
+      if (todayState.items.length === 0) {
+        html += `
+          <div class="today-empty-state">
+            <p>No items scheduled for this day.</p>
+            <p class="text-sm">Add something above to get started.</p>
+          </div>
+        `;
+      } else {
+        todayState.items.forEach(item => {
+          const top = minuteToPixel(item.startMinute);
+          const height = Math.max(item.durationMinutes / 60 * TODAY_PIXELS_PER_HOUR, 32);
+          const startTime = formatTodayTime(item.startMinute);
+          const endTime = formatTodayTime(item.startMinute + item.durationMinutes);
+
+          html += `
+            <div class="today-time-block ${item.completed ? 'completed' : ''}"
+                 style="top: ${top}px; height: ${height}px;"
+                 data-id="${item.id}"
+                 onpointerdown="window.startDragBlock(event, '${item.id}')">
+              <div class="flex items-center gap-2">
+                <input type="checkbox" ${item.completed ? 'checked' : ''}
+                       onclick="event.stopPropagation(); window.toggleTodayItem('${item.id}')"
+                       style="cursor: pointer; flex-shrink: 0;">
+                <div class="flex-1 min-w-0">
+                  <div class="block-title ${item.completed ? 'line-through' : ''}">${item.title}</div>
+                  <div class="block-time">${startTime} – ${endTime}</div>
+                </div>
+                <button onclick="event.stopPropagation(); window.deleteTodayItem('${item.id}')"
+                        class="text-lg opacity-40 hover:opacity-100" style="color: hsl(0, 84%, 60%);">×</button>
+              </div>
+              <div class="resize-handle" onpointerdown="window.startResizeBlock(event, '${item.id}')"></div>
+            </div>
+          `;
+        });
+      }
+
+      timeline.innerHTML = html;
+
+      // Update date label
+      const dateLabel = document.getElementById('today-date-label');
+      const date = new Date(todayState.currentDate + 'T12:00:00');
+      dateLabel.textContent = date.toLocaleDateString('en-US', {
+        weekday: 'long',
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric'
+      });
+
+      // Show/hide Today button
+      const todayBtn = document.getElementById('today-goto-btn');
+      if (todayBtn) {
+        todayBtn.style.display = isToday ? 'none' : 'inline-block';
+      }
+
+      // Scroll to current time on initial render (only if viewing today)
+      if (isToday && !wrapper.dataset.scrolled) {
+        const currentMinute = getCurrentMinute();
+        const scrollTo = Math.max(0, minuteToPixel(currentMinute) - 100);
+        wrapper.scrollTop = scrollTo;
+        wrapper.dataset.scrolled = 'true';
+      }
+    }
+
+    // Today CRUD operations
+    window.addTodayItem = function() {
+      const input = document.getElementById('today-entry-input');
+      const durationSelect = document.getElementById('today-duration-select');
+      const title = input.value.trim();
+      if (!title) return;
+
+      const duration = parseInt(durationSelect.value);
+      const startMinute = getNextAvailableStart();
+
+      const item = {
+        id: `today-${Date.now()}`,
+        title,
+        startMinute,
+        durationMinutes: duration,
+        completed: false,
+        source: { type: 'manual' },
+        createdAt: Date.now(),
+        updatedAt: Date.now()
+      };
+
+      todayState.items.push(item);
+      input.value = '';
+      saveTodaySchedule();
+      renderTodayView();
+    };
+
+    function getNextAvailableStart() {
+      const currentMinute = getCurrentMinute();
+      const minStart = TODAY_START_HOUR * 60;
+      const baseStart = Math.max(minStart, Math.ceil(currentMinute / 15) * 15);
+
+      if (todayState.items.length === 0) {
+        return baseStart;
+      }
+
+      const sorted = [...todayState.items].sort((a, b) => a.startMinute - b.startMinute);
+      const last = sorted[sorted.length - 1];
+      const lastEnd = last.startMinute + last.durationMinutes;
+      const startAfter = Math.max(baseStart, lastEnd);
+      return Math.ceil(startAfter / 15) * 15;
+    }
+
+    window.toggleTodayItem = function(itemId) {
+      const item = todayState.items.find(i => i.id === itemId);
+      if (item) {
+        item.completed = !item.completed;
+        item.updatedAt = Date.now();
+        saveTodaySchedule();
+        renderTodayView();
+      }
+    };
+
+    window.deleteTodayItem = function(itemId) {
+      if (!confirm('Delete this item?')) return;
+      todayState.items = todayState.items.filter(i => i.id !== itemId);
+      saveTodaySchedule();
+      renderTodayView();
+    };
+
+    window.navigateDay = function(offset) {
+      const current = new Date(todayState.currentDate + 'T12:00:00');
+      current.setDate(current.getDate() + offset);
+      todayState.currentDate = current.toISOString().split('T')[0];
+      // Reset scroll flag for new day
+      const wrapper = document.getElementById('today-timeline-wrapper');
+      if (wrapper) delete wrapper.dataset.scrolled;
+      loadTodaySchedule();
+      loadChatHistory();
+    };
+
+    window.goToToday = function() {
+      todayState.currentDate = getTodayDateString();
+      const wrapper = document.getElementById('today-timeline-wrapper');
+      if (wrapper) delete wrapper.dataset.scrolled;
+      loadTodaySchedule();
+      loadChatHistory();
+    };
+
+    // Drag and Resize handlers
+    let dragState = { active: false, itemId: null, startY: 0, startMinute: 0 };
+    let resizeState = { active: false, itemId: null, startY: 0, startDuration: 0 };
+
+    window.startDragBlock = function(e, itemId) {
+      if (resizeState.active) return;
+      if (e.target.type === 'checkbox' || e.target.tagName === 'BUTTON') return;
+      e.preventDefault();
+      const item = todayState.items.find(i => i.id === itemId);
+      if (!item) return;
+
+      dragState = {
+        active: true,
+        itemId,
+        startY: e.clientY,
+        startMinute: item.startMinute
+      };
+
+      const block = e.currentTarget;
+      block.classList.add('dragging');
+      block.setPointerCapture(e.pointerId);
+
+      block.addEventListener('pointermove', handleDragMove);
+      block.addEventListener('pointerup', handleDragEnd);
+    };
+
+    function handleDragMove(e) {
+      if (!dragState.active) return;
+      const item = todayState.items.find(i => i.id === dragState.itemId);
+      if (!item) return;
+
+      const deltaY = e.clientY - dragState.startY;
+      const deltaMinutes = Math.round(deltaY / TODAY_PIXELS_PER_HOUR * 60 / 15) * 15;
+      const newStart = Math.max(
+        TODAY_START_HOUR * 60,
+        Math.min(TODAY_END_HOUR * 60 - item.durationMinutes, dragState.startMinute + deltaMinutes)
+      );
+
+      if (newStart !== item.startMinute) {
+        item.startMinute = newStart;
+        item.updatedAt = Date.now();
+        renderTodayView();
+      }
+    }
+
+    function handleDragEnd(e) {
+      if (dragState.active) {
+        dragState.active = false;
+        saveTodaySchedule();
+      }
+      e.currentTarget.classList.remove('dragging');
+      e.currentTarget.removeEventListener('pointermove', handleDragMove);
+      e.currentTarget.removeEventListener('pointerup', handleDragEnd);
+    }
+
+    window.startResizeBlock = function(e, itemId) {
+      e.preventDefault();
+      e.stopPropagation();
+      const item = todayState.items.find(i => i.id === itemId);
+      if (!item) return;
+
+      resizeState = {
+        active: true,
+        itemId,
+        startY: e.clientY,
+        startDuration: item.durationMinutes
+      };
+
+      document.addEventListener('pointermove', handleResizeMove);
+      document.addEventListener('pointerup', handleResizeEnd);
+    };
+
+    function handleResizeMove(e) {
+      if (!resizeState.active) return;
+      const item = todayState.items.find(i => i.id === resizeState.itemId);
+      if (!item) return;
+
+      const deltaY = e.clientY - resizeState.startY;
+      const deltaMinutes = Math.round(deltaY / TODAY_PIXELS_PER_HOUR * 60 / 15) * 15;
+      const newDuration = Math.max(15, resizeState.startDuration + deltaMinutes);
+
+      // Don't exceed end of day
+      const maxDuration = TODAY_END_HOUR * 60 - item.startMinute;
+      const clampedDuration = Math.min(newDuration, maxDuration);
+
+      if (clampedDuration !== item.durationMinutes) {
+        item.durationMinutes = clampedDuration;
+        item.updatedAt = Date.now();
+        renderTodayView();
+      }
+    }
+
+    function handleResizeEnd() {
+      if (resizeState.active) {
+        resizeState.active = false;
+        saveTodaySchedule();
+      }
+      document.removeEventListener('pointermove', handleResizeMove);
+      document.removeEventListener('pointerup', handleResizeEnd);
+    }
+
+    // Today Firestore persistence
+    function subscribeTodaySchedule() {
+      if (!uid || !state.settings.enableSync) return;
+
+      const dateId = todayState.currentDate;
+      const ref = doc(db, userPath('dailySchedules'), dateId);
+
+      if (scheduleSubscription) scheduleSubscription();
+
+      scheduleSubscription = onSnapshot(ref, (snap) => {
+        if (snap.exists()) {
+          const data = snap.data();
+          todayState.items = data.items || [];
+        } else {
+          todayState.items = [];
+        }
+        renderTodayView();
+      }, (error) => {
+        console.error('Schedule subscription error:', error);
+      });
+    }
+
+    async function saveTodaySchedule() {
+      if (!uid || !state.settings.enableSync) {
+        // Save to localStorage for offline
+        localStorage.setItem(`today-${todayState.currentDate}`, JSON.stringify(todayState.items));
+        return;
+      }
+
+      const dateId = todayState.currentDate;
+      const schedule = {
+        id: dateId,
+        date: dateId,
+        items: todayState.items,
+        updatedAt: Date.now()
+      };
+
+      try {
+        const ref = doc(db, userPath('dailySchedules'), dateId);
+        await setDoc(ref, schedule, { merge: true });
+      } catch (error) {
+        console.error('Failed to save schedule:', error);
+      }
+    }
+
+    function loadTodaySchedule() {
+      if (uid && state.settings.enableSync) {
+        subscribeTodaySchedule();
+      } else {
+        // Load from localStorage
+        const saved = localStorage.getItem(`today-${todayState.currentDate}`);
+        todayState.items = saved ? JSON.parse(saved) : [];
+        renderTodayView();
+      }
+    }
+
+    function startCurrentTimeUpdater() {
+      if (todayState.currentTimeInterval) {
+        clearInterval(todayState.currentTimeInterval);
+      }
+      todayState.currentTimeInterval = setInterval(() => {
+        if (todayState.currentDate === getTodayDateString()) {
+          renderTodayView();
+        }
+      }, 60000); // Update every minute
+    }
+
+    // ============================================
+    // AI Schedule Chat
+    // ============================================
+    let chatState = {
+      messages: [],
+      pendingClarification: null // Stores matches when awaiting user selection
+    };
+
+    function getChatHistoryKey() {
+      return `schedule-chat-${todayState.currentDate}`;
+    }
+
+    function saveChatHistory() {
+      localStorage.setItem(getChatHistoryKey(), JSON.stringify(chatState.messages));
+    }
+
+    function loadChatHistory() {
+      const saved = localStorage.getItem(getChatHistoryKey());
+      chatState.messages = saved ? JSON.parse(saved) : [];
+      chatState.pendingClarification = null;
+      renderChatMessages();
+    }
+
+    function addChatMessage(text, sender) {
+      chatState.messages.push({ text, sender, timestamp: Date.now() });
+      // Keep only last 10 messages
+      if (chatState.messages.length > 10) {
+        chatState.messages = chatState.messages.slice(-10);
+      }
+      saveChatHistory();
+      renderChatMessages();
+    }
+
+    function renderChatMessages() {
+      const container = document.getElementById('today-chat-messages');
+      if (!container) return;
+
+      container.innerHTML = chatState.messages.map(msg =>
+        `<div class="chat-message ${msg.sender}">${escapeHtml(msg.text)}</div>`
+      ).join('');
+
+      // Auto-scroll to bottom
+      container.scrollTop = container.scrollHeight;
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    function getCurrentScheduleContext() {
+      return todayState.items.map((item, idx) =>
+        `${idx + 1}. "${item.title}" at ${formatTodayTime(item.startMinute)} for ${item.durationMinutes} min${item.completed ? ' (done)' : ''} [id:${item.id}]`
+      ).join('\n');
+    }
+
+    async function parseScheduleCommand(userMessage) {
+      const scheduleContext = getCurrentScheduleContext();
+      const currentTime = formatTodayTime(getCurrentMinute());
+
+      const systemPrompt = `You are a scheduling assistant. Parse the user's natural language command into a structured JSON action.
+
+Current schedule for ${todayState.currentDate}:
+${scheduleContext || '(empty - no items scheduled)'}
+
+Current time: ${currentTime}
+
+Timeline bounds: 6 AM (360 min) to 11 PM (1380 min)
+
+IMPORTANT: When user refers to an item (like "the meeting" or "lunch"), you must match it to an existing item.
+If multiple items could match, return action "clarify" with numbered options.
+If the user replies with just a number (like "1" or "2"), treat it as selecting from the previous clarification.
+
+Output ONLY valid JSON with this schema:
+{
+  "action": "add" | "remove" | "update" | "complete" | "query" | "clarify" | "error",
+  "item": {
+    "title": "string (for add)",
+    "startMinute": number (0-1440, e.g., 9am=540, 2:30pm=870),
+    "durationMinutes": number (e.g., 1 hour=60)
+  },
+  "targetId": "string (id of existing item for remove/update/complete)",
+  "updates": {
+    "startMinute": number (optional, for update),
+    "durationMinutes": number (optional, for update),
+    "title": string (optional, for update)
+  },
+  "matches": [
+    {"index": 1, "id": "...", "title": "...", "time": "..."}
+  ],
+  "response": "string (friendly confirmation or question to display)"
+}
+
+Time parsing examples:
+- "9am" or "9 AM" → 540
+- "2pm" or "2 PM" → 840
+- "2:30pm" → 870
+- "noon" → 720
+- "1 hour" → 60 min
+- "30 min" or "30 minutes" → 30
+
+Actions:
+- "add": Create new item. Require title, startMinute, durationMinutes.
+- "remove": Delete item by targetId.
+- "update": Modify existing item. Use targetId and updates object.
+- "complete": Mark item as done. Use targetId.
+- "query": List current schedule. No modification.
+- "clarify": Multiple matches found. Include matches array.
+- "error": Can't understand or invalid request.
+
+For clarify, format response like:
+"Which one?
+1. Team standup (9:00 AM)
+2. Client meeting (2:00 PM)
+Reply with the number."`;
+
+      try {
+        const response = await callGemini(userMessage, systemPrompt);
+        const jsonMatch = response.match(/\{[\s\S]*\}/);
+        if (!jsonMatch) {
+          return { action: 'error', response: "I couldn't understand that. Try something like 'Add lunch at noon for 1 hour'." };
+        }
+        return JSON.parse(jsonMatch[0]);
+      } catch (error) {
+        console.error('Parse error:', error);
+        return { action: 'error', response: 'Failed to process your request. Please try again.' };
+      }
+    }
+
+    function executeScheduleCommand(parsed) {
+      switch (parsed.action) {
+        case 'add': {
+          if (!parsed.item?.title || parsed.item.startMinute == null || !parsed.item.durationMinutes) {
+            return parsed.response || "I need a title, time, and duration to add an item.";
+          }
+          const newItem = {
+            id: `today-${Date.now()}`,
+            title: parsed.item.title,
+            startMinute: Math.max(360, Math.min(1380, parsed.item.startMinute)),
+            durationMinutes: parsed.item.durationMinutes,
+            completed: false,
+            source: { type: 'ai-chat' },
+            createdAt: Date.now(),
+            updatedAt: Date.now()
+          };
+          todayState.items.push(newItem);
+          saveTodaySchedule();
+          renderTodayView();
+          return parsed.response || `Added "${newItem.title}" at ${formatTodayTime(newItem.startMinute)}.`;
+        }
+
+        case 'remove': {
+          if (!parsed.targetId) {
+            return parsed.response || "I couldn't find which item to remove.";
+          }
+          const item = todayState.items.find(i => i.id === parsed.targetId);
+          if (!item) {
+            return "Item not found.";
+          }
+          todayState.items = todayState.items.filter(i => i.id !== parsed.targetId);
+          saveTodaySchedule();
+          renderTodayView();
+          return parsed.response || `Removed "${item.title}".`;
+        }
+
+        case 'update': {
+          if (!parsed.targetId) {
+            return parsed.response || "I couldn't find which item to update.";
+          }
+          const item = todayState.items.find(i => i.id === parsed.targetId);
+          if (!item) {
+            return "Item not found.";
+          }
+          if (parsed.updates) {
+            if (parsed.updates.startMinute != null) {
+              item.startMinute = Math.max(360, Math.min(1380, parsed.updates.startMinute));
+            }
+            if (parsed.updates.durationMinutes != null) {
+              item.durationMinutes = parsed.updates.durationMinutes;
+            }
+            if (parsed.updates.title) {
+              item.title = parsed.updates.title;
+            }
+            item.updatedAt = Date.now();
+          }
+          saveTodaySchedule();
+          renderTodayView();
+          return parsed.response || `Updated "${item.title}".`;
+        }
+
+        case 'complete': {
+          if (!parsed.targetId) {
+            return parsed.response || "I couldn't find which item to complete.";
+          }
+          const item = todayState.items.find(i => i.id === parsed.targetId);
+          if (!item) {
+            return "Item not found.";
+          }
+          item.completed = !item.completed;
+          item.updatedAt = Date.now();
+          saveTodaySchedule();
+          renderTodayView();
+          return parsed.response || `Marked "${item.title}" as ${item.completed ? 'complete' : 'incomplete'}.`;
+        }
+
+        case 'query': {
+          if (todayState.items.length === 0) {
+            return "Your schedule is empty for today. Add something to get started!";
+          }
+          const summary = todayState.items
+            .sort((a, b) => a.startMinute - b.startMinute)
+            .map(item => `• ${item.title} at ${formatTodayTime(item.startMinute)}${item.completed ? ' ✓' : ''}`)
+            .join('\n');
+          return parsed.response || `Here's your schedule:\n${summary}`;
+        }
+
+        case 'clarify': {
+          // Store matches for when user responds with a number
+          if (parsed.matches && parsed.matches.length > 0) {
+            chatState.pendingClarification = parsed.matches;
+          }
+          return parsed.response || "I found multiple matching items. Please specify which one.";
+        }
+
+        case 'error':
+        default:
+          return parsed.response || "I didn't understand that. Try 'Add workout at 7am for 45 min' or 'What's on my schedule?'";
+      }
+    }
+
+    window.sendScheduleChat = async function() {
+      const input = document.getElementById('today-chat-input');
+      const userMessage = input.value.trim();
+      if (!userMessage) return;
+
+      // Clear input
+      input.value = '';
+
+      // Add user message to chat
+      addChatMessage(userMessage, 'user');
+
+      // Check if this is a number response to a pending clarification
+      const numberMatch = userMessage.match(/^(\d+)$/);
+      if (numberMatch && chatState.pendingClarification) {
+        const selectedIndex = parseInt(numberMatch[1]);
+        const match = chatState.pendingClarification.find(m => m.index === selectedIndex);
+        if (match) {
+          // User selected an item - now we need to figure out what they wanted to do with it
+          // Re-query with context
+          chatState.pendingClarification = null;
+          const clarifyPrompt = `The user selected item #${selectedIndex}: "${match.title}" (id: ${match.id}). Complete the previous action (remove, update, or complete) on this item.`;
+
+          try {
+            const parsed = await parseScheduleCommand(clarifyPrompt);
+            // Override targetId with the selected match
+            parsed.targetId = match.id;
+            const result = executeScheduleCommand(parsed);
+            addChatMessage(result, 'ai');
+          } catch (error) {
+            addChatMessage('Something went wrong. Please try again.', 'ai');
+          }
+          return;
+        }
+      }
+
+      // Clear any pending clarification since this is a new command
+      chatState.pendingClarification = null;
+
+      // Show loading
+      const loadingMsg = { text: 'Thinking...', sender: 'ai loading', timestamp: Date.now() };
+      chatState.messages.push(loadingMsg);
+      renderChatMessages();
+
+      try {
+        const parsed = await parseScheduleCommand(userMessage);
+
+        // Remove loading message
+        chatState.messages = chatState.messages.filter(m => m !== loadingMsg);
+
+        const result = executeScheduleCommand(parsed);
+        addChatMessage(result, 'ai');
+      } catch (error) {
+        // Remove loading message
+        chatState.messages = chatState.messages.filter(m => m !== loadingMsg);
+        addChatMessage('Something went wrong. Make sure your Gemini API key is set in Settings.', 'ai');
+      }
+    };
+
+    // ============================================
+    // End Today View
+    // ============================================
+
+    // ============================================
+    // CC Daily Inbox Integration
+    // ============================================
+    let inboxState = {
+      rawEmails: [],
+      parsedByDate: new Map(),
+      selectedDate: getTodayMMDDYYYY(),
+      availableDates: []
+    };
+
+    let inboxSubscription = null;
+
+    function getTodayMMDDYYYY() {
+      const now = new Date();
+      const mm = String(now.getMonth() + 1).padStart(2, '0');
+      const dd = String(now.getDate()).padStart(2, '0');
+      const yyyy = now.getFullYear();
+      return `${mm}/${dd}/${yyyy}`;
+    }
+
+    function toISODateFromMMDDYYYY(mmddyyyy) {
+      const [mm, dd, yyyy] = mmddyyyy.split('/');
+      return `${yyyy}-${mm.padStart(2, '0')}-${dd.padStart(2, '0')}`;
+    }
+
+    function parseCCEmail(email) {
+      const { subject, body, messageId, receivedAt } = email;
+
+      // Must be a Day Ahead email with brain emoji
+      if (!subject || !subject.includes('Your Day Ahead')) return null;
+      if (!body || !body.includes('\u{1F9E0}')) return null;
+
+      // Extract date from subject (MM/DD/YYYY)
+      const dateMatch = subject.match(/(\d{1,2}\/\d{1,2}\/\d{4})/);
+      if (!dateMatch) return null;
+
+      const dateKey = dateMatch[1];
+
+      // Find Top of Mind section (brain emoji to FYI section or end)
+      const topMatch = body.match(/\u{1F9E0}\s*Top of mind([\s\S]*?)(?=\u{1F514}\s*FYI|$)/iu);
+      if (!topMatch) return null;
+
+      const taskSection = topMatch[1];
+      const tasks = [];
+
+      // Split by clock emoji (timer marker)
+      const taskBlocks = taskSection.split(/(?=\u{23F1})/u);
+
+      taskBlocks.forEach((block, index) => {
+        if (!block.includes('\u{23F1}')) return;
+
+        // Get task description - extract text after time marker
+        const descMatch = block.match(
+          /\u{23F1}\u{FE0F}?\s*\d+m?\s*[\u{2022}\u{00B7}]?\s*([\s\S]+?)(?=\s*\u{1F517}|\s*\u{2709}|\s*\u{1F4C5}|\n\s*-|\n\s*\u{23F1}|$)/u
+        );
+        if (!descMatch) return;
+
+        let item = descMatch[1].trim().replace(/\s+/g, ' ').replace(/\s*>\s*/g, ' ');
+        if (!item || item.length < 3) return;
+
+        // Look for due date patterns
+        const duePatterns = [
+          /[Dd]ue\s+([A-Za-z]+,?\s+[A-Za-z]+\s+\d+(?:st|nd|rd|th)?)/,
+          /[Bb]y\s+([A-Za-z]+,?\s+[A-Za-z]+\s+\d+(?:st|nd|rd|th)?)/,
+          /[Dd]eadline:?\s*([A-Za-z]+,?\s+[A-Za-z]+\s+\d+(?:st|nd|rd|th)?)/i
+        ];
+
+        let dueDate = null;
+        for (const pattern of duePatterns) {
+          const match = block.match(pattern);
+          if (match) {
+            dueDate = match[1].trim();
+            break;
+          }
+        }
+
+        tasks.push({
+          id: `inbox-${dateKey.replace(/\//g, '-')}-${index}`,
+          item: item.substring(0, 200), // Limit length
+          hasDueDate: dueDate !== null,
+          dueDate
+        });
+      });
+
+      const receivedTs = typeof receivedAt === 'number'
+        ? receivedAt
+        : (receivedAt?._seconds ? receivedAt._seconds * 1000 : Date.now());
+
+      return {
+        date: dateKey,
+        dateISO: toISODateFromMMDDYYYY(dateKey),
+        tasks,
+        rawEmailId: messageId,
+        receivedAt: receivedTs
+      };
+    }
+
+    function parseCCInboxEmails(emails) {
+      const result = new Map();
+      const seenDates = new Map();
+
+      for (const email of emails) {
+        const parsed = parseCCEmail(email);
+        if (!parsed || parsed.tasks.length === 0) continue;
+
+        // For duplicate dates, keep earliest received
+        const existing = seenDates.get(parsed.date);
+        if (!existing || parsed.receivedAt < existing) {
+          seenDates.set(parsed.date, parsed.receivedAt);
+          result.set(parsed.date, parsed);
+        }
+      }
+
+      return result;
+    }
+
+    function subscribeInboxDaily() {
+      if (!uid || !state.settings.enableSync) {
+        const section = document.getElementById('inbox-section');
+        if (section) section.style.display = 'none';
+        return;
+      }
+
+      const ref = collection(db, userPath('inboxDaily'));
+      const q = query(ref, orderBy('receivedAt', 'desc'));
+
+      if (inboxSubscription) inboxSubscription();
+
+      inboxSubscription = onSnapshot(q, (snap) => {
+        const emails = [];
+        snap.forEach(d => {
+          const data = d.data();
+          emails.push({
+            messageId: d.id,
+            subject: data.subject || '',
+            body: data.body || '',
+            receivedAt: data.receivedAt
+          });
+        });
+
+        inboxState.rawEmails = emails;
+        inboxState.parsedByDate = parseCCInboxEmails(emails);
+        inboxState.availableDates = Array.from(inboxState.parsedByDate.values())
+          .sort((a, b) => b.dateISO.localeCompare(a.dateISO))
+          .map(inbox => inbox.date);
+
+        // Default to today or latest available
+        if (!inboxState.parsedByDate.has(inboxState.selectedDate) && inboxState.availableDates.length > 0) {
+          inboxState.selectedDate = inboxState.availableDates[0];
+        }
+
+        renderInboxSection();
+      }, (error) => {
+        console.error('Inbox subscription error:', error);
+      });
+    }
+
+    function renderInboxSection() {
+      const section = document.getElementById('inbox-section');
+      const taskList = document.getElementById('inbox-task-list');
+      const countEl = document.getElementById('inbox-task-count');
+      const dateLabel = document.getElementById('inbox-date-label');
+
+      if (!section || !taskList) return;
+
+      if (inboxState.availableDates.length === 0) {
+        section.style.display = 'none';
+        return;
+      }
+
+      section.style.display = 'block';
+
+      const currentInbox = inboxState.parsedByDate.get(inboxState.selectedDate);
+      const todayKey = getTodayMMDDYYYY();
+
+      // Update date label
+      if (inboxState.selectedDate === todayKey) {
+        dateLabel.textContent = 'Today';
+      } else {
+        dateLabel.textContent = inboxState.selectedDate;
+      }
+
+      if (!currentInbox) {
+        countEl.textContent = '0';
+        taskList.innerHTML = '<p class="text-muted-foreground text-center py-4">No inbox data for this date</p>';
+        return;
+      }
+
+      countEl.textContent = currentInbox.tasks.length;
+
+      if (currentInbox.tasks.length === 0) {
+        taskList.innerHTML = '<p class="text-muted-foreground text-center py-4">No tasks found in this email</p>';
+        return;
+      }
+
+      taskList.innerHTML = currentInbox.tasks.map(task => `
+        <div class="inbox-task-item">
+          <svg class="inbox-task-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+          <div class="inbox-task-content">
+            <div class="inbox-task-text">${task.item}</div>
+            ${task.dueDate ? `<div class="inbox-task-due">Due: ${task.dueDate}</div>` : ''}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    window.navigateInboxDay = function(offset) {
+      if (inboxState.availableDates.length === 0) return;
+
+      const currentIdx = inboxState.availableDates.indexOf(inboxState.selectedDate);
+      // offset -1 = go to newer (lower index), offset 1 = go to older (higher index)
+      const newIdx = Math.max(0, Math.min(inboxState.availableDates.length - 1, currentIdx + offset));
+
+      if (inboxState.availableDates[newIdx]) {
+        inboxState.selectedDate = inboxState.availableDates[newIdx];
+        renderInboxSection();
+      }
+    };
+
+    // ============================================
+    // End Inbox Integration
+    // ============================================
+
+    // ============================================
+    // Visual Filters
+    // ============================================
+
+    const defaultFilters = {
+      brightness: 100,
+      contrast: 100,
+      saturate: 100,
+      hueRotate: 0,
+      sepia: 0,
+      invert: false,
+      backgroundPanel: 'none'
+    };
+
+    let currentFilters = { ...defaultFilters };
+    let savedFilters = { ...defaultFilters };
+
+    function applyFiltersToDocument(filters) {
+      const container = document.getElementById('app-filter-container');
+      if (!container) return;
+
+      const filterString = [
+        `brightness(${filters.brightness}%)`,
+        `contrast(${filters.contrast}%)`,
+        `saturate(${filters.saturate}%)`,
+        `hue-rotate(${filters.hueRotate}deg)`,
+        `sepia(${filters.sepia}%)`,
+        filters.invert ? 'invert(1)' : ''
+      ].filter(Boolean).join(' ');
+
+      container.style.filter = filterString;
+
+      // Apply background panel
+      const bgPanel = document.getElementById('app-background-panel');
+      if (bgPanel) {
+        bgPanel.className = 'app-background-panel' + (filters.backgroundPanel !== 'none' ? ` bg-${filters.backgroundPanel}` : '');
+      }
+    }
+
+    function updateFilterUI(filters) {
+      document.getElementById('filter-brightness').value = filters.brightness;
+      document.getElementById('filter-brightness-val').textContent = filters.brightness;
+      document.getElementById('filter-contrast').value = filters.contrast;
+      document.getElementById('filter-contrast-val').textContent = filters.contrast;
+      document.getElementById('filter-saturate').value = filters.saturate;
+      document.getElementById('filter-saturate-val').textContent = filters.saturate;
+      document.getElementById('filter-hue').value = filters.hueRotate;
+      document.getElementById('filter-hue-val').textContent = filters.hueRotate;
+      document.getElementById('filter-sepia').value = filters.sepia;
+      document.getElementById('filter-sepia-val').textContent = filters.sepia;
+      document.getElementById('filter-invert').checked = filters.invert;
+      document.getElementById('filter-background').value = filters.backgroundPanel;
+    }
+
+    window.openFiltersModal = function() {
+      // Load current filters from state
+      currentFilters = { ...savedFilters };
+      updateFilterUI(currentFilters);
+      document.getElementById('filters-modal').classList.add('open');
+    };
+
+    window.cancelFilters = function() {
+      // Revert to saved filters
+      currentFilters = { ...savedFilters };
+      applyFiltersToDocument(savedFilters);
+      document.getElementById('filters-modal').classList.remove('open');
+    };
+
+    window.resetFilters = function() {
+      currentFilters = { ...defaultFilters };
+      updateFilterUI(currentFilters);
+      applyFiltersToDocument(currentFilters);
+    };
+
+    window.saveFilters = async function() {
+      savedFilters = { ...currentFilters };
+      // Save to settings in state
+      state.settings.filters = savedFilters;
+      // Persist to Firestore if sync enabled
+      if (uid && state.settings.enableSync) {
+        try {
+          const settingsRef = doc(db, 'users', uid, 'apps', 'actionDeck', 'settings', 'preferences');
+          await setDoc(settingsRef, { filters: savedFilters }, { merge: true });
+        } catch (e) {
+          console.error('Failed to save filters:', e);
+        }
+      }
+      document.getElementById('filters-modal').classList.remove('open');
+      showToast('Filters saved', 'success');
+    };
+
+    function loadFiltersFromSettings() {
+      if (state.settings.filters) {
+        savedFilters = { ...defaultFilters, ...state.settings.filters };
+        currentFilters = { ...savedFilters };
+        applyFiltersToDocument(savedFilters);
+      }
+    }
+
+    async function loadFiltersFromFirestore() {
+      if (!uid) return;
+      try {
+        const settingsRef = doc(db, 'users', uid, 'apps', 'actionDeck', 'settings', 'preferences');
+        const snap = await getDoc(settingsRef);
+        if (snap.exists()) {
+          const data = snap.data();
+          if (data.filters) {
+            state.settings.filters = data.filters;
+            loadFiltersFromSettings();
+            console.log('Filters loaded from Firestore');
+          }
+        }
+      } catch (e) {
+        console.error('Failed to load filters:', e);
+      }
+    }
+
+    // Setup filter slider event listeners
+    function setupFilterListeners() {
+      const sliders = [
+        { id: 'filter-brightness', key: 'brightness', valId: 'filter-brightness-val' },
+        { id: 'filter-contrast', key: 'contrast', valId: 'filter-contrast-val' },
+        { id: 'filter-saturate', key: 'saturate', valId: 'filter-saturate-val' },
+        { id: 'filter-hue', key: 'hueRotate', valId: 'filter-hue-val' },
+        { id: 'filter-sepia', key: 'sepia', valId: 'filter-sepia-val' }
+      ];
+
+      sliders.forEach(({ id, key, valId }) => {
+        const slider = document.getElementById(id);
+        if (slider) {
+          slider.addEventListener('input', (e) => {
+            currentFilters[key] = parseInt(e.target.value);
+            document.getElementById(valId).textContent = e.target.value;
+            applyFiltersToDocument(currentFilters);
+          });
+        }
+      });
+
+      const invertCheckbox = document.getElementById('filter-invert');
+      if (invertCheckbox) {
+        invertCheckbox.addEventListener('change', (e) => {
+          currentFilters.invert = e.target.checked;
+          applyFiltersToDocument(currentFilters);
+        });
+      }
+
+      const bgSelect = document.getElementById('filter-background');
+      if (bgSelect) {
+        bgSelect.addEventListener('change', (e) => {
+          currentFilters.backgroundPanel = e.target.value;
+          applyFiltersToDocument(currentFilters);
+        });
+      }
+    }
+
+    // ============================================
+    // End Visual Filters
+    // ============================================
 
     // Render on page load
     function renderAll() {
       renderDashboardSummary();
       renderProjects();
       renderTasks();
+      renderPrioritizeForm();
+      renderPrioritizeTasks();
+      renderTodayView();
+      loadChatHistory();
+      renderInboxSection();
     }
 
     // Initialize on DOM ready
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', () => {
         window.loadGeminiKey();
+        setupFilterListeners();
         renderAll();
+        startCurrentTimeUpdater();
         console.log('ActionDeck initialized');
       });
     } else {
       window.loadGeminiKey();
+      setupFilterListeners();
       renderAll();
+      startCurrentTimeUpdater();
       console.log('ActionDeck initialized');
     }
 
