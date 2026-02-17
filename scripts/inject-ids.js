@@ -4,9 +4,11 @@
  * Automated Style ID Injection System
  *
  * Usage:
- *   node inject-ids.js              # Add IDs to all elements (auto-discovers project structure)
- *   node inject-ids.js --clean      # Remove all stylo-* IDs
- *   node inject-ids.js --dry-run    # Preview what would be changed without modifying files
+ *   node inject-ids.js                  # Add IDs to all elements (auto-discovers project)
+ *   node inject-ids.js --clean          # Remove all style-id="stylo-*" attributes
+ *   node inject-ids.js --clean tid      # Remove ANY attribute with "tid-*" value (migration)
+ *   node inject-ids.js --dry-run        # Preview without modifying files
+ *   node inject-ids.js --clean --dry-run # Preview what --clean would remove
  *
  * This script automatically:
  * 1. Detects your project structure (Next.js, Vite, CRA, etc.)
@@ -63,6 +65,14 @@ const UI_LIBRARY_PATTERNS = [
 const args = process.argv.slice(2);
 const isCleanMode = args.includes('--clean');
 const isDryRun = args.includes('--dry-run');
+
+// --clean with no arg removes stylo-* from style-id attrs
+// --clean <prefix> removes <prefix>-* from ANY attribute value (for migrating away from old systems)
+const cleanIndex = args.indexOf('--clean');
+const cleanArg = (cleanIndex !== -1 && args[cleanIndex + 1] && !args[cleanIndex + 1].startsWith('--'))
+  ? args[cleanIndex + 1]
+  : null;
+const isCustomClean = isCleanMode && cleanArg !== null;
 
 // Load existing ID mappings or create new one
 let idMappings = {};
@@ -277,7 +287,10 @@ function getOrCreateId(elementKey) {
 }
 
 /**
- * Clean file - remove style-id attributes with stylo-* values
+ * Clean file - remove style IDs or custom-prefixed attribute values
+ *
+ * Default (--clean):         removes style-id="stylo-*" attrs
+ * Custom  (--clean <prefix>): removes ANY attr whose value matches <prefix>-*
  */
 function cleanFile(filePath) {
   const relativePath = path.relative(process.cwd(), filePath);
@@ -296,26 +309,46 @@ function cleanFile(filePath) {
 
   let modified = false;
   let removedCount = 0;
-  const prefixPattern = new RegExp(`^${ID_PREFIX}-\\d+$`);
 
-  traverse(ast, {
-    JSXElement(nodePath) {
-      const element = nodePath.node;
-      const attrs = element.openingElement.attributes;
+  if (isCustomClean) {
+    // Custom prefix mode: remove ANY attribute whose value matches <prefix>-<number>
+    const prefixPattern = new RegExp(`^${cleanArg}-\\d+$`);
 
-      // Find and remove style-id attributes with stylo-* values
-      for (let i = attrs.length - 1; i >= 0; i--) {
-        const attr = attrs[i];
-        if (attr.name && attr.name.name === ATTR_NAME && attr.value && t.isStringLiteral(attr.value)) {
-          if (prefixPattern.test(attr.value.value)) {
-            attrs.splice(i, 1);
-            modified = true;
-            removedCount++;
+    traverse(ast, {
+      JSXElement(nodePath) {
+        const attrs = nodePath.node.openingElement.attributes;
+        for (let i = attrs.length - 1; i >= 0; i--) {
+          const attr = attrs[i];
+          if (attr.name && attr.value && t.isStringLiteral(attr.value)) {
+            if (prefixPattern.test(attr.value.value)) {
+              attrs.splice(i, 1);
+              modified = true;
+              removedCount++;
+            }
           }
         }
       }
-    }
-  });
+    });
+  } else {
+    // Default mode: remove style-id="stylo-*" attributes specifically
+    const prefixPattern = new RegExp(`^${ID_PREFIX}-\\d+$`);
+
+    traverse(ast, {
+      JSXElement(nodePath) {
+        const attrs = nodePath.node.openingElement.attributes;
+        for (let i = attrs.length - 1; i >= 0; i--) {
+          const attr = attrs[i];
+          if (attr.name && attr.name.name === ATTR_NAME && attr.value && t.isStringLiteral(attr.value)) {
+            if (prefixPattern.test(attr.value.value)) {
+              attrs.splice(i, 1);
+              modified = true;
+              removedCount++;
+            }
+          }
+        }
+      }
+    });
+  }
 
   if (modified) {
     if (isDryRun) {
@@ -513,7 +546,8 @@ function main() {
 
   if (isCleanMode) {
     // Clean mode - remove attributes
-    console.log('🧹 Removing style IDs...');
+    const target = isCustomClean ? `${cleanArg}-* (any attribute)` : `${ATTR_NAME}="${ID_PREFIX}-*"`;
+    console.log(`🧹 Removing ${target}...`);
     let totalRemoved = 0;
     for (const file of allFiles) {
       totalRemoved += cleanFile(file);
