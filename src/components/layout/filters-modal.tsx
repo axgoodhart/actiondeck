@@ -88,7 +88,7 @@ export function FiltersModal({ open, onOpenChange }: {open: boolean;onOpenChange
         <DialogPrimitive.Content data-style-id="stylo-428"
         className="fixed left-[50%] top-[50%] z-50 grid w-full max-w-xl translate-x-[-50%] translate-y-[-50%] gap-4 border border-primary/50 bg-background p-6 duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 sm:rounded-lg shadow-[0_0_60px_20px_rgba(0,0,0,0.8),0_0_100px_40px_rgba(0,0,0,0.6)] border-t-2 border-t-primary">
 
-          <h2 data-style-id="stylo-429" id="el-363" className="font-headline text-2xl text-primary lowercase tracking-wide">filters</h2>
+          <DialogPrimitive.Title data-style-id="stylo-429" id="el-363" className="font-headline text-2xl text-primary lowercase tracking-wide">filters</DialogPrimitive.Title>
 
           <div data-style-id="stylo-430" id="el-364" className="space-y-6 py-4">
             {/* Brightness */}

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
-import { PanelLeft, LayoutDashboard, CheckSquare, BotMessageSquare, Settings } from 'lucide-react';
+import { PanelLeft, LayoutDashboard, CheckSquare, BotMessageSquare, Settings, CalendarDays, FolderInput } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Logo } from '@/components/icons/logo';
@@ -15,8 +15,10 @@ import { FiltersModal } from './filters-modal';
 
 const navItems = [
 { href: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
+{ href: '/today', icon: CalendarDays, label: 'Today' },
 { href: '/tasks', icon: CheckSquare, label: 'Tasks' },
-{ href: '/prioritize', icon: BotMessageSquare, label: 'AI Prioritizer' }];
+{ href: '/prioritize', icon: BotMessageSquare, label: 'AI Prioritizer' },
+{ href: '/import', icon: FolderInput, label: 'AI Import' }];
 
 
 export function Header() {
